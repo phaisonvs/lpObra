@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LP Obra Local</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./lpObraLocal.css">
+</head>
+
+<body>
+  <section id="lp-obra-local-root" class="lp-obra-local-root lp-step-1 section-formulario" aria-label="LP Obra Local">
+    <header class="lp-fixed-header">
+      <div class="lp-fixed-header__inner">
+        <a class="lp-fixed-header__brand" href="#lp-hero" aria-label="ABC da construção">
+          <img id="img-logo-hero" class="lp-fixed-header__logo" alt="ABC da construção">
+        </a>
+
+        <nav class="lp-fixed-header__nav" aria-label="Menu da página">
+          <button class="lp-fixed-header__link" type="button">Benefícios</button>
+          <button class="lp-fixed-header__link" type="button">Como funciona</button>
+          <button class="lp-fixed-header__link" type="button">Dúvidas</button>
+        </nav>
+
+        <a class="lp-fixed-header__cta" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+          QUERO CADASTRAR MEU ORÇAMENTO
+        </a>
+      </div>
+    </header>
+
+    <main class="lp-page-shell">
+      <section id="lp-hero" class="lp-hero" aria-labelledby="lp-hero-title">
+        <div class="lp-hero__media" aria-hidden="true"></div>
+
+        <div class="lp-hero__inner">
+          <div class="lp-hero__content">
+            <span class="lp-hero__eyebrow">Obra Local ABC</span>
+            <h1 id="lp-hero-title" class="lp-hero__title">
+              Cadastre seu orçamento
+              <span class="hero-accent">na maior do Brasil</span>
+              e se torne
+              <strong>CLIENTE VIP</strong>
+            </h1>
+            <p class="lp-hero__subtitle">
+              Um caminho direto, premium e simples para abrir seu cadastro com a ABC.
+            </p>
+
+            <div class="lp-hero__stats" aria-label="Destaques da marca">
+              <article class="lp-hero__stat">
+                <strong>Maior rede</strong>
+                <span>especialista em acabamentos do Brasil</span>
+              </article>
+              <article class="lp-hero__stat">
+                <strong>+400</strong>
+                <span>franquias</span>
+              </article>
+              <article class="lp-hero__stat">
+                <strong>11</strong>
+                <span>estados do país</span>
+              </article>
+              <article class="lp-hero__stat">
+                <strong>68 anos</strong>
+                <span>de tradição</span>
+              </article>
+            </div>
+
+            <div class="lp-hero__actions">
+              <a class="lp-hero__cta" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+                QUERO CADASTRAR MEU ORÇAMENTO
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-form-anchor" id="lp-form-anchor" aria-label="Formulário de cadastro">
+        <div class="form-container">
+          <aside class="franquia-info">
+            <div class="logo-container">
+              <img id="img-logo-form" alt="ABC da construção">
+            </div>
+            <h1>
+              Preencha o cadastro para iniciar sua jornada com a
+              <span class="hero-accent">ABC da Construção</span>
+            </h1>
+            <p>
+              São 3 etapas simples para validar seus dados e encaminhar seu orçamento.
+            </p>
+          </aside>
+
+          <div class="forms">
+            <div class="form-title">
+              <figure aria-hidden="true">
+                <img id="img-form-check" class="check-form" alt="Cadastro concluído">
+              </figure>
+
+              <h2 class="forms-title titleStep1 lp-only-step1">Comece pelo CEP da obra</h2>
+              <p class="forms-subtitle subtitleStep1 lp-only-step1">
+                Vamos identificar a região da sua obra para seguir com o cadastro.
+              </p>
+
+              <h2 class="forms-title titleStep2 lp-only-step2">Agora nos conte quem vai falar com a ABC</h2>
+              <p class="forms-subtitle subtitleStep2 lp-only-step2">
+                Complete seus dados para avançar com segurança e agilidade.
+              </p>
+
+              <h2 class="forms-title titleStep3 lp-only-step3">Cadastro realizado com sucesso</h2>
+              <p class="forms-subtitle subtitleStep3 lp-only-step3">
+                Recebemos o seu cadastro e seguimos com a próxima etapa.
+              </p>
+
+              <div class="container-progress-bar lp-only-step12" aria-hidden="true">
+                <div class="line-progress">
+                  <div id="progress-bar-fill" class="progress-bar"></div>
+                </div>
+                <span id="progress-text" class="progress-percent">0%</span>
+              </div>
+
+              <div class="container-progress-bar lp-only-step3" aria-hidden="true">
+                <div class="line-progress">
+                  <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                </div>
+                <span class="progress-percent progress-success">100%</span>
+              </div>
+            </div>
+
+            <form id="lp-form" novalidate>
+              <div class="formStep1 lp-only-step1">
+                <div class="label-input">
+                  <label for="cepclient">Qual é o CEP da obra?</label>
+                  <input id="cepclient" name="cepclient" type="text" inputmode="numeric" autocomplete="postal-code"
+                    maxlength="9" placeholder="00000-000">
+                </div>
+
+                <div class="next-step-container">
+                  <button id="btn-next-step1" type="button" class="botao-proxima-etapa" disabled>Continuar</button>
+                </div>
+              </div>
+
+              <div class="formStep2 lp-only-step2">
+                <div class="label-input-row">
+                  <div class="label-input">
+                    <label for="name">Nome</label>
+                    <input id="name" name="name" type="text" autocomplete="given-name" placeholder="Seu nome">
+                  </div>
+
+                  <div class="label-input">
+                    <label for="lastname">Sobrenome</label>
+                    <input id="lastname" name="lastname" type="text" autocomplete="family-name"
+                      placeholder="Seu sobrenome">
+                  </div>
+                </div>
+
+                <div class="responsible-row">
+                  <div class="label-input responsible-input">
+                    <label for="responsibleName">Nome do responsável pela conta</label>
+                    <input id="responsibleName" name="responsibleName" type="text" autocomplete="name"
+                      placeholder="Nome completo">
+                    <small class="field-hint">Preencha somente se a obra estiver no nome de outra pessoa.</small>
+                  </div>
+
+                  <div class="toggle-field">
+                    <span class="toggle-label">Você é o responsável?</span>
+                    <label class="toggle-switch" for="isOwner">
+                      <input id="isOwner" name="isOwner" type="checkbox" checked>
+                      <span class="toggle-track" aria-hidden="true">
+                        <span class="toggle-thumb"></span>
+                      </span>
+                      <span id="owner-state" class="toggle-state">Sim</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="label-input-row">
+                  <div class="label-input">
+                    <label for="tel">Telefone</label>
+                    <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel"
+                      placeholder="(00) 00000-0000">
+                  </div>
+
+                  <div class="label-input">
+                    <label for="email">E-mail</label>
+                    <input id="email" name="email" type="email" autocomplete="email"
+                      placeholder="voce@exemplo.com">
+                  </div>
+                </div>
+
+                <div class="label-input upload-group">
+                  <label for="obraPhotos" class="optional-label">Fotos da obra (opcional)</label>
+                  <div id="upload-dropzone" class="upload-dropzone" tabindex="0" role="button"
+                    aria-label="Enviar fotos da obra">
+                    <input id="obraPhotos" name="obraPhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+                    <div class="upload-visual">
+                      <span class="upload-icon" aria-hidden="true">+</span>
+                      <strong>Arraste ou clique para adicionar fotos</strong>
+                      <small>JPG, PNG ou WEBP, até 10 MB por arquivo</small>
+                    </div>
+                  </div>
+                  <ul id="upload-file-list" class="upload-file-list" hidden></ul>
+                  <p id="upload-feedback" class="upload-feedback" hidden></p>
+                </div>
+
+                <div class="checkbox-group">
+                  <label class="checkbox-item" for="privacyPolicy">
+                    <input id="privacyPolicy" name="privacyPolicy" type="checkbox">
+                    <span>Li e aceito a Política de Privacidade.</span>
+                  </label>
+
+                  <label class="checkbox-item" for="marketingConsent">
+                    <input id="marketingConsent" name="marketingConsent" type="checkbox">
+                    <span>Autorizo contato para novidades, ofertas e acompanhamento.</span>
+                  </label>
+                </div>
+
+                <div class="frame-botoes">
+                  <button id="btn-prev-step2" type="button" class="botao-voltar-Step2" aria-label="Voltar">
+                    ←
+                  </button>
+                  <button id="btn-submit" type="button" class="botao-proxima-etapa" disabled>
+                    CADASTRAR E VIRAR VIP
+                  </button>
+                </div>
+              </div>
+
+              <div class="formStep3 lp-only-step3">
+                <div class="success-actions success-actions--single">
+                  <button id="btn-reset" type="button" class="botaoReset resetar-btn success-reset-btn">
+                    FAZER NOVO CADASTRO
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div id="submit-loading-overlay" class="submit-loading-overlay" aria-hidden="true">
+              <div class="submit-loading-card" role="status" aria-live="polite">
+                <span class="submit-loading-kicker">Processando</span>
+                <h2>Estamos preparando o seu cadastro</h2>
+                <p>Por favor, aguarde enquanto organizamos seus dados para seguir com segurança.</p>
+                <div class="submit-loading-track" aria-hidden="true">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <a class="logo-box" href="#lp-hero" aria-label="ABC da construção">
+          <img id="img-logo-footer" alt="ABC da construção">
+        </a>
+        <div class="footer-slogan">
+          <p>ABC da Construção. Sua obra, nossa especialidade.</p>
+        </div>
+        <div class="footer-copyright">
+          <p>Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  <script src="./lpObraLocal.js"></script>
+</body>
+
+</html>
