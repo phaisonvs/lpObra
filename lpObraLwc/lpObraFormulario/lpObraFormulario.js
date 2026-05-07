@@ -7,7 +7,12 @@ const MEDIA_CHECK = "MCVRWGAJ42NFFITBCCJLEOV4KKYE";
 const MEDIA_FORM_BG = "MC3AV2PUUGKZG7VLGYS7ZVLDWKKY";
 const MAX_FILE_SIZE_MB = 10;
 const MAX_FILE_COUNT = 5;
-const ALLOWED_FILE_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+const ALLOWED_FILE_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "application/pdf",
+]);
 
 function mediaUrl(id) {
   return `${basePath}/sfsites/c/cms/delivery/media/${id}`;
@@ -153,6 +158,7 @@ function buildLeadPayload(formData, idLead) {
   };
 }
 
+// Upload real depois do Lead + leadId: Files/ContentVersion ou estratégia para Guest em Experience Cloud. Sem binário no JSON do upsertLead.
 async function uploadSelectedFiles(_leadId, _files) {
   return Promise.resolve();
 }
@@ -542,8 +548,8 @@ export default class LpObraFormulario extends LightningElement {
     }));
     this.uploadFeedbackText =
       totalSize > maxSizeBytes * MAX_FILE_COUNT
-        ? "Atenção: revise o volume total de fotos para evitar exceder o limite recomendado."
-        : `${this.selectedFiles.length} foto(s) pronta(s) para envio.`;
+        ? "Atenção: revise o volume total de arquivos para evitar exceder o limite recomendado."
+        : `${this.selectedFiles.length} arquivo(s) pronto(s) para envio.`;
     this.uploadFeedbackKind = "success";
   }
 
@@ -560,9 +566,9 @@ export default class LpObraFormulario extends LightningElement {
       const key = `${file.name}-${file.size}-${file.lastModified}`;
       const extension = file.name.split(".").pop().toLowerCase();
       const isAllowedType = ALLOWED_FILE_TYPES.has(file.type);
-      const isAllowedExtension = ["jpg", "jpeg", "png", "webp"].includes(extension);
+      const isAllowedExtension = ["jpg", "jpeg", "png", "webp", "pdf"].includes(extension);
       if (!isAllowedType && !isAllowedExtension) {
-        this.setUploadError(`"${file.name}" não foi adicionado. Use JPG, JPEG, PNG ou WEBP.`);
+        this.setUploadError(`"${file.name}" não foi adicionado. Use JPG, JPEG, PNG, WEBP ou PDF.`);
         continue;
       }
       if (file.size > maxSizeBytes) {
@@ -571,7 +577,7 @@ export default class LpObraFormulario extends LightningElement {
       }
       if (existingKeys.has(key)) continue;
       if (next.length >= MAX_FILE_COUNT) {
-        this.setUploadError(`Limite de ${MAX_FILE_COUNT} fotos atingido.`);
+        this.setUploadError(`Limite de ${MAX_FILE_COUNT} arquivos atingido.`);
         break;
       }
       next.push(file);
@@ -587,6 +593,7 @@ export default class LpObraFormulario extends LightningElement {
   }
 
   syncFormPhotos() {
+    // TODO Salesforce: hoje "photos" contém metadados de imagens/PDFs. Validar se o contrato definitivo deve renomear para files/attachments.
     this.formData = {
       ...this.formData,
       photos: this.selectedFiles.map((file) => ({

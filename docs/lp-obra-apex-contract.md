@@ -31,7 +31,7 @@ Campos enviados (objeto plano; sem `owner`; sem `telDisplay`):
 - Indicação e UTM: `storeRef`, `referralToken`, `lojaIndicadora`, `lojaSugerida`, `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`
 - Origem: `origemLead`, `campanha`, `tipoLead`, `canal`, `pageUrl`, `dataHoraCadastro`
 - Guia: `nameGuideShop` vem só de `lojaSugerida` no submit; **não** repetir o token de indicação em `nameGuideShop` — o Apex resolve `referralToken` / `lojaIndicadora` para a Guide Shop real.
-- Fotos: `photos` — array de **metadados** apenas (`name`, `size`, `type`, `lastModified` por arquivo). Nenhum binário no JSON.
+- Anexos (fotos e PDF): o campo de upload aceita **imagens** (JPG, PNG, WEBP) e **PDF** (ex.: orçamento, planta, memorial). No JSON do Lead, `photos` envia **apenas metadados** (`name`, `size`, `type`, `lastModified`) — imagem e PDF entram da mesma forma, sem base64 e sem binário no `upsertLead`. O upload real dos arquivos ainda **não** está implementado; continua como TODO Salesforce (após `leadId`, p.ex. Files/ContentVersion no Lead).
 
 **OwnerId:** não é enviado pelo front; **TODO Salesforce:** atribuir Owner / fila no Apex conforme política do Cadastro Sua Obra.
 
@@ -52,9 +52,13 @@ Até haver contrato oficial, o componente trata:
 
 ## Upload de arquivos após o Lead
 
-Após sucesso, se houver fotos selecionadas **e** `leadId` retornado, o LWC chama um stub que hoje não envia arquivos.
+Após sucesso, se houver arquivos selecionados **e** `leadId` retornado, o LWC chama um stub que hoje **não** envia bytes ao servidor.
 
-**TODO Salesforce:** definir canal (ContentVersion ligado ao Lead, API dedicada, Experience Cloud Guest, limites de tamanho/quantidade) e substituir o stub sem colocar base64 no mesmo JSON do `upsertLead`.
+Fluxo recomendado quando o upload real existir: criar/upsertar o Lead primeiro, obter `leadId`, depois anexar arquivos como **Salesforce Files** / **ContentVersion** vinculados ao Lead (ou API dedicada), respeitando permissões de **Experience Cloud Guest User**.
+
+**TODO Salesforce:** definir canal, limites e substituir o stub **sem** colocar base64 ou binário no mesmo JSON do `upsertLead`.
+
+**Observação:** permitir PDF no seletor e na validação do front **não** torna o envio “pesado” agora: o payload do Lead continua só com metadados. O tamanho total dos arquivos e a carga de rede só se tornam críticos quando o upload real for implementado.
 
 ## Gestão de muitas lojas (400+ links / parâmetros)
 

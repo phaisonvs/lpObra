@@ -124,16 +124,16 @@
               </div>
 
               <div class="label-input upload-group">
-                <label for="obraPhotos" class="optional-label">Fotos da obra (opcional)</label>
-                <div class={dropzoneClass} tabindex="0" role="button" aria-label="Enviar fotos da obra"
+                <label for="obraPhotos" class="optional-label">Fotos ou arquivos da obra (opcional)</label>
+                <div class={dropzoneClass} tabindex="0" role="button" aria-label="Enviar arquivos da obra"
                   onclick={handleDropzoneClick} onkeydown={handleDropzoneKey} ondragenter={handleDragEnter}
                   ondragover={handleDragOver} ondragleave={handleDragLeave} ondrop={handleDrop}>
-                  <input id="obraPhotos" name="obraPhotos" type="file" accept="image/jpeg,image/png,image/webp"
-                    multiple onchange={handlePhotosChange}>
+                  <input id="obraPhotos" name="obraPhotos" type="file"
+                    accept="image/jpeg,image/png,image/webp,application/pdf" multiple onchange={handlePhotosChange}>
                   <div class="upload-visual">
                     <span class="upload-icon" aria-hidden="true">+</span>
-                    <strong>Arraste ou clique para adicionar fotos</strong>
-                    <small>JPG, PNG ou WEBP, até 10 MB por arquivo</small>
+                    <strong>Arraste ou clique para adicionar arquivos</strong>
+                    <small>JPG, PNG, WEBP ou PDF, até 10 MB por arquivo</small>
                   </div>
                 </div>
                 <template if:true={hasUploadFiles}>
