@@ -4,7 +4,6 @@
 
   const MEDIA = {
     logo: "MCQIMEUAX37NC27PV7N7UDNKPFSA",
-    background: "MCQGXLH4BBAJBFFB4PM3QSHDGUH4",
     check: "MC5KOENH3UP5ENDNGGFNHQT3EANA",
   };
 
@@ -76,6 +75,12 @@
   const fixedHeader = document.querySelector(".lp-fixed-header");
   const heroSection = document.getElementById("lp-hero");
   const scrollTriggers = document.querySelectorAll("[data-scroll-to]");
+  const headerMenuBtn = document.getElementById("lp-header-menu-btn");
+  const headerDrawer = document.getElementById("lp-header-drawer");
+  const headerDrawerClose = document.getElementById("lp-header-drawer-close");
+  const drawerLinks = document.querySelectorAll(".lp-fixed-header__drawer-link");
+  const MOBILE_HEADER_MQ = window.matchMedia("(max-width: 720px)");
+  const MOBILE_HEADER_REVEAL_PX = 200;
 
   const elCep = document.getElementById("cepclient");
   const elName = document.getElementById("name");
@@ -92,7 +97,6 @@
   const elUploadFeedback = document.getElementById("upload-feedback");
   const elOwnerState = document.getElementById("owner-state");
   const imgLogoHero = document.getElementById("img-logo-hero");
-  const imgLogoForm = document.getElementById("img-logo-form");
   const imgLogoFooter = document.getElementById("img-logo-footer");
   const imgFormCheck = document.getElementById("img-form-check");
   let heroFrame = 0;
@@ -150,14 +154,8 @@
   window.dataLayer = window.dataLayer || [];
 
   imgLogoHero.src = mediaUrl(MEDIA.logo);
-  if (imgLogoForm) {
-    imgLogoForm.src = mediaUrl(MEDIA.logo);
-  }
   imgLogoFooter.src = mediaUrl(MEDIA.logo);
   imgFormCheck.src = mediaUrl(MEDIA.check);
-  root.style.backgroundImage = `url(${mediaUrl(MEDIA.background)})`;
-  root.style.backgroundSize = "cover";
-  root.style.backgroundPosition = "center";
 
   function setStepClass() {
     root.classList.remove("lp-step-1", "lp-step-2", "lp-step-3");
@@ -167,6 +165,10 @@
   function getHeaderOffset() {
     if (!fixedHeader) {
       return 92;
+    }
+
+    if (MOBILE_HEADER_MQ.matches && root && root.classList.contains("lp-root--mobile-header-hidden")) {
+      return 0;
     }
 
     return Math.ceil(fixedHeader.getBoundingClientRect().height + 12);
@@ -183,6 +185,75 @@
     });
   }
 
+  function syncHeaderMenuBtnLabel() {
+    if (!headerMenuBtn || !headerDrawer) return;
+    headerMenuBtn.setAttribute("aria-label", headerDrawer.hidden ? "Abrir menu" : "Fechar menu");
+  }
+
+  function closeHeaderDrawer() {
+    if (!fixedHeader || !headerMenuBtn || !headerDrawer) return;
+    headerMenuBtn.setAttribute("aria-expanded", "false");
+    headerDrawer.hidden = true;
+    syncHeaderMenuBtnLabel();
+  }
+
+  function toggleHeaderDrawer() {
+    if (!fixedHeader || !headerMenuBtn || !headerDrawer) return;
+    const open = headerDrawer.hidden;
+    headerMenuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    headerDrawer.hidden = !open;
+    syncHeaderMenuBtnLabel();
+  }
+
+  function bindMobileHeaderMenu() {
+    if (headerMenuBtn && headerDrawer) {
+      headerMenuBtn.addEventListener("click", function () {
+        toggleHeaderDrawer();
+      });
+    }
+
+    if (headerDrawerClose && headerDrawer) {
+      headerDrawerClose.addEventListener("click", function () {
+        closeHeaderDrawer();
+      });
+    }
+
+    drawerLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        closeHeaderDrawer();
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!fixedHeader || !headerDrawer || headerDrawer.hidden) return;
+      const t = event.target;
+      if (fixedHeader.contains(t)) return;
+      closeHeaderDrawer();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeHeaderDrawer();
+      }
+    });
+  }
+
+  function updateMobileHeaderReveal() {
+    if (!root || !fixedHeader) return;
+    const mobile = MOBILE_HEADER_MQ.matches;
+    if (mobile) {
+      const revealed = window.scrollY >= MOBILE_HEADER_REVEAL_PX;
+      root.classList.toggle("lp-root--mobile-header-revealed", revealed);
+      root.classList.toggle("lp-root--mobile-header-hidden", !revealed);
+      if (!revealed) {
+        closeHeaderDrawer();
+      }
+    } else {
+      root.classList.remove("lp-root--mobile-header-revealed", "lp-root--mobile-header-hidden");
+      closeHeaderDrawer();
+    }
+  }
+
   function bindNavigation() {
     scrollTriggers.forEach(function (trigger) {
       trigger.addEventListener("click", function (event) {
@@ -191,14 +262,24 @@
 
         event.preventDefault();
         scrollToTarget(targetSelector);
+        closeHeaderDrawer();
       });
     });
   }
 
   function updateHeroParallax() {
-    if (!heroSection) return;
+    if (!heroSection || !root) return;
 
-    const maxOffset = window.innerWidth <= 720 ? 42 : 160;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      root.style.setProperty("--hero-parallax", "0px");
+      return;
+    }
+
+    if (window.innerWidth <= 720) {
+      root.style.setProperty("--hero-parallax", "0px");
+      return;
+    }
+    const maxOffset = 160;
     const nextOffset = Math.min(window.scrollY * 0.24, maxOffset);
     root.style.setProperty("--hero-parallax", `${nextOffset}px`);
   }
@@ -684,6 +765,10 @@
     });
   }
 
+  function scheduleHeaderReveal() {
+    updateMobileHeaderReveal();
+  }
+
   function init() {
     updateOwnerToggleUi();
     setStepClass();
@@ -691,11 +776,16 @@
     updateLoadingState(false);
     syncButtons();
     bindEvents();
+    bindMobileHeaderMenu();
     bindNavigation();
+    updateMobileHeaderReveal();
     updateHeroParallax();
     window.addEventListener("scroll", scheduleHeroParallax, { passive: true });
+    window.addEventListener("scroll", scheduleHeaderReveal, { passive: true });
     window.addEventListener("resize", scheduleHeroParallax);
+    window.addEventListener("resize", scheduleHeaderReveal);
     window.addEventListener("load", scheduleHeroParallax);
+    MOBILE_HEADER_MQ.addEventListener("change", scheduleHeaderReveal);
     updateStep1Progress();
     updateStep2Progress();
   }
