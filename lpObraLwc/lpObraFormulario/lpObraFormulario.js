@@ -683,6 +683,7 @@ export default class LpObraFormulario extends LightningElement {
   async handleSubmit() {
     if (this.isSubmitting || !this.isStep2Valid()) return;
     this.submitError = "";
+    this.scrollSelfIntoView();
     this.updateHiddenContext();
     const idLead = buildIdLead(
       this.formData.firstName,
