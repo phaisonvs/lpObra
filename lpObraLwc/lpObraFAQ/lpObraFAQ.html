@@ -1,0 +1,314 @@
+<template>
+  <section class="section-faq faq-section lp-faq lp-block secao-faq" data-lp-section="faq" aria-labelledby="lp-faq-titulo">
+    <div class="container-max">
+      <div class="section-header">
+        <p class="subtitle">Dúvidas frequentes</p>
+        <h2 id="lp-faq-titulo" class="title">Perguntas e respostas</h2>
+      </div>
+      <div class="faq-background">
+        <div class="accordion">
+          <div class="accordion-item ativo">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="0">
+              <h3 class="accordion-title">O que é o Cadastro Sua Obra?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>É uma campanha da ABC da Construção para conectar pessoas que estão reformando ou construindo a uma Guide Shop ou loja preparada para ajudar no atendimento, orçamento e escolha de produtos para a obra.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="1">
+              <h3 class="accordion-title">Para que serve cadastrar minha obra?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>O cadastro ajuda a direcionar seu atendimento de acordo com a localização da obra e as informações informadas. Assim, uma Guide Shop pode entender melhor sua necessidade e entrar em contato para apoiar os próximos passos do orçamento.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="2">
+              <h3 class="accordion-title">Quem pode cadastrar uma obra?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Qualquer pessoa que esteja construindo, reformando ou planejando uma obra pode fazer o cadastro. O formulário também pode ser preenchido por um responsável no local, familiar, arquiteto, designer ou pessoa que esteja ajudando o dono da obra.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="3">
+              <h3 class="accordion-title">Preciso estar com a obra em andamento para me cadastrar?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Não necessariamente. O cadastro também pode ser feito por quem ainda está planejando a reforma ou construção e quer começar a conversar sobre orçamento, produtos e atendimento.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="4">
+              <h3 class="accordion-title">O cadastro da obra é gratuito?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Sim. O cadastro não tem custo e serve para iniciar o atendimento com uma Guide Shop ou loja relacionada à sua região ou indicação comercial.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="5">
+              <h3 class="accordion-title">O cadastro me obriga a comprar?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Não. O cadastro não gera obrigação de compra. Ele serve para que a ABC da Construção ou uma Guide Shop entre em contato e ajude você a avançar no atendimento e no orçamento.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="6">
+              <h3 class="accordion-title">Em quanto tempo receberei contato?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Após o envio do cadastro, a previsão é que uma Guide Shop entre em contato em até 2 dias úteis. Esse prazo ajuda a organizar o atendimento e direcionar sua solicitação corretamente.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="7">
+              <h3 class="accordion-title">Por que preciso informar o CEP da obra?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>O CEP ajuda a identificar a localização da obra e pode ser usado para sugerir uma Guide Shop ou loja mais adequada para o atendimento. Isso facilita o direcionamento e evita contatos genéricos.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="8">
+              <h3 class="accordion-title">Quem vai entrar em contato comigo?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>O contato pode ser feito por uma Guide Shop, loja ou equipe comercial vinculada à ABC da Construção, de acordo com a origem do cadastro, indicação da loja ou localização da obra.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="9">
+              <h3 class="accordion-title">Posso falar pelo WhatsApp depois do cadastro?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Sim. O WhatsApp é o canal recomendado para acelerar a conversa depois do cadastro. Ele facilita o envio de informações, alinhamento de orçamento e continuidade do atendimento.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="10">
+              <h3 class="accordion-title">Preciso enviar fotos da obra?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Não. O envio de fotos é opcional. Mesmo assim, quando disponíveis, as fotos podem ajudar a equipe a entender melhor a fase da obra e preparar um atendimento mais direcionado.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="11">
+              <h3 class="accordion-title">Quais dados preciso informar no cadastro?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>O formulário solicita dados básicos como CEP da obra, nome, sobrenome, responsável no local, WhatsApp, e-mail e aceite da Política de Privacidade. Esses dados ajudam a iniciar o atendimento comercial de forma organizada.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="12">
+              <h3 class="accordion-title">Posso cadastrar uma obra de outra pessoa?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Sim, desde que você tenha relação com a obra ou esteja autorizado a informar os dados necessários. O formulário permite identificar o dono da obra e também o responsável no local.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="13">
+              <h3 class="accordion-title">Como a loja ou Guide Shop é definida?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Quando o cadastro vem de um link indicado por loja ou franqueado, essa origem comercial pode ser considerada. Quando não há indicação, a localização da obra pode ajudar a sugerir uma loja ou Guide Shop mais adequada.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="14">
+              <h3 class="accordion-title">O que acontece depois que eu envio o formulário?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Você verá uma confirmação de recebimento dos dados. Depois disso, uma Guide Shop ou equipe responsável deve analisar o cadastro e entrar em contato em até 2 dias úteis.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="15">
+              <h3 class="accordion-title">Meus dados estarão seguros?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Os dados informados devem ser usados para atendimento relacionado à sua obra, conforme a Política de Privacidade aceita no formulário. Comunicações promocionais por e-mail, SMS ou WhatsApp devem depender de aceite específico, quando aplicável.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="16">
+              <h3 class="accordion-title">Posso receber comunicações por WhatsApp, SMS ou e-mail?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Sim, desde que você autorize esse tipo de comunicação no formulário. Essa autorização é opcional e ajuda a mantê-lo informado sobre atendimento, oportunidades e campanhas relacionadas.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="17">
+              <h3 class="accordion-title">A campanha é para qualquer cidade?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>O cadastro pode ser feito informando o CEP da obra. A disponibilidade de atendimento e o direcionamento para loja ou Guide Shop dependem da região e da operação comercial vinculada ao cadastro.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="18">
+              <h3 class="accordion-title">O que é uma Guide Shop?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>Guide Shop é um ponto de atendimento preparado para orientar o cliente na escolha de produtos, composição de orçamento e próximos passos da compra para reforma ou construção.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick={toggleAccordion} data-index="19">
+              <h3 class="accordion-title">A campanha faz parte do Pé na Obra?</h3>
+              <div class="accordion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="12" fill="white" />
+                  <path d="M12 8V16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  <path d="M8 12H16" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="accordion-content">
+              <p>A campanha pode estar relacionada ao guarda-chuva Pé na Obra, mas a comunicação principal da landing page deve ser Cadastro Sua Obra, com foco em captar interessados em construir, reformar e avançar no orçamento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

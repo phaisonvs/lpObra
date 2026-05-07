@@ -1,0 +1,75 @@
+<template>
+  <section class="beneficios lp-block lp-beneficios-vip" data-lp-section="beneficios" style={sectionBgStyle}
+    aria-labelledby="lp-beneficios-vip-titulo">
+    <div class="beneficios-vip-conteudo">
+      <header class="beneficios-vip-cabecalho">
+        <div class="beneficios-vip-divisor" aria-hidden="true"></div>
+        <span class="beneficios-vip-coroa" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            <path d="m4 18 1.5-9 5 4 2.5-7 2.5 7 5-4L20 18" stroke="currentColor" stroke-width="1.6"
+              stroke-linejoin="round" />
+            <circle cx="6" cy="8.5" r="1.2" fill="currentColor" />
+            <circle cx="12.9" cy="4.7" r="1.2" fill="currentColor" />
+            <circle cx="18.1" cy="8.4" r="1.2" fill="currentColor" />
+          </svg>
+        </span>
+        <div class="beneficios-vip-divisor" aria-hidden="true"></div>
+      </header>
+
+      <h2 id="lp-beneficios-vip-titulo" class="beneficios-vip-titulo">Benefícios Exclusivos</h2>
+
+      <div class="beneficios-vip-grade">
+        <article class="beneficios-vip-card">
+          <figure class="beneficios-vip-icone">
+            <img src={urlIcone1} alt="Poder de compra da maior rede">
+          </figure>
+          <p class="beneficios-vip-texto">
+            Poder de compra<wbr> da
+            <strong class="beneficios-vip-texto-destaque">Maior Rede</strong><wbr>
+            de acabamentos<wbr> do país
+          </p>
+        </article>
+
+        <article class="beneficios-vip-card">
+          <figure class="beneficios-vip-icone">
+            <img src={urlIcone2} alt="Argamassa grátis">
+          </figure>
+          <p class="beneficios-vip-texto">
+            Argamassa<wbr>
+            <strong class="beneficios-vip-texto-destaque">Grátis</strong><wbr>
+            para cada<wbr> 5m² de<wbr> porcelanatos
+          </p>
+        </article>
+
+        <article class="beneficios-vip-card">
+          <figure class="beneficios-vip-icone">
+            <img src={urlIcone3} alt="Cashback do ABC Prime">
+          </figure>
+          <p class="beneficios-vip-texto">
+            Cashback de<wbr>
+            <strong class="beneficios-vip-texto-destaque beneficios-vip-keep">R$&nbsp;1.200</strong><wbr>
+            na assinatura<wbr> do ABC Prime
+          </p>
+        </article>
+
+        <article class="beneficios-vip-card">
+          <figure class="beneficios-vip-icone">
+            <img src={urlIcone4} alt="Lista de promoções de entrada">
+          </figure>
+          <p class="beneficios-vip-texto">
+            Lista Exclusiva<wbr> de
+            <strong class="beneficios-vip-texto-destaque beneficios-vip-keep">20 a 30</strong><wbr>
+            promocionais<wbr> de entrada
+          </p>
+        </article>
+      </div>
+
+      <div class="beneficios-vip-acao">
+        <a class="lp-cta-premium beneficios-vip-botao" href="#" data-scroll-target="form" onclick={handleScrollToForm}>
+          Quero ser cliente VIP
+        </a>
+      </div>
+    </div>
+  </section>
+</template>
