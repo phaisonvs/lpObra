@@ -112,6 +112,7 @@
   const imgBeneficioVip4 = document.getElementById("img-beneficio-vip-4");
   let heroFrame = 0;
   let formParallaxFrame = 0;
+  let beneficiosParallaxFrame = 0;
 
   const queryParams = getQueryParams();
 
@@ -370,9 +371,45 @@
     });
   }
 
+  function updateBeneficiosParallax() {
+    if (!beneficiosSection) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.innerWidth <= 720) {
+      beneficiosSection.style.setProperty("--beneficios-bg-parallax-y", "0px");
+      beneficiosSection.style.setProperty("--beneficios-bg-parallax-x", "0px");
+      return;
+    }
+
+    const vh = window.innerHeight || 1;
+    const rect = beneficiosSection.getBoundingClientRect();
+    if (rect.bottom < -100 || rect.top > vh + 100) {
+      return;
+    }
+
+    const scrollMid = window.scrollY + vh * 0.5;
+    const sectionMid = beneficiosSection.offsetTop + beneficiosSection.offsetHeight * 0.5;
+    const delta = scrollMid - sectionMid;
+    const maxY = 56;
+    const maxX = 22;
+    const py = Math.max(-maxY, Math.min(maxY, delta * 0.08));
+    const px = Math.max(-maxX, Math.min(maxX, delta * 0.03));
+    beneficiosSection.style.setProperty("--beneficios-bg-parallax-y", `${py}px`);
+    beneficiosSection.style.setProperty("--beneficios-bg-parallax-x", `${px}px`);
+  }
+
+  function scheduleBeneficiosParallax() {
+    if (beneficiosParallaxFrame) return;
+
+    beneficiosParallaxFrame = window.requestAnimationFrame(function () {
+      beneficiosParallaxFrame = 0;
+      updateBeneficiosParallax();
+    });
+  }
+
   function scheduleParallax() {
     scheduleHeroParallax();
     scheduleFormBgParallax();
+    scheduleBeneficiosParallax();
   }
 
   function updateLoadingState(isVisible) {
@@ -863,6 +900,7 @@
     updateMobileHeaderReveal();
     updateHeroParallax();
     updateFormBgParallax();
+    updateBeneficiosParallax();
     window.addEventListener("scroll", scheduleParallax, { passive: true });
     window.addEventListener("scroll", scheduleHeaderReveal, { passive: true });
     window.addEventListener("resize", scheduleParallax);
