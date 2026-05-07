@@ -74,6 +74,7 @@
   const formElement = document.getElementById("lp-form");
   const fixedHeader = document.querySelector(".lp-fixed-header");
   const heroSection = document.getElementById("lp-hero");
+  const formSection = document.getElementById("lp-form-anchor");
   const scrollTriggers = document.querySelectorAll("[data-scroll-to]");
   const headerMenuBtn = document.getElementById("lp-header-menu-btn");
   const headerDrawer = document.getElementById("lp-header-drawer");
@@ -100,6 +101,7 @@
   const imgLogoFooter = document.getElementById("img-logo-footer");
   const imgFormCheck = document.getElementById("img-form-check");
   let heroFrame = 0;
+  let formParallaxFrame = 0;
 
   const queryParams = getQueryParams();
 
@@ -293,6 +295,53 @@
     });
   }
 
+  function updateFormBgParallax() {
+    if (!formSection) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      formSection.style.setProperty("--form-bg-parallax-y", "0px");
+      formSection.style.setProperty("--form-bg-parallax-x", "0px");
+      return;
+    }
+
+    if (window.innerWidth <= 720) {
+      formSection.style.setProperty("--form-bg-parallax-y", "0px");
+      formSection.style.setProperty("--form-bg-parallax-x", "0px");
+      return;
+    }
+
+    const vh = window.innerHeight || 1;
+    const rect = formSection.getBoundingClientRect();
+    if (rect.bottom < -100 || rect.top > vh + 100) {
+      return;
+    }
+
+    const scrollMid = window.scrollY + vh * 0.5;
+    const sectionMid =
+      formSection.offsetTop + formSection.offsetHeight * 0.5;
+    const delta = scrollMid - sectionMid;
+    const maxY = 72;
+    const maxX = 32;
+    const py = Math.max(-maxY, Math.min(maxY, delta * 0.1));
+    const px = Math.max(-maxX, Math.min(maxX, delta * 0.04));
+    formSection.style.setProperty("--form-bg-parallax-y", `${py}px`);
+    formSection.style.setProperty("--form-bg-parallax-x", `${px}px`);
+  }
+
+  function scheduleFormBgParallax() {
+    if (formParallaxFrame) return;
+
+    formParallaxFrame = window.requestAnimationFrame(function () {
+      formParallaxFrame = 0;
+      updateFormBgParallax();
+    });
+  }
+
+  function scheduleParallax() {
+    scheduleHeroParallax();
+    scheduleFormBgParallax();
+  }
+
   function updateLoadingState(isVisible) {
     if (submitLoadingOverlay) {
       submitLoadingOverlay.classList.toggle("is-visible", isVisible);
@@ -390,7 +439,7 @@
     btnSubmit.disabled = step2Disabled;
     btnSubmit.className =
       "botao-proxima-etapa" + (step2Ready || state.isSubmitting ? " selected" : "");
-    btnSubmit.textContent = state.isSubmitting ? "CADASTRANDO..." : "CADASTRAR E VIRAR VIP";
+    btnSubmit.textContent = state.isSubmitting ? "CADASTRANDO..." : "QUERO SER VIP!";
     btnSubmit.setAttribute("aria-busy", state.isSubmitting ? "true" : "false");
 
     btnPrev2.disabled = state.isSubmitting;
@@ -780,11 +829,12 @@
     bindNavigation();
     updateMobileHeaderReveal();
     updateHeroParallax();
-    window.addEventListener("scroll", scheduleHeroParallax, { passive: true });
+    updateFormBgParallax();
+    window.addEventListener("scroll", scheduleParallax, { passive: true });
     window.addEventListener("scroll", scheduleHeaderReveal, { passive: true });
-    window.addEventListener("resize", scheduleHeroParallax);
+    window.addEventListener("resize", scheduleParallax);
     window.addEventListener("resize", scheduleHeaderReveal);
-    window.addEventListener("load", scheduleHeroParallax);
+    window.addEventListener("load", scheduleParallax);
     MOBILE_HEADER_MQ.addEventListener("change", scheduleHeaderReveal);
     updateStep1Progress();
     updateStep2Progress();
