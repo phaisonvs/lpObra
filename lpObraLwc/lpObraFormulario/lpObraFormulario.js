@@ -179,9 +179,8 @@ function buildLeadPayload(formData, idLead) {
     nameGuideShop: formData.nameGuideShop,
 
     // TODO LpObraService:
-    // Campos abaixo pertencem ao contrato futuro da LP Obra.
-    // Não enviar ao LpSejaUmFranqueadoService legado enquanto ele não aceitar
-    // campos extras, booleanos, arrays ou objetos complexos.
+    // Esses campos abaixo pertencem ao contrato futuro da LP Cadastre Sua Obra.
+    // Não enviar ao LpSejaUmFranqueadoService legado enquanto ele não aceitar campos extras, booleanos, arrays ou objetos complexos.
     // responsibleName: formData.isOwner ? "" : formData.responsibleName,
     // isOwner: formData.isOwner,
     // photos: Array.isArray(formData.photos) ? formData.photos : [],
@@ -202,7 +201,7 @@ function buildLeadPayload(formData, idLead) {
   };
 }
 
-// Upload real depois do Lead + leadId: Files/ContentVersion ou estratégia para Guest em Experience Cloud. Stub: ainda não envia bytes; sem binário no JSON do upsertLead.
+
 async function uploadSelectedFiles(_leadId, _files) {
   return Promise.resolve();
 }
@@ -615,7 +614,7 @@ export default class LpObraFormulario extends LightningElement {
   }
 
   syncFormPhotos() {
-    // TODO Salesforce: hoje "photos" contém metadados de imagens/PDFs. Validar se o contrato definitivo deve renomear para files/attachments.
+    // TODO Salesforce: hoje "photos" contém metadados de imagens/PDFs. Valida...
     this.formData = {
       ...this.formData,
       photos: this.selectedFiles.map((file) => ({
