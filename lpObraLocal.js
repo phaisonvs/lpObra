@@ -4,12 +4,13 @@
 
   const MEDIA = {
     logo: "MCAOMDZSUL4NB2VCUWVWSZOVGR7E",
-    check: "MC5KOENH3UP5ENDNGGFNHQT3EANA",
+    check: "MCVRWGAJ42NFFITBCCJLEOV4KKYE",
     beneficiosIcone1: "MCL2KOEY6F25BHDDAD6OLZXG76WI",
     beneficiosIcone2: "MCS2CAWZ5TIBCOLBWERPYO53TY7A",
     beneficiosIcone3: "MCWRCTE2LHH5HGTCTCKS35KCRG6M",
     beneficiosIcone4: "MCD2RXWJWJJBBPZFXU7H7SFOAV6I",
     beneficiosBackground: "MC2CXJ5XPFWBGGJOC2YF4QGICDLI",
+    formBackground: "MC3AV2PUUGKZG7VLGYS7ZVLDWKKY",
   };
 
   const MAX_FILE_SIZE_MB = 10;
@@ -18,6 +19,205 @@
 
   function mediaUrl(id) {
     return `${ASSET_BASE}/${id}`;
+  }
+
+  const FAQ_ITEMS = [
+  {
+    id: "q1",
+    q: "O que é o Cadastro Sua Obra?",
+    paragraphs: [
+      "É uma campanha da ABC da Construção para conectar pessoas que estão reformando ou construindo a uma Guide Shop ou loja preparada para ajudar no atendimento, orçamento e escolha de produtos para a obra.",
+    ],
+  },
+  {
+    id: "q2",
+    q: "Para que serve cadastrar minha obra?",
+    paragraphs: [
+      "O cadastro ajuda a direcionar seu atendimento de acordo com a localização da obra e as informações informadas. Assim, uma Guide Shop pode entender melhor sua necessidade e entrar em contato para apoiar os próximos passos do orçamento.",
+    ],
+  },
+  {
+    id: "q3",
+    q: "Quem pode cadastrar uma obra?",
+    paragraphs: [
+      "Qualquer pessoa que esteja construindo, reformando ou planejando uma obra pode fazer o cadastro. O formulário também pode ser preenchido por um responsável no local, familiar, arquiteto, designer ou pessoa que esteja ajudando o dono da obra.",
+    ],
+  },
+  {
+    id: "q4",
+    q: "Preciso estar com a obra em andamento para me cadastrar?",
+    paragraphs: [
+      "Não necessariamente. O cadastro também pode ser feito por quem ainda está planejando a reforma ou construção e quer começar a conversar sobre orçamento, produtos e atendimento.",
+    ],
+  },
+  {
+    id: "q5",
+    q: "O cadastro da obra é gratuito?",
+    paragraphs: [
+      "Sim. O cadastro não tem custo e serve para iniciar o atendimento com uma Guide Shop ou loja relacionada à sua região ou indicação comercial.",
+    ],
+  },
+  {
+    id: "q6",
+    q: "O cadastro me obriga a comprar?",
+    paragraphs: [
+      "Não. O cadastro não gera obrigação de compra. Ele serve para que a ABC da Construção ou uma Guide Shop entre em contato e ajude você a avançar no atendimento e no orçamento.",
+    ],
+  },
+  {
+    id: "q7",
+    q: "Em quanto tempo receberei contato?",
+    paragraphs: [
+      "Após o envio do cadastro, a previsão é que uma Guide Shop entre em contato em até 2 dias úteis. Esse prazo ajuda a organizar o atendimento e direcionar sua solicitação corretamente.",
+    ],
+  },
+  {
+    id: "q8",
+    q: "Por que preciso informar o CEP da obra?",
+    paragraphs: [
+      "O CEP ajuda a identificar a localização da obra e pode ser usado para sugerir uma Guide Shop ou loja mais adequada para o atendimento. Isso facilita o direcionamento e evita contatos genéricos.",
+    ],
+  },
+  {
+    id: "q9",
+    q: "Quem vai entrar em contato comigo?",
+    paragraphs: [
+      "O contato pode ser feito por uma Guide Shop, loja ou equipe comercial vinculada à ABC da Construção, de acordo com a origem do cadastro, indicação da loja ou localização da obra.",
+    ],
+  },
+  {
+    id: "q10",
+    q: "Posso falar pelo WhatsApp depois do cadastro?",
+    paragraphs: [
+      "Sim. O WhatsApp é o canal recomendado para acelerar a conversa depois do cadastro. Ele facilita o envio de informações, alinhamento de orçamento e continuidade do atendimento.",
+    ],
+  },
+  {
+    id: "q11",
+    q: "Preciso enviar fotos da obra?",
+    paragraphs: [
+      "Não. O envio de fotos é opcional. Mesmo assim, quando disponíveis, as fotos podem ajudar a equipe a entender melhor a fase da obra e preparar um atendimento mais direcionado.",
+    ],
+  },
+  {
+    id: "q12",
+    q: "Quais dados preciso informar no cadastro?",
+    paragraphs: [
+      "O formulário solicita dados básicos como CEP da obra, nome, sobrenome, responsável no local, WhatsApp, e-mail e aceite da Política de Privacidade. Esses dados ajudam a iniciar o atendimento comercial de forma organizada.",
+    ],
+  },
+  {
+    id: "q13",
+    q: "Posso cadastrar uma obra de outra pessoa?",
+    paragraphs: [
+      "Sim, desde que você tenha relação com a obra ou esteja autorizado a informar os dados necessários. O formulário permite identificar o dono da obra e também o responsável no local.",
+    ],
+  },
+  {
+    id: "q14",
+    q: "Como a loja ou Guide Shop é definida?",
+    paragraphs: [
+      "Quando o cadastro vem de um link indicado por loja ou franqueado, essa origem comercial pode ser considerada. Quando não há indicação, a localização da obra pode ajudar a sugerir uma loja ou Guide Shop mais adequada.",
+    ],
+  },
+  {
+    id: "q15",
+    q: "O que acontece depois que eu envio o formulário?",
+    paragraphs: [
+      "Você verá uma confirmação de recebimento dos dados. Depois disso, uma Guide Shop ou equipe responsável deve analisar o cadastro e entrar em contato em até 2 dias úteis.",
+    ],
+  },
+  {
+    id: "q16",
+    q: "Meus dados estarão seguros?",
+    paragraphs: [
+      "Os dados informados devem ser usados para atendimento relacionado à sua obra, conforme a Política de Privacidade aceita no formulário. Comunicações promocionais por e-mail, SMS ou WhatsApp devem depender de aceite específico, quando aplicável.",
+    ],
+  },
+  {
+    id: "q17",
+    q: "Posso receber comunicações por WhatsApp, SMS ou e-mail?",
+    paragraphs: [
+      "Sim, desde que você autorize esse tipo de comunicação no formulário. Essa autorização é opcional e ajuda a mantê-lo informado sobre atendimento, oportunidades e campanhas relacionadas.",
+    ],
+  },
+  {
+    id: "q18",
+    q: "A campanha é para qualquer cidade?",
+    paragraphs: [
+      "O cadastro pode ser feito informando o CEP da obra. A disponibilidade de atendimento e o direcionamento para loja ou Guide Shop dependem da região e da operação comercial vinculada ao cadastro.",
+    ],
+  },
+  {
+    id: "q19",
+    q: "O que é uma Guide Shop?",
+    paragraphs: [
+      "Guide Shop é um ponto de atendimento preparado para orientar o cliente na escolha de produtos, composição de orçamento e próximos passos da compra para reforma ou construção.",
+    ],
+  },
+  {
+    id: "q20",
+    q: "A campanha faz parte do Pé na Obra?",
+    paragraphs: [
+      "A campanha pode estar relacionada ao guarda-chuva Pé na Obra, mas a comunicação principal da landing page deve ser Cadastro Sua Obra, com foco em captar interessados em construir, reformar e avançar no orçamento.",
+    ],
+  },
+  ];
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function mountFaqAccordion() {
+    const root = document.getElementById("lp-faq-accordion-root");
+    if (!root || !FAQ_ITEMS.length) return;
+    root.innerHTML = FAQ_ITEMS.map(function (item, index) {
+      const paras = item.paragraphs
+        .map(function (p) {
+          return '<p class="lp-faq-accordion-text">' + escapeHtml(p) + "</p>";
+        })
+        .join("");
+      return (
+        '<div class="lp-faq-accordion-item">' +
+        '<button type="button" class="lp-faq-accordion-header" data-index="' +
+        index +
+        '" aria-expanded="false" aria-controls="lp-faq-panel-' +
+        item.id +
+        '" id="lp-faq-heading-' +
+        item.id +
+        '">' +
+        '<span class="lp-faq-accordion-title">' +
+        escapeHtml(item.q) +
+        '</span><span class="lp-faq-accordion-icon" aria-hidden="true"></span></button>' +
+        '<div class="lp-faq-accordion-content" id="lp-faq-panel-' +
+        item.id +
+        '" role="region" aria-labelledby="lp-faq-heading-' +
+        item.id +
+        '">' +
+        paras +
+        "</div></div>"
+      );
+    }).join("");
+    root.addEventListener("click", function onFaqAccordionClick(e) {
+      const header = e.target.closest(".lp-faq-accordion-header");
+      if (!header || !root.contains(header)) return;
+      const item = header.closest(".lp-faq-accordion-item");
+      if (!item) return;
+      const was = item.classList.contains("ativo");
+      root.querySelectorAll(".lp-faq-accordion-item").forEach(function (el) {
+        el.classList.remove("ativo");
+        const h = el.querySelector(".lp-faq-accordion-header");
+        if (h) h.setAttribute("aria-expanded", "false");
+      });
+      if (!was) {
+        item.classList.add("ativo");
+        header.setAttribute("aria-expanded", "true");
+      }
+    });
   }
 
   function normalizeDigits(value) {
@@ -67,7 +267,7 @@
     return new URLSearchParams(window.location.search);
   }
 
-  const root = document.getElementById("lp-obra-local-root");
+  const root = document.getElementById("pagina-obra");
   const progressBarFill = document.getElementById("progress-bar-fill");
   const progressText = document.getElementById("progress-text");
   const btnNext1 = document.getElementById("btn-next-step1");
@@ -80,13 +280,16 @@
   const fixedHeader = document.querySelector(".lp-fixed-header");
   const heroSection = document.getElementById("lp-hero");
   const formSection = document.getElementById("lp-form-anchor");
+  if (formSection) {
+    formSection.style.setProperty("--form-bg-url", `url("${mediaUrl(MEDIA.formBackground)}")`);
+  }
   const scrollTriggers = document.querySelectorAll("[data-scroll-to]");
   const headerMenuBtn = document.getElementById("lp-header-menu-btn");
   const headerDrawer = document.getElementById("lp-header-drawer");
-  const headerDrawerClose = document.getElementById("lp-header-drawer-close");
   const drawerLinks = document.querySelectorAll(".lp-fixed-header__drawer-link");
   const MOBILE_HEADER_MQ = window.matchMedia("(max-width: 720px)");
   const MOBILE_HEADER_REVEAL_PX = 200;
+  let lastMobileHeaderRevealed = null;
 
   const elCep = document.getElementById("cepclient");
   const elName = document.getElementById("name");
@@ -194,8 +397,8 @@
   }
 
   function setStepClass() {
-    root.classList.remove("lp-step-1", "lp-step-2", "lp-step-3");
-    root.classList.add(`lp-step-${state.currentStep}`);
+    root.classList.remove("etapa-1", "etapa-2", "etapa-3");
+    root.classList.add(`etapa-${state.currentStep}`);
   }
 
   function getHeaderOffset() {
@@ -203,7 +406,7 @@
       return 92;
     }
 
-    if (MOBILE_HEADER_MQ.matches && root && root.classList.contains("lp-root--mobile-header-hidden")) {
+    if (MOBILE_HEADER_MQ.matches && root && root.classList.contains("cabecalho-mobile--oculto")) {
       return 0;
     }
 
@@ -243,14 +446,9 @@
 
   function bindMobileHeaderMenu() {
     if (headerMenuBtn && headerDrawer) {
-      headerMenuBtn.addEventListener("click", function () {
+      headerMenuBtn.addEventListener("click", function (event) {
+        event.stopPropagation();
         toggleHeaderDrawer();
-      });
-    }
-
-    if (headerDrawerClose && headerDrawer) {
-      headerDrawerClose.addEventListener("click", function () {
-        closeHeaderDrawer();
       });
     }
 
@@ -279,13 +477,15 @@
     const mobile = MOBILE_HEADER_MQ.matches;
     if (mobile) {
       const revealed = window.scrollY >= MOBILE_HEADER_REVEAL_PX;
-      root.classList.toggle("lp-root--mobile-header-revealed", revealed);
-      root.classList.toggle("lp-root--mobile-header-hidden", !revealed);
-      if (!revealed) {
+      if (lastMobileHeaderRevealed === true && !revealed) {
         closeHeaderDrawer();
       }
+      lastMobileHeaderRevealed = revealed;
+      root.classList.toggle("cabecalho-mobile--visivel", revealed);
+      root.classList.toggle("cabecalho-mobile--oculto", !revealed);
     } else {
-      root.classList.remove("lp-root--mobile-header-revealed", "lp-root--mobile-header-hidden");
+      lastMobileHeaderRevealed = null;
+      root.classList.remove("cabecalho-mobile--visivel", "cabecalho-mobile--oculto");
       closeHeaderDrawer();
     }
   }
@@ -354,8 +554,8 @@
     const sectionMid =
       formSection.offsetTop + formSection.offsetHeight * 0.5;
     const delta = scrollMid - sectionMid;
-    const maxY = 72;
-    const maxX = 32;
+    const maxY = 44;
+    const maxX = 20;
     const py = Math.max(-maxY, Math.min(maxY, delta * 0.1));
     const px = Math.max(-maxX, Math.min(maxX, delta * 0.04));
     formSection.style.setProperty("--form-bg-parallax-y", `${py}px`);
@@ -888,6 +1088,21 @@
     updateMobileHeaderReveal();
   }
 
+  function initHeroContentEntrance() {
+    const el = document.querySelector(".lp-hero__content");
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    el.addEventListener(
+      "animationend",
+      function onHeroContentInEnd(e) {
+        const name = e.animationName || "";
+        if (!name.includes("lp-hero-content-in")) return;
+        el.removeEventListener("animationend", onHeroContentInEnd);
+        el.classList.add("lp-hero-content--settled");
+      }
+    );
+  }
+
   function init() {
     updateOwnerToggleUi();
     setStepClass();
@@ -897,6 +1112,7 @@
     bindEvents();
     bindMobileHeaderMenu();
     bindNavigation();
+    mountFaqAccordion();
     updateMobileHeaderReveal();
     updateHeroParallax();
     updateFormBgParallax();
@@ -909,6 +1125,7 @@
     MOBILE_HEADER_MQ.addEventListener("change", scheduleHeaderReveal);
     updateStep1Progress();
     updateStep2Progress();
+    initHeroContentEntrance();
   }
 
   init();

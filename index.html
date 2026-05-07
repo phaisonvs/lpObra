@@ -12,55 +12,46 @@
   <link rel="stylesheet" href="./lpObraLocal.css">
 </head>
 
-<body>
-  <div id="lp-obra-local-root" class="lp-obra-local-root lp-step-1">
-    <header class="lp-fixed-header" id="lp-fixed-header">
-      <div class="lp-fixed-header__inner">
-        <button type="button" class="lp-fixed-header__menu-btn" id="lp-header-menu-btn" aria-expanded="false"
-          aria-controls="lp-header-drawer" aria-label="Abrir menu">
-          <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
-          <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
-          <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
-        </button>
-
-        <a class="lp-fixed-header__brand" href="#lp-hero" aria-label="ABC da construção">
-          <img id="img-logo-hero" class="lp-fixed-header__logo" alt="ABC da construção">
-        </a>
-
-        <nav class="lp-fixed-header__nav" aria-label="Menu da página">
-          <button class="lp-fixed-header__link" type="button" data-scroll-to="#lp-beneficios-vip">Benefícios</button>
-          <button class="lp-fixed-header__link" type="button">Como funciona</button>
-          <button class="lp-fixed-header__link" type="button">Dúvidas</button>
-        </nav>
-
-        <div class="lp-fixed-header__trailing">
-          <a class="lp-fixed-header__cta lp-cta-premium" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
-            Quero cadastrar meu orçamento
+<body id="pagina-obra" class="pagina-obra etapa-1">
+    <section id="lp-hero" class="hero-section lp-block lp-hero" aria-labelledby="lp-hero-title">
+      <header class="lp-fixed-header" id="lp-fixed-header">
+        <div class="lp-fixed-header__inner">
+          <a class="lp-fixed-header__brand" href="#lp-hero" aria-label="ABC da construção">
+            <img id="img-logo-hero" class="lp-fixed-header__logo" alt="ABC da construção">
           </a>
-        </div>
-      </div>
 
-      <div id="lp-header-drawer" class="lp-fixed-header__drawer" hidden>
-        <div class="lp-fixed-header__drawer-top">
-          <button type="button" class="lp-fixed-header__drawer-close" id="lp-header-drawer-close" aria-label="Fechar menu">
-            <svg class="lp-fixed-header__drawer-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
-              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            </svg>
+          <button type="button" class="lp-fixed-header__menu-btn" id="lp-header-menu-btn" aria-expanded="false"
+            aria-controls="lp-header-drawer" aria-label="Abrir menu">
+            <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
+            <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
+            <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
           </button>
-        </div>
-        <nav class="lp-fixed-header__drawer-nav" aria-label="Menu principal">
-          <button type="button" class="lp-fixed-header__drawer-link" data-scroll-to="#lp-beneficios-vip">Benefícios</button>
-          <button type="button" class="lp-fixed-header__drawer-link">Como funciona</button>
-          <button type="button" class="lp-fixed-header__drawer-link">Dúvidas</button>
-          <a class="lp-fixed-header__drawer-cta lp-cta-premium" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
-            Quero cadastrar meu orçamento
-          </a>
-        </nav>
-      </div>
-    </header>
 
-    <section id="lp-hero" class="lp-block lp-hero" aria-labelledby="lp-hero-title">
+          <nav class="lp-fixed-header__nav" aria-label="Menu da página">
+            <button class="lp-fixed-header__link" type="button" data-scroll-to="#lp-beneficios-vip">Benefícios</button>
+            <button class="lp-fixed-header__link" type="button">Como funciona</button>
+            <button class="lp-fixed-header__link" type="button" data-scroll-to="#lp-faq-anchor">Dúvidas</button>
+          </nav>
+
+          <div class="lp-fixed-header__trailing">
+            <a class="lp-fixed-header__cta lp-cta-premium" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+              Quero cadastrar meu orçamento
+            </a>
+          </div>
+        </div>
+
+        <div id="lp-header-drawer" class="lp-fixed-header__drawer" hidden>
+          <nav class="lp-fixed-header__drawer-nav" aria-label="Menu principal">
+            <button type="button" class="lp-fixed-header__drawer-link" data-scroll-to="#lp-beneficios-vip">Benefícios</button>
+            <button type="button" class="lp-fixed-header__drawer-link">Como funciona</button>
+            <button type="button" class="lp-fixed-header__drawer-link" data-scroll-to="#lp-faq-anchor">Dúvidas</button>
+            <a class="lp-fixed-header__drawer-cta lp-cta-premium" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+              Quero cadastrar meu orçamento
+            </a>
+          </nav>
+        </div>
+      </header>
+
         <div class="lp-hero__media" aria-hidden="true"></div>
         <span class="lp-hero__vip-flare lp-hero__vip-flare--main" aria-hidden="true"></span>
 
@@ -158,7 +149,7 @@
         </button>
     </section>
 
-    <section id="lp-beneficios-vip" class="lp-block lp-beneficios-vip" aria-labelledby="lp-beneficios-vip-titulo">
+    <section id="lp-beneficios-vip" class="beneficios lp-block lp-beneficios-vip" aria-labelledby="lp-beneficios-vip-titulo">
       <div class="beneficios-vip-conteudo">
         <header class="beneficios-vip-cabecalho">
           <div class="beneficios-vip-divisor" aria-hidden="true"></div>
@@ -183,9 +174,9 @@
               <img id="img-beneficio-vip-1" alt="Poder de compra da maior rede">
             </figure>
             <p class="beneficios-vip-texto">
-              Poder de compra da
-              <strong class="beneficios-vip-texto-destaque">Maior Rede</strong>
-              de acabamentos do país
+              Poder de compra<wbr> da
+              <strong class="beneficios-vip-texto-destaque">Maior Rede</strong><wbr>
+              de acabamentos<wbr> do país
             </p>
           </article>
 
@@ -194,9 +185,9 @@
               <img id="img-beneficio-vip-2" alt="Argamassa grátis">
             </figure>
             <p class="beneficios-vip-texto">
-              Argamassa
-              <strong class="beneficios-vip-texto-destaque">Grátis</strong>
-              para cada 5m² de porcelanatos
+              Argamassa<wbr>
+              <strong class="beneficios-vip-texto-destaque">Grátis</strong><wbr>
+              para cada<wbr> 5m² de<wbr> porcelanatos
             </p>
           </article>
 
@@ -205,9 +196,9 @@
               <img id="img-beneficio-vip-3" alt="Cashback do ABC Prime">
             </figure>
             <p class="beneficios-vip-texto">
-              Cashback de
-              <strong class="beneficios-vip-texto-destaque">R$ 1.200</strong>
-              na assinatura do ABC Prime
+              Cashback de<wbr>
+              <strong class="beneficios-vip-texto-destaque beneficios-vip-keep">R$&nbsp;1.200</strong><wbr>
+              na assinatura<wbr> do ABC Prime
             </p>
           </article>
 
@@ -216,9 +207,9 @@
               <img id="img-beneficio-vip-4" alt="Lista de promoções de entrada">
             </figure>
             <p class="beneficios-vip-texto">
-              Lista Exclusiva de
-              <strong class="beneficios-vip-texto-destaque">20 a 30</strong>
-              promocionais de entrada
+              Lista Exclusiva<wbr> de
+              <strong class="beneficios-vip-texto-destaque beneficios-vip-keep">20 a 30</strong><wbr>
+              promocionais<wbr> de entrada
             </p>
           </article>
         </div>
@@ -231,7 +222,7 @@
       </div>
     </section>
 
-    <section id="lp-form-anchor" class="lp-block lp-form-section lp-form-anchor section-formulario"
+    <section id="lp-form-anchor" class="formulario lp-block lp-form-section lp-form-anchor section-formulario"
       aria-label="Formulário de cadastro">
         <div class="form-container">
           <aside class="franquia-info">
@@ -408,41 +399,54 @@
         </div>
     </section>
 
-    <div class="regulamento-legal" role="note" aria-label="Informações legais da campanha">
-      <div class="regulamento-legal__inner">
-        <span class="regulamento-legal__icone" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M16 3.8 25.5 8.2v7.4c0 5.4-3.6 10.4-9.5 12.6-5.9-2.2-9.5-7.2-9.5-12.6V8.2L16 3.8Z"
-              stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-            <path
-              d="M11.2 16.4 14.3 19.5 20.8 13"
-              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </span>
-        <p class="regulamento-legal__texto">
-          A participação na campanha está sujeita a condições específicas. Benefícios válidos por tempo limitado, conforme regras da campanha Maio/2026 da ABC da Construção. O acesso aos benefícios está condicionado ao fechamento da compra nas lojas participantes da ABC da Construção, não sendo garantido apenas com o cadastro do orçamento. Consulte o regulamento completo da campanha para mais informações.
-        </p>
-        <a class="regulamento-legal__link" href="#" target="_blank" rel="noopener noreferrer">
-          Ver regulamento completo
-        </a>
+    <section id="lp-faq-anchor" class="lp-faq lp-block secao-faq" data-lp-section="faq" aria-labelledby="lp-faq-titulo">
+      <div class="lp-faq-container">
+        <header class="lp-faq-cabecalho">
+          <p class="lp-faq-eyebrow">Dúvidas frequentes</p>
+          <h2 id="lp-faq-titulo" class="lp-faq-titulo">Perguntas e respostas</h2>
+        </header>
+        <div class="lp-faq-painel">
+          <div class="lp-faq-accordion" id="lp-faq-accordion-root"></div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <footer class="footer lp-footer">
-      <div class="footer-container">
-        <a class="logo-box" href="#lp-hero" aria-label="ABC da construção">
-          <img id="img-logo-footer" alt="ABC da construção">
-        </a>
-        <div class="footer-slogan">
-          <p>ABC da Construção. Sua obra, nossa especialidade.</p>
-        </div>
-        <div class="footer-copyright">
-          <p>© 2025. Mysa S.A.. Todos direitos reservados.</p>
+    <section class="secao-footer" aria-label="Rodapé">
+      <div class="regulamento-legal" role="note" aria-label="Informações legais da campanha">
+        <div class="regulamento-legal__inner">
+          <span class="regulamento-legal__icone" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16 3.8 25.5 8.2v7.4c0 5.4-3.6 10.4-9.5 12.6-5.9-2.2-9.5-7.2-9.5-12.6V8.2L16 3.8Z"
+                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+              <path
+                d="M11.2 16.4 14.3 19.5 20.8 13"
+                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <p class="regulamento-legal__texto">
+            A participação na campanha está sujeita a condições específicas. Benefícios válidos por tempo limitado, conforme regras da campanha Maio/2026 da ABC da Construção. O acesso aos benefícios está condicionado ao fechamento da compra nas lojas participantes da ABC da Construção, não sendo garantido apenas com o cadastro do orçamento. Consulte o regulamento completo da campanha para mais informações.
+          </p>
+          <a class="regulamento-legal__link" href="#" target="_blank" rel="noopener noreferrer">
+            Ver regulamento completo
+          </a>
         </div>
       </div>
-    </footer>
-  </div>
+
+      <footer class="footer lp-footer">
+        <div class="footer-container">
+          <a class="logo-box" href="#lp-hero" aria-label="ABC da construção">
+            <img id="img-logo-footer" alt="ABC da construção">
+          </a>
+          <div class="footer-slogan">
+            <p>ABC da Construção. Sua obra, nossa especialidade.</p>
+          </div>
+          <div class="footer-copyright">
+            <p>© 2025. Mysa S.A.. Todos direitos reservados.</p>
+          </div>
+        </div>
+      </footer>
+    </section>
 
   <script src="./lpObraLocal.js"></script>
 </body>
