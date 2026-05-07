@@ -1,15 +1,15 @@
-import { LightningElement, track } from "lwc";
+import { LightningElement, track, api } from "lwc";
 import basePath from "@salesforce/community/basePath";
 
 const SCROLL_EVT = "lpobra-scroll";
 const MEDIA_LOGO = "MC2XLLTWVOQZBHLIDCYNNG2MNL5I";
-const MEDIA_HERO_BG = "MCYNXJIOGJYJBQTBFOAQRDYZ77YM";
+const MEDIA_HERO_BG_DEFAULT = "MCVNHFJIPNTJHUVKP2H2X56ZMWUE";
+const MEDIA_BENEFICIOS_BG_DEFAULT = "MC2CXJ5XPFWBGGJOC2YF4QGICDLI";
 const MEDIA_BENEFICIOS = {
   beneficiosIcone1: "MCL2KOEY6F25BHDDAD6OLZXG76WI",
   beneficiosIcone2: "MCS2CAWZ5TIBCOLBWERPYO53TY7A",
   beneficiosIcone3: "MCWRCTE2LHH5HGTCTCKS35KCRG6M",
   beneficiosIcone4: "MCD2RXWJWJJBBPZFXU7H7SFOAV6I",
-  beneficiosBackground: "MC2CXJ5XPFWBGGJOC2YF4QGICDLI",
 };
 const MOBILE_HEADER_REVEAL_PX = 200;
 
@@ -18,6 +18,9 @@ function mediaUrl(id) {
 }
 
 export default class LpObraHeroSection extends LightningElement {
+  @api heroBackgroundMediaId = MEDIA_HERO_BG_DEFAULT;
+  @api beneficiosBackgroundMediaId = MEDIA_BENEFICIOS_BG_DEFAULT;
+
   @track drawerOpen = false;
 
   urlIcone1 = mediaUrl(MEDIA_BENEFICIOS.beneficiosIcone1);
@@ -54,11 +57,19 @@ export default class LpObraHeroSection extends LightningElement {
   }
 
   get heroMediaStyle() {
-    return `--hero-bg-image: url("${mediaUrl(MEDIA_HERO_BG)}");`;
+    const id = this._cmsId(this.heroBackgroundMediaId, MEDIA_HERO_BG_DEFAULT);
+    return `--hero-bg-image: url("${mediaUrl(id)}");`;
   }
 
   get sectionBgStyle() {
-    return `--beneficios-vip-bg: url("${mediaUrl(MEDIA_BENEFICIOS.beneficiosBackground)}");`;
+    const id = this._cmsId(this.beneficiosBackgroundMediaId, MEDIA_BENEFICIOS_BG_DEFAULT);
+    return `--beneficios-vip-bg: url("${mediaUrl(id)}");`;
+  }
+
+  _cmsId(value, fallback) {
+    if (typeof value !== "string") return fallback;
+    const t = value.trim();
+    return t || fallback;
   }
 
   connectedCallback() {
