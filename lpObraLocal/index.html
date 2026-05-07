@@ -28,7 +28,7 @@
         </a>
 
         <nav class="lp-fixed-header__nav" aria-label="Menu da página">
-          <button class="lp-fixed-header__link" type="button">Benefícios</button>
+          <button class="lp-fixed-header__link" type="button" data-scroll-to="#lp-beneficios-vip">Benefícios</button>
           <button class="lp-fixed-header__link" type="button">Como funciona</button>
           <button class="lp-fixed-header__link" type="button">Dúvidas</button>
         </nav>
@@ -50,7 +50,7 @@
           </button>
         </div>
         <nav class="lp-fixed-header__drawer-nav" aria-label="Menu principal">
-          <button type="button" class="lp-fixed-header__drawer-link">Benefícios</button>
+          <button type="button" class="lp-fixed-header__drawer-link" data-scroll-to="#lp-beneficios-vip">Benefícios</button>
           <button type="button" class="lp-fixed-header__drawer-link">Como funciona</button>
           <button type="button" class="lp-fixed-header__drawer-link">Dúvidas</button>
           <a class="lp-fixed-header__drawer-cta lp-cta-premium" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
@@ -156,6 +156,79 @@
               stroke-linejoin="round" />
           </svg>
         </button>
+    </section>
+
+    <section id="lp-beneficios-vip" class="lp-block lp-beneficios-vip" aria-labelledby="lp-beneficios-vip-titulo">
+      <div class="beneficios-vip-conteudo">
+        <header class="beneficios-vip-cabecalho">
+          <div class="beneficios-vip-divisor" aria-hidden="true"></div>
+          <span class="beneficios-vip-coroa" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              <path d="m4 18 1.5-9 5 4 2.5-7 2.5 7 5-4L20 18" stroke="currentColor" stroke-width="1.6"
+                stroke-linejoin="round" />
+              <circle cx="6" cy="8.5" r="1.2" fill="currentColor" />
+              <circle cx="12.9" cy="4.7" r="1.2" fill="currentColor" />
+              <circle cx="18.1" cy="8.4" r="1.2" fill="currentColor" />
+            </svg>
+          </span>
+          <div class="beneficios-vip-divisor" aria-hidden="true"></div>
+        </header>
+
+        <h2 id="lp-beneficios-vip-titulo" class="beneficios-vip-titulo">Benefícios Exclusivos</h2>
+
+        <div class="beneficios-vip-grade">
+          <article class="beneficios-vip-card">
+            <figure class="beneficios-vip-icone">
+              <img id="img-beneficio-vip-1" alt="Poder de compra da maior rede">
+            </figure>
+            <p class="beneficios-vip-texto">
+              Poder de compra da
+              <strong class="beneficios-vip-texto-destaque">Maior Rede</strong>
+              de acabamentos do país
+            </p>
+          </article>
+
+          <article class="beneficios-vip-card">
+            <figure class="beneficios-vip-icone">
+              <img id="img-beneficio-vip-2" alt="Argamassa grátis">
+            </figure>
+            <p class="beneficios-vip-texto">
+              Argamassa
+              <strong class="beneficios-vip-texto-destaque">Grátis</strong>
+              para cada 5m² de porcelanatos
+            </p>
+          </article>
+
+          <article class="beneficios-vip-card">
+            <figure class="beneficios-vip-icone">
+              <img id="img-beneficio-vip-3" alt="Cashback do ABC Prime">
+            </figure>
+            <p class="beneficios-vip-texto">
+              Cashback de
+              <strong class="beneficios-vip-texto-destaque">R$ 1.200</strong>
+              na assinatura do ABC Prime
+            </p>
+          </article>
+
+          <article class="beneficios-vip-card">
+            <figure class="beneficios-vip-icone">
+              <img id="img-beneficio-vip-4" alt="Lista de promoções de entrada">
+            </figure>
+            <p class="beneficios-vip-texto">
+              Lista Exclusiva de
+              <strong class="beneficios-vip-texto-destaque">20 a 30</strong>
+              promocionais de entrada
+            </p>
+          </article>
+        </div>
+
+        <div class="beneficios-vip-acao">
+          <a class="lp-cta-premium beneficios-vip-botao" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+            Quero ser cliente VIP
+          </a>
+        </div>
+      </div>
     </section>
 
     <section id="lp-form-anchor" class="lp-block lp-form-section lp-form-anchor section-formulario"

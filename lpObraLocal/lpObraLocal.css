@@ -423,8 +423,8 @@ select:-webkit-autofill {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 95vh;
+  min-height: 95dvh;
   box-sizing: border-box;
   --lp-header-clear: max(92px, env(safe-area-inset-top, 0px));
   padding-top: var(--lp-header-clear);
@@ -616,7 +616,32 @@ select:-webkit-autofill {
 }
 
 .lp-hero__scroll-hint {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 6px));
+  z-index: 3;
+  margin: 0;
+  padding: 6px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  color: rgba(255, 245, 220, 0.92);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  animation: lp-hero-scroll-hint-float 2.4s ease-in-out infinite;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+}
+
+.lp-hero__scroll-hint:focus-visible {
+  outline: 2px solid rgba(244, 220, 160, 0.85);
+  outline-offset: 3px;
+}
+
+.lp-hero__scroll-hint-icon {
+  display: block;
 }
 
 @keyframes lp-hero-scroll-hint-float {
@@ -860,6 +885,145 @@ select:-webkit-autofill {
 .lp-hero__actions .lp-cta-premium {
   width: fit-content;
   max-width: 100%;
+}
+
+.lp-beneficios-vip {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #f2eee7;
+  background-image:
+    linear-gradient(180deg, rgba(255, 251, 244, 0.96) 0%, rgba(247, 239, 227, 0.92) 100%),
+    var(--beneficios-vip-bg, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.lp-beneficios-vip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 4% 52%, rgba(255, 220, 170, 0.5), transparent 34%),
+    radial-gradient(circle at 96% 52%, rgba(255, 220, 170, 0.5), transparent 34%),
+    linear-gradient(90deg, rgba(250, 244, 234, 0.82) 0%, rgba(250, 244, 234, 0.34) 23%, rgba(250, 244, 234, 0.34) 77%, rgba(250, 244, 234, 0.82) 100%);
+}
+
+.beneficios-vip-conteudo {
+  position: relative;
+  z-index: 1;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 58px var(--lp-pad-left) 48px var(--lp-pad-right);
+}
+
+.beneficios-vip-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.beneficios-vip-divisor {
+  width: min(230px, 23vw);
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(236, 177, 77, 0), rgba(236, 177, 77, 0.85), rgba(236, 177, 77, 0));
+}
+
+.beneficios-vip-coroa {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e0a63d;
+}
+
+.beneficios-vip-coroa svg {
+  width: 28px;
+  height: 28px;
+}
+
+.beneficios-vip-titulo {
+  margin-top: 10px;
+  text-align: center;
+  font-size: clamp(36px, 4.2vw, 56px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #111218;
+}
+
+.beneficios-vip-grade {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.beneficios-vip-card {
+  min-height: 390px;
+  border-radius: 18px;
+  border: 1px solid rgba(233, 175, 78, 0.72);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.66) inset,
+    0 12px 24px rgba(99, 72, 31, 0.08);
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.beneficios-vip-icone {
+  width: 128px;
+  height: 128px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beneficios-vip-icone img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.beneficios-vip-texto {
+  margin: 0;
+  font-size: clamp(22px, 2.3vw, 32px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #161821;
+}
+
+.beneficios-vip-texto-destaque {
+  display: block;
+  margin: 6px 0 2px;
+  font-size: 1.12em;
+  color: #e3062d;
+  font-weight: 800;
+}
+
+.beneficios-vip-acao {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+}
+
+.beneficios-vip-botao.lp-cta-premium {
+  min-width: min(460px, 100%);
+  min-height: 78px;
+  font-size: clamp(30px, 3.1vw, 42px);
+  line-height: 1;
+  text-transform: uppercase;
+  padding: 0 30px;
 }
 
 .lp-form-anchor {
@@ -1690,6 +1854,25 @@ select:-webkit-autofill {
 }
 
 @media (max-width: 1024px) {
+  .beneficios-vip-conteudo {
+    padding-top: 52px;
+    padding-bottom: 44px;
+  }
+
+  .beneficios-vip-grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .beneficios-vip-card {
+    min-height: 300px;
+  }
+
+  .beneficios-vip-botao.lp-cta-premium {
+    min-height: 68px;
+    font-size: clamp(23px, 4vw, 30px);
+  }
+
   .lp-hero {
     --lp-header-clear: max(84px, env(safe-area-inset-top, 0px));
     padding-top: var(--lp-header-clear);
@@ -1743,6 +1926,66 @@ select:-webkit-autofill {
 }
 
 @media (max-width: 720px) {
+  .beneficios-vip::before {
+    background:
+      radial-gradient(circle at 4% 50%, rgba(255, 220, 170, 0.36), transparent 36%),
+      radial-gradient(circle at 96% 50%, rgba(255, 220, 170, 0.36), transparent 36%),
+      linear-gradient(90deg, rgba(250, 244, 234, 0.78) 0%, rgba(250, 244, 234, 0.42) 18%, rgba(250, 244, 234, 0.42) 82%, rgba(250, 244, 234, 0.78) 100%);
+  }
+
+  .beneficios-vip-conteudo {
+    padding-top: 42px;
+    padding-bottom: 40px;
+  }
+
+  .beneficios-vip-cabecalho {
+    gap: 10px;
+  }
+
+  .beneficios-vip-divisor {
+    width: min(120px, 28vw);
+  }
+
+  .beneficios-vip-titulo {
+    font-size: clamp(25px, 6.8vw, 32px);
+    line-height: 1.05;
+  }
+
+  .beneficios-vip-grade {
+    margin-top: 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .beneficios-vip-card {
+    min-height: auto;
+    padding: 16px 12px 14px;
+  }
+
+  .beneficios-vip-icone {
+    width: 82px;
+    height: 82px;
+    margin-bottom: 10px;
+  }
+
+  .beneficios-vip-texto {
+    font-size: clamp(14px, 3.6vw, 17px);
+    line-height: 1.26;
+    letter-spacing: -0.01em;
+  }
+
+  .beneficios-vip-texto-destaque {
+    display: inline;
+    margin: 0 2px;
+    font-size: 1em;
+  }
+
+  .beneficios-vip-botao.lp-cta-premium {
+    min-width: 100%;
+    min-height: 54px;
+    font-size: clamp(16px, 4.5vw, 20px);
+    padding: 0 14px;
+  }
+
   .lp-obra-local-root {
     padding-top: 0;
   }
@@ -1976,6 +2219,50 @@ select:-webkit-autofill {
 }
 
 @media (max-width: 480px) {
+  .beneficios-vip-conteudo {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .beneficios-vip-divisor {
+    width: min(84px, 20vw);
+  }
+
+  .beneficios-vip-coroa {
+    width: 30px;
+    height: 30px;
+  }
+
+  .beneficios-vip-coroa svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .beneficios-vip-grade {
+    gap: 10px;
+  }
+
+  .beneficios-vip-card {
+    border-radius: 14px;
+    padding: 14px 10px 12px;
+  }
+
+  .beneficios-vip-icone {
+    width: 74px;
+    height: 74px;
+    margin-bottom: 8px;
+  }
+
+  .beneficios-vip-texto {
+    font-size: clamp(13px, 3.5vw, 15px);
+    line-height: 1.24;
+  }
+
+  .beneficios-vip-botao.lp-cta-premium {
+    min-height: 50px;
+    font-size: clamp(14px, 4.3vw, 17px);
+  }
+
   .lp-obra-local-root {
     padding-top: 0;
   }

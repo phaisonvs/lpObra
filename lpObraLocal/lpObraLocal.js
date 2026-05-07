@@ -5,6 +5,11 @@
   const MEDIA = {
     logo: "MCQIMEUAX37NC27PV7N7UDNKPFSA",
     check: "MC5KOENH3UP5ENDNGGFNHQT3EANA",
+    beneficiosIcone1: "MCL2KOEY6F25BHDDAD6OLZXG76WI",
+    beneficiosIcone2: "MCS2CAWZ5TIBCOLBWERPYO53TY7A",
+    beneficiosIcone3: "MCWRCTE2LHH5HGTCTCKS35KCRG6M",
+    beneficiosIcone4: "MCD2RXWJWJJBBPZFXU7H7SFOAV6I",
+    beneficiosBackground: "MC2CXJ5XPFWBGGJOC2YF4QGICDLI",
   };
 
   const MAX_FILE_SIZE_MB = 10;
@@ -100,6 +105,11 @@
   const imgLogoHero = document.getElementById("img-logo-hero");
   const imgLogoFooter = document.getElementById("img-logo-footer");
   const imgFormCheck = document.getElementById("img-form-check");
+  const beneficiosSection = document.getElementById("lp-beneficios-vip");
+  const imgBeneficioVip1 = document.getElementById("img-beneficio-vip-1");
+  const imgBeneficioVip2 = document.getElementById("img-beneficio-vip-2");
+  const imgBeneficioVip3 = document.getElementById("img-beneficio-vip-3");
+  const imgBeneficioVip4 = document.getElementById("img-beneficio-vip-4");
   let heroFrame = 0;
   let formParallaxFrame = 0;
 
@@ -158,6 +168,29 @@
   imgLogoHero.src = mediaUrl(MEDIA.logo);
   imgLogoFooter.src = mediaUrl(MEDIA.logo);
   imgFormCheck.src = mediaUrl(MEDIA.check);
+
+  if (beneficiosSection) {
+    beneficiosSection.style.setProperty(
+      "--beneficios-vip-bg",
+      `url("${mediaUrl(MEDIA.beneficiosBackground)}")`
+    );
+  }
+
+  if (imgBeneficioVip1) {
+    imgBeneficioVip1.src = mediaUrl(MEDIA.beneficiosIcone1);
+  }
+
+  if (imgBeneficioVip2) {
+    imgBeneficioVip2.src = mediaUrl(MEDIA.beneficiosIcone2);
+  }
+
+  if (imgBeneficioVip3) {
+    imgBeneficioVip3.src = mediaUrl(MEDIA.beneficiosIcone3);
+  }
+
+  if (imgBeneficioVip4) {
+    imgBeneficioVip4.src = mediaUrl(MEDIA.beneficiosIcone4);
+  }
 
   function setStepClass() {
     root.classList.remove("lp-step-1", "lp-step-2", "lp-step-3");
