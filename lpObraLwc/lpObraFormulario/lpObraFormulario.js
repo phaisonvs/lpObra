@@ -165,8 +165,6 @@ function buildLeadPayload(formData, idLead) {
     ceplead: formData.ceplead,
     name: formData.name,
     lastname: formData.lastname,
-    responsibleName: formData.isOwner ? "" : formData.responsibleName,
-    isOwner: formData.isOwner,
     email: formData.email,
     tel: formData.tel,
     privacyPolicy: String(formData.privacyPolicy),
@@ -179,21 +177,28 @@ function buildLeadPayload(formData, idLead) {
     company2: formData.company2,
     canalDeEntrada: formData.canalDeEntrada,
     nameGuideShop: formData.nameGuideShop,
-    photos: Array.isArray(formData.photos) ? formData.photos : [],
-    origemLead: formData.origemLead,
-    campanha: formData.campanha,
-    tipoLead: formData.tipoLead,
-    canal: formData.canal,
-    storeRef: formData.storeRef,
-    referralToken: formData.referralToken,
-    lojaIndicadora: formData.lojaIndicadora,
-    lojaSugerida: formData.lojaSugerida,
-    utm_source: formData.utm_source,
-    utm_medium: formData.utm_medium,
-    utm_campaign: formData.utm_campaign,
-    utm_content: formData.utm_content,
-    pageUrl: formData.pageUrl,
-    dataHoraCadastro: formData.dataHoraCadastro,
+
+    // TODO LpObraService:
+    // Campos abaixo pertencem ao contrato futuro da LP Obra.
+    // Não enviar ao LpSejaUmFranqueadoService legado enquanto ele não aceitar
+    // campos extras, booleanos, arrays ou objetos complexos.
+    // responsibleName: formData.isOwner ? "" : formData.responsibleName,
+    // isOwner: formData.isOwner,
+    // photos: Array.isArray(formData.photos) ? formData.photos : [],
+    // origemLead: formData.origemLead,
+    // campanha: formData.campanha,
+    // tipoLead: formData.tipoLead,
+    // canal: formData.canal,
+    // storeRef: formData.storeRef,
+    // referralToken: formData.referralToken,
+    // lojaIndicadora: formData.lojaIndicadora,
+    // lojaSugerida: formData.lojaSugerida,
+    // utm_source: formData.utm_source,
+    // utm_medium: formData.utm_medium,
+    // utm_campaign: formData.utm_campaign,
+    // utm_content: formData.utm_content,
+    // pageUrl: formData.pageUrl,
+    // dataHoraCadastro: formData.dataHoraCadastro,
   };
 }
 
