@@ -24,12 +24,12 @@ Este documento descreve o que o LWC `lpObraFormulario` envia hoje, como interpre
 
 Campos enviados (objeto plano; sem `owner`; sem `telDisplay`):
 
-- Identificação / pessoa: `name`, `lastname`, `firstName`, `lastName`, `responsibleName`, `isOwner`, `email`, `tel`
+- Identificação / pessoa: `name`, `lastname`, `firstName`, `lastName`, `responsibleName` (string vazia no JSON quando `isOwner` é true), `isOwner`, `email`, `tel`
 - Endereço obra: `cepclient`, `ceplead` (espelho do CEP no submit)
 - Consentimentos (string `"true"` / `"false"`): `privacyPolicy`, `marketingConsent`
-- Lead / registro: `idLead` (composto no front a partir de nome + telefone), `recordtypeDevName`, `company`, `company2`, `canalDeEntrada`
+- Lead / registro: `idLead` (composto no front a partir de nome + telefone), `recordtypeDevName`, `company`, `company2`, `canalDeEntrada` (valor fixo no LWC: `Landing Page Cadastro Sua Obra`)
 - Indicação e UTM: `storeRef`, `referralToken`, `lojaIndicadora`, `lojaSugerida`, `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`
-- Origem: `origemLead`, `campanha`, `tipoLead`, `canal`, `pageUrl`, `dataHoraCadastro`
+- Origem: `origemLead`, `campanha` (ex.: `Cadastro Sua Obra` no LWC), `tipoLead`, `canal`, `pageUrl`, `dataHoraCadastro`
 - Guia: `nameGuideShop` vem só de `lojaSugerida` no submit; **não** repetir o token de indicação em `nameGuideShop` — o Apex resolve `referralToken` / `lojaIndicadora` para a Guide Shop real.
 - Anexos (fotos e PDF): o campo de upload aceita **imagens** (JPG, PNG, WEBP) e **PDF** (ex.: orçamento, planta, memorial). No JSON do Lead, `photos` envia **apenas metadados** (`name`, `size`, `type`, `lastModified`) — imagem e PDF entram da mesma forma, sem base64 e sem binário no `upsertLead`. O upload real dos arquivos ainda **não** está implementado; continua como TODO Salesforce (após `leadId`, p.ex. Files/ContentVersion no Lead).
 
@@ -49,6 +49,10 @@ Até haver contrato oficial, o componente trata:
 
 - Falha de rede ou exceção Apex: mensagem amigável na etapa 2; tentativa-se extrair `body.message` ou `body.pageErrors[].message` quando existir.
 - Não há push no `dataLayer` em caso de erro.
+
+## Analytics (dataLayer, somente após sucesso do Lead)
+
+No evento `Lead`, além dos campos de formulário/UTM, o LWC envia `hasFiles` e `fileCount` (contagem de arquivos selecionados — metadados no payload, não o binário). `hasPhotos` permanece espelhando a mesma condição **por compatibilidade** com medições antigas; preferir `hasFiles` / `fileCount` para o fluxo atual.
 
 ## Upload de arquivos após o Lead
 

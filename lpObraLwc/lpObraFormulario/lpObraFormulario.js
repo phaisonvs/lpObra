@@ -14,6 +14,15 @@ const ALLOWED_FILE_TYPES = new Set([
   "application/pdf",
 ]);
 
+const ORIGEM_LEAD = "Hotsite";
+const CAMPANHA = "Cadastro Sua Obra";
+const TIPO_LEAD = "Obra";
+const CANAL = "LP";
+const CANAL_DE_ENTRADA = "Landing Page Cadastro Sua Obra";
+const RECORDTYPE_DEV_NAME = "Cliente_Final";
+const COMPANY = "ABC";
+const COMPANY2 = "Cliente_Final";
+
 function mediaUrl(id) {
   return `${basePath}/sfsites/c/cms/delivery/media/${id}`;
 }
@@ -61,10 +70,10 @@ function readLandingQueryContext() {
   const referralToken = qp.get("ref") || qp.get("storeRef") || "";
   const storeRef = qp.get("storeRef") || referralToken;
   return {
-    origemLead: "Hotsite",
-    campanha: "Cadastro sua obra",
-    tipoLead: "Obra",
-    canal: "LP",
+    origemLead: ORIGEM_LEAD,
+    campanha: CAMPANHA,
+    tipoLead: TIPO_LEAD,
+    canal: CANAL,
     storeRef,
     referralToken,
     lojaIndicadora: referralToken,
@@ -120,13 +129,43 @@ function parseLeadSubmitResult(raw) {
   return { success: true, leadId, guideShopName };
 }
 
+function createInitialFormData() {
+  const initialContext = readLandingQueryContext();
+  return {
+    data: {
+      cepclient: "",
+      ceplead: "",
+      name: "",
+      lastname: "",
+      responsibleName: "",
+      isOwner: true,
+      email: "",
+      tel: "",
+      telDisplay: "",
+      privacyPolicy: false,
+      marketingConsent: false,
+      firstName: "",
+      lastName: "",
+      idLead: "",
+      recordtypeDevName: RECORDTYPE_DEV_NAME,
+      company: COMPANY,
+      company2: COMPANY2,
+      canalDeEntrada: CANAL_DE_ENTRADA,
+      nameGuideShop: "",
+      photos: [],
+      ...initialContext,
+    },
+    context: initialContext,
+  };
+}
+
 function buildLeadPayload(formData, idLead) {
   return {
     cepclient: formData.cepclient,
     ceplead: formData.ceplead,
     name: formData.name,
     lastname: formData.lastname,
-    responsibleName: formData.responsibleName,
+    responsibleName: formData.isOwner ? "" : formData.responsibleName,
     isOwner: formData.isOwner,
     email: formData.email,
     tel: formData.tel,
@@ -158,7 +197,7 @@ function buildLeadPayload(formData, idLead) {
   };
 }
 
-// Upload real depois do Lead + leadId: Files/ContentVersion ou estratégia para Guest em Experience Cloud. Sem binário no JSON do upsertLead.
+// Upload real depois do Lead + leadId: Files/ContentVersion ou estratégia para Guest em Experience Cloud. Stub: ainda não envia bytes; sem binário no JSON do upsertLead.
 async function uploadSelectedFiles(_leadId, _files) {
   return Promise.resolve();
 }
@@ -189,31 +228,9 @@ export default class LpObraFormulario extends LightningElement {
   _onScrollEvt = null;
 
   connectedCallback() {
-    const initialContext = readLandingQueryContext();
-    this.formData = {
-      cepclient: "",
-      ceplead: "",
-      name: "",
-      lastname: "",
-      responsibleName: "",
-      isOwner: true,
-      email: "",
-      tel: "",
-      telDisplay: "",
-      privacyPolicy: false,
-      marketingConsent: false,
-      firstName: "",
-      lastName: "",
-      idLead: "",
-      recordtypeDevName: "Cliente_Final",
-      company: "ABC",
-      company2: "Cliente_Final",
-      canalDeEntrada: "Landing Page Catalogo",
-      nameGuideShop: "",
-      photos: [],
-      ...initialContext,
-    };
-    this._context = { ...initialContext };
+    const initial = createInitialFormData();
+    this.formData = initial.data;
+    this._context = { ...initial.context };
 
     this._onScroll = () => this.scheduleFormParallax();
     this._onResize = () => this.scheduleFormParallax();
@@ -626,7 +643,7 @@ export default class LpObraFormulario extends LightningElement {
     w.dataLayer = w.dataLayer || [];
     w.dataLayer.push({
       event: "Lead",
-      formName: "Cadastro sua obra",
+      formName: CAMPANHA,
       email: this.formData.email,
       phone: this.formData.tel,
       cep: this.formData.cepclient,
@@ -639,7 +656,10 @@ export default class LpObraFormulario extends LightningElement {
       utm_campaign: this.formData.utm_campaign,
       utm_content: this.formData.utm_content,
       isOwner: this.formData.isOwner,
+      // Mantido por compatibilidade; preferir hasFiles/fileCount para o fluxo atual.
       hasPhotos: this.selectedFiles.length > 0,
+      hasFiles: this.selectedFiles.length > 0,
+      fileCount: this.selectedFiles.length,
     });
   }
 
@@ -697,7 +717,7 @@ export default class LpObraFormulario extends LightningElement {
   }
 
   handleReset() {
-    const initialContext = readLandingQueryContext();
+    const initial = createInitialFormData();
     this.currentStep = 1;
     this.progress = 0;
     this.validEmail = false;
@@ -708,30 +728,8 @@ export default class LpObraFormulario extends LightningElement {
     this.uploadFeedbackText = "";
     this.uploadFeedbackKind = "";
     this.dropzoneDrag = false;
-    this._context = { ...initialContext };
-    this.formData = {
-      cepclient: "",
-      ceplead: "",
-      name: "",
-      lastname: "",
-      responsibleName: "",
-      isOwner: true,
-      email: "",
-      tel: "",
-      telDisplay: "",
-      privacyPolicy: false,
-      marketingConsent: false,
-      firstName: "",
-      lastName: "",
-      idLead: "",
-      recordtypeDevName: "Cliente_Final",
-      company: "ABC",
-      company2: "Cliente_Final",
-      canalDeEntrada: "Landing Page Catalogo",
-      nameGuideShop: "",
-      photos: [],
-      ...initialContext,
-    };
+    this._context = { ...initial.context };
+    this.formData = initial.data;
     this.updateStep1Progress();
     this.updateStep2Progress();
   }
