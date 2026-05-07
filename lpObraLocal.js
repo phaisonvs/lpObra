@@ -3,7 +3,7 @@
     "https://abcdaconstrucao.my.site.com/lpencarte/sfsites/c/cms/delivery/media";
 
   const MEDIA = {
-    logo: "MCQIMEUAX37NC27PV7N7UDNKPFSA",
+    logo: "MCAOMDZSUL4NB2VCUWVWSZOVGR7E",
     check: "MC5KOENH3UP5ENDNGGFNHQT3EANA",
     beneficiosIcone1: "MCL2KOEY6F25BHDDAD6OLZXG76WI",
     beneficiosIcone2: "MCS2CAWZ5TIBCOLBWERPYO53TY7A",
