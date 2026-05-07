@@ -638,6 +638,18 @@ select:-webkit-autofill {
   flex: 0 0 auto;
 }
 
+.submit-error {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #8b1a1a;
+  background: rgba(227, 6, 45, 0.08);
+  border: 1px solid rgba(227, 6, 45, 0.22);
+}
+
 .frame-botoes {
   display: flex;
   align-items: center;

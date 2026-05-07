@@ -162,6 +162,10 @@
                 </label>
               </div>
 
+              <template if:true={hasSubmitError}>
+                <p class="submit-error" role="alert">{submitError}</p>
+              </template>
+
               <div class="frame-botoes">
                 <button type="button" class="botao-voltar-Step2" aria-label="Voltar" disabled={isSubmitting}
                   onclick={handlePrevStep2}>

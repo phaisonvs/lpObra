@@ -1,5 +1,6 @@
 import { LightningElement, track } from "lwc";
 import basePath from "@salesforce/community/basePath";
+import upsertLead from "@salesforce/apex/LpSejaUmFranqueadoService.upsertLead";
 
 const SCROLL_EVT = "lpobra-scroll";
 const MEDIA_CHECK = "MCVRWGAJ42NFFITBCCJLEOV4KKYE";
@@ -50,6 +51,112 @@ function buildIdLead(firstName, lastName, phoneDigits) {
   return `${firstName}${lastName.replace(/\s+/g, "")}${phoneDigits}`;
 }
 
+function readLandingQueryContext() {
+  const qp = new URLSearchParams(window.location.search);
+  const referralToken = qp.get("ref") || qp.get("storeRef") || "";
+  const storeRef = qp.get("storeRef") || referralToken;
+  return {
+    origemLead: "Hotsite",
+    campanha: "Cadastro sua obra",
+    tipoLead: "Obra",
+    canal: "LP",
+    storeRef,
+    referralToken,
+    lojaIndicadora: referralToken,
+    lojaSugerida: "",
+    utm_source: qp.get("utm_source") || "",
+    utm_medium: qp.get("utm_medium") || "",
+    utm_campaign: qp.get("utm_campaign") || "",
+    utm_content: qp.get("utm_content") || "",
+    pageUrl: window.location.href,
+    dataHoraCadastro: new Date().toISOString(),
+  };
+}
+
+// Transitório: substituir por LpObraService.submitLead({ payloadJson: JSON.stringify(payload) }) quando o Apex dedicado existir.
+async function submitLpObraLead(payload) {
+  return upsertLead({ lead: JSON.stringify(payload) });
+}
+
+function apexUiMessage(error) {
+  if (!error) return "";
+  const b = error.body;
+  if (b && Array.isArray(b.pageErrors) && b.pageErrors.length) {
+    return b.pageErrors.map((p) => p.message).filter(Boolean).join(" ");
+  }
+  if (b && b.message) return String(b.message);
+  if (error.message) return String(error.message);
+  return "";
+}
+
+function parseLeadSubmitResult(raw) {
+  let leadId = "";
+  let guideShopName = "";
+  let success = true;
+  if (raw == null || raw === "") {
+    return { success: true, leadId, guideShopName };
+  }
+  if (typeof raw === "string") {
+    const t = raw.trim();
+    if (/^[a-zA-Z0-9]{15,18}$/.test(t)) {
+      leadId = t;
+    }
+    return { success: true, leadId, guideShopName };
+  }
+  if (typeof raw === "object") {
+    if (raw.success === false) {
+      success = false;
+    }
+    if (raw.leadId) leadId = String(raw.leadId);
+    else if (raw.id) leadId = String(raw.id);
+    if (raw.guideShopName) guideShopName = String(raw.guideShopName);
+    return { success, leadId, guideShopName };
+  }
+  return { success: true, leadId, guideShopName };
+}
+
+function buildLeadPayload(formData, idLead) {
+  return {
+    cepclient: formData.cepclient,
+    ceplead: formData.ceplead,
+    name: formData.name,
+    lastname: formData.lastname,
+    responsibleName: formData.responsibleName,
+    isOwner: formData.isOwner,
+    email: formData.email,
+    tel: formData.tel,
+    privacyPolicy: String(formData.privacyPolicy),
+    marketingConsent: String(formData.marketingConsent),
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    idLead,
+    recordtypeDevName: formData.recordtypeDevName,
+    company: formData.company,
+    company2: formData.company2,
+    canalDeEntrada: formData.canalDeEntrada,
+    nameGuideShop: formData.nameGuideShop,
+    photos: Array.isArray(formData.photos) ? formData.photos : [],
+    origemLead: formData.origemLead,
+    campanha: formData.campanha,
+    tipoLead: formData.tipoLead,
+    canal: formData.canal,
+    storeRef: formData.storeRef,
+    referralToken: formData.referralToken,
+    lojaIndicadora: formData.lojaIndicadora,
+    lojaSugerida: formData.lojaSugerida,
+    utm_source: formData.utm_source,
+    utm_medium: formData.utm_medium,
+    utm_campaign: formData.utm_campaign,
+    utm_content: formData.utm_content,
+    pageUrl: formData.pageUrl,
+    dataHoraCadastro: formData.dataHoraCadastro,
+  };
+}
+
+async function uploadSelectedFiles(_leadId, _files) {
+  return Promise.resolve();
+}
+
 export default class LpObraFormulario extends LightningElement {
   checkUrl = mediaUrl(MEDIA_CHECK);
 
@@ -66,6 +173,7 @@ export default class LpObraFormulario extends LightningElement {
   @track uploadFeedbackText = "";
   @track uploadFeedbackKind = "";
   @track dropzoneDrag = false;
+  @track submitError = "";
 
   @track formData = {};
 
@@ -75,22 +183,7 @@ export default class LpObraFormulario extends LightningElement {
   _onScrollEvt = null;
 
   connectedCallback() {
-    const qp = new URLSearchParams(window.location.search);
-    const initialContext = {
-      origemLead: "Hotsite",
-      campanha: "Cadastro sua obra",
-      tipoLead: "Obra",
-      canal: "LP",
-      storeRef: qp.get("storeRef") || "",
-      lojaIndicadora: qp.get("storeRef") || "",
-      lojaSugerida: "",
-      utm_source: qp.get("utm_source") || "",
-      utm_medium: qp.get("utm_medium") || "",
-      utm_campaign: qp.get("utm_campaign") || "",
-      utm_content: qp.get("utm_content") || "",
-      pageUrl: window.location.href,
-      dataHoraCadastro: new Date().toISOString(),
-    };
+    const initialContext = readLandingQueryContext();
     this.formData = {
       cepclient: "",
       ceplead: "",
@@ -109,7 +202,6 @@ export default class LpObraFormulario extends LightningElement {
       recordtypeDevName: "Cliente_Final",
       company: "ABC",
       company2: "Cliente_Final",
-      owner: "005bJ000006pPLxQAM",
       canalDeEntrada: "Landing Page Catalogo",
       nameGuideShop: "",
       photos: [],
@@ -202,6 +294,10 @@ export default class LpObraFormulario extends LightningElement {
 
   get showUploadFeedback() {
     return Boolean(this.uploadFeedbackText);
+  }
+
+  get hasSubmitError() {
+    return Boolean(this.submitError);
   }
 
   get uploadFeedbackClass() {
@@ -510,22 +606,31 @@ export default class LpObraFormulario extends LightningElement {
       ceplead: this.formData.cepclient,
       firstName: this.formData.name.trim(),
       lastName: this.formData.lastname.trim(),
-      nameGuideShop: this.formData.lojaIndicadora || this.formData.lojaSugerida || "",
+      // O token/referral deve ser resolvido no Apex para encontrar a Guide Shop real. Não usar referralToken como nameGuideShop.
+      nameGuideShop: this.formData.lojaSugerida || "",
       pageUrl,
       dataHoraCadastro,
     };
     this._context = { ...this._context, pageUrl, dataHoraCadastro };
   }
 
-  pushDataLayer() {
+  pushDataLayerAfterSuccess({ leadId, guideShopName }) {
     const w = window;
     w.dataLayer = w.dataLayer || [];
     w.dataLayer.push({
       event: "Lead",
+      formName: "Cadastro sua obra",
       email: this.formData.email,
       phone: this.formData.tel,
       cep: this.formData.cepclient,
       storeRef: this.formData.storeRef,
+      referralToken: this.formData.referralToken,
+      leadId: leadId || "",
+      guideShopName: guideShopName || "",
+      utm_source: this.formData.utm_source,
+      utm_medium: this.formData.utm_medium,
+      utm_campaign: this.formData.utm_campaign,
+      utm_content: this.formData.utm_content,
       isOwner: this.formData.isOwner,
       hasPhotos: this.selectedFiles.length > 0,
     });
@@ -539,56 +644,58 @@ export default class LpObraFormulario extends LightningElement {
 
   handlePrevStep2() {
     if (this.isSubmitting) return;
+    this.submitError = "";
     this.currentStep = 1;
     this.updateStep1Progress();
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     if (this.isSubmitting || !this.isStep2Valid()) return;
+    this.submitError = "";
     this.updateHiddenContext();
     const idLead = buildIdLead(
       this.formData.firstName,
       this.formData.lastName,
       normalizeDigits(this.formData.tel)
     );
-    const payload = {
-      ...this.formData,
-      idLead,
-      marketingConsent: String(this.formData.marketingConsent),
-      privacyPolicy: String(this.formData.privacyPolicy),
-    };
+    const payload = buildLeadPayload(this.formData, idLead);
     this.isSubmitting = true;
-    window.setTimeout(() => {
-      console.log("PUSH:", JSON.stringify(payload));
-      console.log("submit ok (local preview)");
-      this.pushDataLayer();
-      this.isSubmitting = false;
+    try {
+      const raw = await submitLpObraLead(payload);
+      const parsed = parseLeadSubmitResult(raw);
+      if (!parsed.success) {
+        this.submitError =
+          "Não conseguimos concluir o cadastro agora. Tente novamente em instantes ou entre em contato com o suporte.";
+        return;
+      }
+      let leadId = parsed.leadId;
+      let guideShopName = parsed.guideShopName;
+      if (this.selectedFiles.length && leadId) {
+        await uploadSelectedFiles(leadId, this.selectedFiles);
+      }
+      if (!guideShopName && this.formData.nameGuideShop) {
+        guideShopName = this.formData.nameGuideShop;
+      }
+      this.pushDataLayerAfterSuccess({ leadId, guideShopName });
       this.currentStep = 3;
       this.progress = 100;
-    }, 2500);
+    } catch (e) {
+      const apexMsg = apexUiMessage(e);
+      this.submitError =
+        apexMsg ||
+        "Não conseguimos concluir o cadastro agora. Tente novamente em instantes ou entre em contato com o suporte.";
+    } finally {
+      this.isSubmitting = false;
+    }
   }
 
   handleReset() {
-    const qp = new URLSearchParams(window.location.search);
-    const initialContext = {
-      origemLead: "Hotsite",
-      campanha: "Cadastro sua obra",
-      tipoLead: "Obra",
-      canal: "LP",
-      storeRef: qp.get("storeRef") || "",
-      lojaIndicadora: qp.get("storeRef") || "",
-      lojaSugerida: "",
-      utm_source: qp.get("utm_source") || "",
-      utm_medium: qp.get("utm_medium") || "",
-      utm_campaign: qp.get("utm_campaign") || "",
-      utm_content: qp.get("utm_content") || "",
-      pageUrl: window.location.href,
-      dataHoraCadastro: new Date().toISOString(),
-    };
+    const initialContext = readLandingQueryContext();
     this.currentStep = 1;
     this.progress = 0;
     this.validEmail = false;
     this.isSubmitting = false;
+    this.submitError = "";
     this.selectedFiles = [];
     this.uploadFileRows = [];
     this.uploadFeedbackText = "";
@@ -613,7 +720,6 @@ export default class LpObraFormulario extends LightningElement {
       recordtypeDevName: "Cliente_Final",
       company: "ABC",
       company2: "Cliente_Final",
-      owner: "005bJ000006pPLxQAM",
       canalDeEntrada: "Landing Page Catalogo",
       nameGuideShop: "",
       photos: [],
