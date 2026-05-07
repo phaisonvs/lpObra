@@ -27,7 +27,7 @@ Campos enviados (objeto plano; sem `owner`; sem `telDisplay`):
 - Identificação / pessoa: `name`, `lastname`, `firstName`, `lastName`, `responsibleName` (string vazia no JSON quando `isOwner` é true), `isOwner`, `email`, `tel`
 - Endereço obra: `cepclient`, `ceplead` (espelho do CEP no submit)
 - Consentimentos (string `"true"` / `"false"`): `privacyPolicy`, `marketingConsent`
-- Lead / registro: `idLead` (composto no front a partir de nome + telefone), `recordtypeDevName`, `company`, `company2`, `canalDeEntrada` (valor fixo no LWC: `Landing Page Cadastro Sua Obra`)
+- Lead / registro: `idLead` (composto no front a partir de nome + telefone), `recordtypeDevName`, `company`, `company2`, `canalDeEntrada` (valor fixo no LWC alinhado à lista restrita do org, ex.: `Landing Page Catalogo`)
 - Indicação e UTM: `storeRef`, `referralToken`, `lojaIndicadora`, `lojaSugerida`, `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`
 - Origem: `origemLead`, `campanha` (ex.: `Cadastro Sua Obra` no LWC), `tipoLead`, `canal`, `pageUrl`, `dataHoraCadastro`
 - Guia: `nameGuideShop` vem só de `lojaSugerida` no submit; **não** repetir o token de indicação em `nameGuideShop` — o Apex resolve `referralToken` / `lojaIndicadora` para a Guide Shop real.
