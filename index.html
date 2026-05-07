@@ -1,14 +1,429 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LP Obra</title>
-  <meta http-equiv="refresh" content="0; url=./lpObraLocal/">
-  <script>
-    window.location.replace("./lpObraLocal/" + window.location.search + window.location.hash);
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LP Obra Local</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./lpObraLocal.css">
 </head>
+
 <body>
+  <div id="lp-obra-local-root" class="lp-obra-local-root lp-step-1">
+    <header class="lp-fixed-header" id="lp-fixed-header">
+      <div class="lp-fixed-header__inner">
+        <button type="button" class="lp-fixed-header__menu-btn" id="lp-header-menu-btn" aria-expanded="false"
+          aria-controls="lp-header-drawer" aria-label="Abrir menu">
+          <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
+          <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
+          <span class="lp-fixed-header__menu-bar" aria-hidden="true"></span>
+        </button>
+
+        <a class="lp-fixed-header__brand" href="#lp-hero" aria-label="ABC da construção">
+          <img id="img-logo-hero" class="lp-fixed-header__logo" alt="ABC da construção">
+        </a>
+
+        <nav class="lp-fixed-header__nav" aria-label="Menu da página">
+          <button class="lp-fixed-header__link" type="button" data-scroll-to="#lp-beneficios-vip">Benefícios</button>
+          <button class="lp-fixed-header__link" type="button">Como funciona</button>
+          <button class="lp-fixed-header__link" type="button">Dúvidas</button>
+        </nav>
+
+        <div class="lp-fixed-header__trailing">
+          <a class="lp-fixed-header__cta lp-cta-premium" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+            Quero cadastrar meu orçamento
+          </a>
+        </div>
+      </div>
+
+      <div id="lp-header-drawer" class="lp-fixed-header__drawer" hidden>
+        <div class="lp-fixed-header__drawer-top">
+          <button type="button" class="lp-fixed-header__drawer-close" id="lp-header-drawer-close" aria-label="Fechar menu">
+            <svg class="lp-fixed-header__drawer-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <nav class="lp-fixed-header__drawer-nav" aria-label="Menu principal">
+          <button type="button" class="lp-fixed-header__drawer-link" data-scroll-to="#lp-beneficios-vip">Benefícios</button>
+          <button type="button" class="lp-fixed-header__drawer-link">Como funciona</button>
+          <button type="button" class="lp-fixed-header__drawer-link">Dúvidas</button>
+          <a class="lp-fixed-header__drawer-cta lp-cta-premium" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+            Quero cadastrar meu orçamento
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="lp-hero" class="lp-block lp-hero" aria-labelledby="lp-hero-title">
+        <div class="lp-hero__media" aria-hidden="true"></div>
+        <span class="lp-hero__vip-flare lp-hero__vip-flare--main" aria-hidden="true"></span>
+
+        <div class="lp-hero__inner">
+          <div class="lp-hero__content">
+            <h1 id="lp-hero-title" class="lp-hero__title">
+              Cadastre seu orçamento
+              <span class="hero-accent">na maior do Brasil</span>
+              e se torne
+              <span class="lp-hero__vip">
+                <span class="lp-hero__vip-streak lp-hero__vip-streak--a" aria-hidden="true"></span>
+                <span class="lp-hero__vip-streak lp-hero__vip-streak--b" aria-hidden="true"></span>
+                <span class="lp-hero__vip-spark lp-hero__vip-spark--1" aria-hidden="true"></span>
+                <span class="lp-hero__vip-spark lp-hero__vip-spark--2" aria-hidden="true"></span>
+                <span class="lp-hero__vip-spark lp-hero__vip-spark--3" aria-hidden="true"></span>
+                <span class="lp-hero__vip-label">CLIENTE VIP</span>
+              </span>
+            </h1>
+
+            <div class="lp-hero__stats" aria-label="Destaques da marca">
+              <article class="lp-hero__stat">
+                <div class="lp-hero__stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 14h22v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V14Z" stroke="currentColor" stroke-width="1.35"
+                      stroke-linejoin="round" />
+                    <path d="M3 14 16 5l13 9" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M12 22h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.85" />
+                  </svg>
+                </div>
+                <strong>Maior rede</strong>
+                <span>especialista em acabamentos do Brasil</span>
+              </article>
+              <article class="lp-hero__stat">
+                <div class="lp-hero__stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.5 12a3.5 3.5 0 1 1 7 0c0 2-1.5 3.5-3.5 5-2-1.5-3.5-3-3.5-5Z"
+                      stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                      d="M21 13.5a2.8 2.8 0 0 1 5.6 0c0 2.2-1.8 3.8-2.8 4.8M4.4 13.5a2.8 2.8 0 0 0 5.6 0c0 2.2-1.8 3.8-2.8 4.8"
+                      stroke="currentColor" stroke-width="1.35" stroke-linecap="round" />
+                    <path d="M8 24c1.2-2.2 3.6-3.8 8-3.8s6.8 1.6 8 3.8" stroke="currentColor" stroke-width="1.35"
+                      stroke-linecap="round" />
+                  </svg>
+                </div>
+                <strong>+400</strong>
+                <span>franquias</span>
+              </article>
+              <article class="lp-hero__stat">
+                <div class="lp-hero__stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9 10c3.5-1.2 7.2-1.8 11.2-1.2 2.8.4 5.4 1.4 7.8 2.8v11.4c-2.6-1.6-5.6-2.6-8.8-3-4.4-.6-8.6.2-12.2 2.2V10Z"
+                      stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" />
+                    <path d="M9 14.5c3.2-1 6.8-1.4 10.4-.9 2.4.3 4.7 1 6.8 2.1" stroke="currentColor" stroke-width="1.2"
+                      stroke-linecap="round" opacity="0.75" />
+                    <circle cx="13" cy="19" r="1.1" fill="currentColor" opacity="0.55" />
+                    <circle cx="19" cy="17.5" r="0.9" fill="currentColor" opacity="0.45" />
+                  </svg>
+                </div>
+                <strong>11</strong>
+                <span>estados do país</span>
+              </article>
+              <article class="lp-hero__stat">
+                <div class="lp-hero__stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16 3.8 25.5 8.2v7.4c0 5.4-3.6 10.4-9.5 12.6-5.9-2.2-9.5-7.2-9.5-12.6V8.2L16 3.8Z"
+                      stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" />
+                    <path d="M16 11.2l1.6 3.2 3.5.5-2.5 2.5.6 3.5L16 19.5l-3.2 1.7.6-3.5-2.5-2.5 3.5-.5 1.6-3.2Z"
+                      stroke="currentColor" stroke-width="1.15" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <strong>+68 anos</strong>
+                <span>de tradição</span>
+              </article>
+            </div>
+
+            <div class="lp-hero__actions">
+              <a class="lp-hero__cta lp-cta-premium" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+                Quero cadastrar meu orçamento
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="lp-hero__scroll-hint" data-scroll-to="#lp-form-anchor"
+          aria-label="Continuar para o cadastro">
+          <svg class="lp-hero__scroll-hint-icon" width="28" height="28" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.85" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+    </section>
+
+    <section id="lp-beneficios-vip" class="lp-block lp-beneficios-vip" aria-labelledby="lp-beneficios-vip-titulo">
+      <div class="beneficios-vip-conteudo">
+        <header class="beneficios-vip-cabecalho">
+          <div class="beneficios-vip-divisor" aria-hidden="true"></div>
+          <span class="beneficios-vip-coroa" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              <path d="m4 18 1.5-9 5 4 2.5-7 2.5 7 5-4L20 18" stroke="currentColor" stroke-width="1.6"
+                stroke-linejoin="round" />
+              <circle cx="6" cy="8.5" r="1.2" fill="currentColor" />
+              <circle cx="12.9" cy="4.7" r="1.2" fill="currentColor" />
+              <circle cx="18.1" cy="8.4" r="1.2" fill="currentColor" />
+            </svg>
+          </span>
+          <div class="beneficios-vip-divisor" aria-hidden="true"></div>
+        </header>
+
+        <h2 id="lp-beneficios-vip-titulo" class="beneficios-vip-titulo">Benefícios Exclusivos</h2>
+
+        <div class="beneficios-vip-grade">
+          <article class="beneficios-vip-card">
+            <figure class="beneficios-vip-icone">
+              <img id="img-beneficio-vip-1" alt="Poder de compra da maior rede">
+            </figure>
+            <p class="beneficios-vip-texto">
+              Poder de compra da
+              <strong class="beneficios-vip-texto-destaque">Maior Rede</strong>
+              de acabamentos do país
+            </p>
+          </article>
+
+          <article class="beneficios-vip-card">
+            <figure class="beneficios-vip-icone">
+              <img id="img-beneficio-vip-2" alt="Argamassa grátis">
+            </figure>
+            <p class="beneficios-vip-texto">
+              Argamassa
+              <strong class="beneficios-vip-texto-destaque">Grátis</strong>
+              para cada 5m² de porcelanatos
+            </p>
+          </article>
+
+          <article class="beneficios-vip-card">
+            <figure class="beneficios-vip-icone">
+              <img id="img-beneficio-vip-3" alt="Cashback do ABC Prime">
+            </figure>
+            <p class="beneficios-vip-texto">
+              Cashback de
+              <strong class="beneficios-vip-texto-destaque">R$ 1.200</strong>
+              na assinatura do ABC Prime
+            </p>
+          </article>
+
+          <article class="beneficios-vip-card">
+            <figure class="beneficios-vip-icone">
+              <img id="img-beneficio-vip-4" alt="Lista de promoções de entrada">
+            </figure>
+            <p class="beneficios-vip-texto">
+              Lista Exclusiva de
+              <strong class="beneficios-vip-texto-destaque">20 a 30</strong>
+              promocionais de entrada
+            </p>
+          </article>
+        </div>
+
+        <div class="beneficios-vip-acao">
+          <a class="lp-cta-premium beneficios-vip-botao" href="#lp-form-anchor" data-scroll-to="#lp-form-anchor">
+            Quero ser cliente VIP
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="lp-form-anchor" class="lp-block lp-form-section lp-form-anchor section-formulario"
+      aria-label="Formulário de cadastro">
+        <div class="form-container">
+          <aside class="franquia-info">
+            <span class="franquia-info-icone" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 6h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"
+                  stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M12 4V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" />
+                <path d="M11 12h10M11 16h10M11 20h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <h1 class="franquia-info-titulo">Cadastre seu orçamento e ative seu status <span class="hero-accent">VIP</span>
+            </h1>
+            <p class="franquia-info-subtitulo">
+              Preencha os dados ao lado para cadastrar seu orçamento e garantir benefícios exclusivos.
+            </p>
+          </aside>
+
+          <div class="forms">
+            <div class="form-title">
+              <figure aria-hidden="true">
+                <img id="img-form-check" class="check-form" alt="Cadastro concluído">
+              </figure>
+
+              <h2 class="forms-title titleStep1 lp-only-step1">Qual CEP da sua obra?</h2>
+              <p class="forms-subtitle subtitleStep1 lp-only-step1">
+                Vamos identificar a região da sua obra para seguir com o cadastro.
+              </p>
+
+              <h2 class="forms-title titleStep2 lp-only-step2">Agora nos conte quem vai falar com a ABC</h2>
+              <p class="forms-subtitle subtitleStep2 lp-only-step2">
+                Complete seus dados para avançar com segurança e agilidade.
+              </p>
+
+              <h2 class="forms-title titleStep3 lp-only-step3">Cadastro realizado com sucesso</h2>
+              <p class="forms-subtitle subtitleStep3 lp-only-step3">
+                Recebemos o seu cadastro e seguimos com a próxima etapa.
+              </p>
+
+              <div class="container-progress-bar lp-only-step12" aria-hidden="true">
+                <div class="line-progress">
+                  <div id="progress-bar-fill" class="progress-bar"></div>
+                </div>
+                <span id="progress-text" class="progress-percent">0%</span>
+              </div>
+
+              <div class="container-progress-bar lp-only-step3" aria-hidden="true">
+                <div class="line-progress">
+                  <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+                </div>
+                <span class="progress-percent progress-success">100%</span>
+              </div>
+            </div>
+
+            <form id="lp-form" novalidate>
+              <div class="formStep1 lp-only-step1">
+                <div class="label-input">
+                  <label for="cepclient">Qual é o CEP da obra?</label>
+                  <input id="cepclient" name="cepclient" type="text" inputmode="numeric" autocomplete="postal-code"
+                    maxlength="9" placeholder="00000-000">
+                </div>
+
+                <div class="next-step-container">
+                  <button id="btn-next-step1" type="button" class="botao-proxima-etapa" disabled>Continuar</button>
+                </div>
+              </div>
+
+              <div class="formStep2 lp-only-step2">
+                <div class="label-input-row">
+                  <div class="label-input">
+                    <label for="name">Nome</label>
+                    <input id="name" name="name" type="text" autocomplete="given-name" placeholder="Seu nome">
+                  </div>
+
+                  <div class="label-input">
+                    <label for="lastname">Sobrenome</label>
+                    <input id="lastname" name="lastname" type="text" autocomplete="family-name"
+                      placeholder="Seu sobrenome">
+                  </div>
+                </div>
+
+                <div class="responsible-row">
+                  <div class="label-input responsible-input">
+                    <label for="responsibleName">Nome do responsável pela conta</label>
+                    <input id="responsibleName" name="responsibleName" type="text" autocomplete="name"
+                      placeholder="Nome completo">
+                    <small class="field-hint">Preencha somente se a obra estiver no nome de outra pessoa.</small>
+                  </div>
+
+                  <div class="toggle-field">
+                    <span class="toggle-label">Você é o responsável?</span>
+                    <label class="toggle-switch" for="isOwner">
+                      <input id="isOwner" name="isOwner" type="checkbox" checked>
+                      <span class="toggle-track" aria-hidden="true">
+                        <span class="toggle-thumb"></span>
+                      </span>
+                      <span id="owner-state" class="toggle-state">Sim</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="label-input-row">
+                  <div class="label-input">
+                    <label for="tel">Telefone</label>
+                    <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel"
+                      placeholder="(00) 00000-0000">
+                  </div>
+
+                  <div class="label-input">
+                    <label for="email">E-mail</label>
+                    <input id="email" name="email" type="email" autocomplete="email"
+                      placeholder="voce@exemplo.com">
+                  </div>
+                </div>
+
+                <div class="label-input upload-group">
+                  <label for="obraPhotos" class="optional-label">Fotos da obra (opcional)</label>
+                  <div id="upload-dropzone" class="upload-dropzone" tabindex="0" role="button"
+                    aria-label="Enviar fotos da obra">
+                    <input id="obraPhotos" name="obraPhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+                    <div class="upload-visual">
+                      <span class="upload-icon" aria-hidden="true">+</span>
+                      <strong>Arraste ou clique para adicionar fotos</strong>
+                      <small>JPG, PNG ou WEBP, até 10 MB por arquivo</small>
+                    </div>
+                  </div>
+                  <ul id="upload-file-list" class="upload-file-list" hidden></ul>
+                  <p id="upload-feedback" class="upload-feedback" hidden></p>
+                </div>
+
+                <div class="checkbox-group">
+                  <label class="checkbox-item" for="privacyPolicy">
+                    <input id="privacyPolicy" name="privacyPolicy" type="checkbox">
+                    <span>Li e aceito a Política de Privacidade.</span>
+                  </label>
+
+                  <label class="checkbox-item" for="marketingConsent">
+                    <input id="marketingConsent" name="marketingConsent" type="checkbox">
+                    <span>Autorizo contato para novidades, ofertas e acompanhamento.</span>
+                  </label>
+                </div>
+
+                <div class="frame-botoes">
+                  <button id="btn-prev-step2" type="button" class="botao-voltar-Step2" aria-label="Voltar">
+                    ←
+                  </button>
+                  <button id="btn-submit" type="button" class="botao-proxima-etapa" disabled>
+                    QUERO SER VIP!
+                  </button>
+                </div>
+              </div>
+
+              <div class="formStep3 lp-only-step3">
+                <div class="success-actions success-actions--single">
+                  <button id="btn-reset" type="button" class="botaoReset resetar-btn success-reset-btn">
+                    FAZER NOVO CADASTRO
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div id="submit-loading-overlay" class="submit-loading-overlay" aria-hidden="true">
+              <div class="submit-loading-card" role="status" aria-live="polite">
+                <span class="submit-loading-kicker">Processando</span>
+                <h2>Estamos preparando o seu cadastro</h2>
+                <p>Por favor, aguarde enquanto organizamos seus dados para seguir com segurança.</p>
+                <div class="submit-loading-track" aria-hidden="true">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <footer class="footer lp-footer">
+      <div class="footer-container">
+        <a class="logo-box" href="#lp-hero" aria-label="ABC da construção">
+          <img id="img-logo-footer" alt="ABC da construção">
+        </a>
+        <div class="footer-slogan">
+          <p>ABC da Construção. Sua obra, nossa especialidade.</p>
+        </div>
+        <div class="footer-copyright">
+          <p>Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./lpObraLocal.js"></script>
 </body>
+
 </html>
