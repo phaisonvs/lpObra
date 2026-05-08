@@ -1,0 +1,205 @@
+<template>
+  <section class="formulario lp-block lp-form-section lp-form-anchor section-formulario" data-lp-section="form"
+    aria-label="Formulário de cadastro">
+    <div class="section-formulario-midia" aria-hidden="true" style={formBgImageStyle}></div>
+    <div class={formRootClass}>
+      <div class="form-container">
+        <aside class="franquia-info">
+          <span class="franquia-info-icone" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 6h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"
+                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+              <path d="M12 4V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" />
+              <path d="M11 12h10M11 16h10M11 20h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </span>
+          <h1 class="franquia-info-titulo">Cadastre seu orçamento e ative seu status <span class="hero-accent">VIP</span>
+          </h1>
+          <p class="franquia-info-subtitulo">
+            Preencha os dados ao lado para cadastrar seu orçamento e garantir benefícios exclusivos.
+          </p>
+        </aside>
+
+        <div class={formsClass}>
+          <div class="form-title">
+            <figure aria-hidden="true">
+              <img class="check-form" src={checkUrl} alt="Cadastro concluído">
+            </figure>
+
+            <h2 class="forms-title titleStep1 lp-only-step1">Qual CEP da sua obra?</h2>
+            <p class="forms-subtitle subtitleStep1 lp-only-step1">
+              Vamos identificar a região da sua obra para seguir com o cadastro.
+            </p>
+
+            <h2 class="forms-title titleStep2 lp-only-step2">Agora nos conte quem vai falar com a ABC</h2>
+            <p class="forms-subtitle subtitleStep2 lp-only-step2">
+              Complete seus dados para avançar com segurança e agilidade.
+            </p>
+
+            <h2 class="forms-title titleStep3 lp-only-step3">Cadastro realizado com sucesso</h2>
+            <p class="forms-subtitle subtitleStep3 lp-only-step3">
+              Recebemos o seu cadastro e seguimos com a próxima etapa.
+            </p>
+
+            <div class="container-progress-bar lp-only-step12" aria-hidden="true">
+              <div class="line-progress">
+                <div class="progress-bar" style={progressBarStyle}></div>
+              </div>
+              <span class="progress-percent">{progress}%</span>
+            </div>
+
+            <div class="container-progress-bar lp-only-step3" aria-hidden="true">
+              <div class="line-progress">
+                <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+              </div>
+              <span class="progress-percent progress-success">100%</span>
+            </div>
+          </div>
+
+          <form novalidate onsubmit={handleFormSubmit}>
+            <div class="formStep1 lp-only-step1">
+              <div class="label-input">
+                <label for="cepclient">Qual é o CEP da obra?</label>
+                <input id="cepclient" name="cepclient" type="text" inputmode="numeric" autocomplete="postal-code"
+                  maxlength="9" placeholder="00000-000" value={formData.cepclient} oninput={handleCepInput}
+                  onchange={handleCepChange}>
+              </div>
+
+              <div class="next-step-container">
+                <button type="button" class={nextStep1Class} disabled={nextStep1Disabled} onclick={handleNextStep1}>
+                  Continuar
+                </button>
+              </div>
+            </div>
+
+            <div class="formStep2 lp-only-step2">
+              <div class="label-input-row">
+                <div class="label-input">
+                  <label for="name">Nome</label>
+                  <input id="name" name="name" type="text" autocomplete="given-name" placeholder="Seu nome"
+                    value={formData.name} oninput={handleNameInput}>
+                </div>
+
+                <div class="label-input">
+                  <label for="lastname">Sobrenome</label>
+                  <input id="lastname" name="lastname" type="text" autocomplete="family-name"
+                    placeholder="Seu sobrenome" value={formData.lastname} oninput={handleLastnameInput}>
+                </div>
+              </div>
+
+              <div class="responsible-row">
+                <div class="label-input responsible-input">
+                  <label for="responsibleName">Nome do responsável pela conta</label>
+                  <input id="responsibleName" name="responsibleName" type="text" autocomplete="name"
+                    placeholder="Nome completo" value={formData.responsibleName} oninput={handleResponsibleInput}
+                    required={responsibleRequired}>
+                  <small class="field-hint">Preencha somente se a obra estiver no nome de outra pessoa.</small>
+                </div>
+
+                <div class="toggle-field">
+                  <span class="toggle-label">Você é o responsável?</span>
+                  <label class="toggle-switch" for="isOwner">
+                    <input id="isOwner" name="isOwner" type="checkbox" checked={formData.isOwner} onchange={handleOwnerChange}>
+                    <span class="toggle-track" aria-hidden="true">
+                      <span class="toggle-thumb"></span>
+                    </span>
+                    <span class="toggle-state">{ownerStateLabel}</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="label-input-row">
+                <div class="label-input">
+                  <label for="tel">Telefone</label>
+                  <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel"
+                    placeholder="(00) 00000-0000" value={formData.telDisplay} oninput={handleTelInput}
+                    onchange={handleTelChange}>
+                </div>
+
+                <div class="label-input">
+                  <label for="email">E-mail</label>
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com"
+                    value={formData.email} oninput={handleEmailInput}>
+                </div>
+              </div>
+
+              <div class="label-input upload-group">
+                <label for="obraPhotos" class="optional-label">Fotos ou arquivos da obra (opcional)</label>
+                <div class={dropzoneClass} tabindex="0" role="button" aria-label="Enviar arquivos da obra"
+                  onclick={handleDropzoneClick} onkeydown={handleDropzoneKey} ondragenter={handleDragEnter}
+                  ondragover={handleDragOver} ondragleave={handleDragLeave} ondrop={handleDrop}>
+                  <input id="obraPhotos" name="obraPhotos" type="file"
+                    accept="image/jpeg,image/png,image/webp,application/pdf" multiple onchange={handlePhotosChange}>
+                  <div class="upload-visual">
+                    <span class="upload-icon" aria-hidden="true">+</span>
+                    <strong>Arraste ou clique para adicionar arquivos</strong>
+                    <small>JPG, PNG, WEBP ou PDF, até 10 MB por arquivo</small>
+                  </div>
+                </div>
+                <template if:true={hasUploadFiles}>
+                  <ul class="upload-file-list">
+                    <template for:each={uploadFileRows} for:item="row">
+                      <li key={row.key} class="upload-file-item">{row.label}</li>
+                    </template>
+                  </ul>
+                </template>
+                <template if:true={showUploadFeedback}>
+                  <p class={uploadFeedbackClass}>{uploadFeedbackText}</p>
+                </template>
+              </div>
+
+              <div class="checkbox-group">
+                <label class="checkbox-item" for="privacyPolicy">
+                  <input id="privacyPolicy" name="privacyPolicy" type="checkbox" checked={formData.privacyPolicy}
+                    onchange={handlePrivacyChange}>
+                  <span>Li e aceito a Política de Privacidade.</span>
+                </label>
+
+                <label class="checkbox-item" for="marketingConsent">
+                  <input id="marketingConsent" name="marketingConsent" type="checkbox"
+                    checked={formData.marketingConsent} onchange={handleMarketingChange}>
+                  <span>Autorizo contato para novidades, ofertas e acompanhamento.</span>
+                </label>
+              </div>
+
+              <template if:true={hasSubmitError}>
+                <p class="submit-error" role="alert">{submitError}</p>
+              </template>
+
+              <div class="frame-botoes">
+                <button type="button" class="botao-voltar-Step2" aria-label="Voltar" disabled={isSubmitting}
+                  onclick={handlePrevStep2}>
+                  ←
+                </button>
+                <button type="button" class={submitBtnClass} disabled={submitDisabled} onclick={handleSubmit}
+                  aria-busy={submitAriaBusy}>
+                  {submitBtnLabel}
+                </button>
+              </div>
+            </div>
+
+            <div class="formStep3 lp-only-step3">
+              <div class="success-actions success-actions--single">
+                <button type="button" class="botaoReset resetar-btn success-reset-btn" onclick={handleReset}>
+                  FAZER NOVO CADASTRO
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class={overlayClass} aria-hidden={overlayAriaHidden}>
+            <div class="submit-loading-card" role="status" aria-live="polite">
+              <span class="submit-loading-kicker">Processando</span>
+              <h2>Estamos preparando o seu cadastro</h2>
+              <p>Por favor, aguarde enquanto organizamos seus dados para seguir com segurança.</p>
+              <div class="submit-loading-track" aria-hidden="true">
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
