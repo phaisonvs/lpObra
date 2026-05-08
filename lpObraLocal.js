@@ -9,8 +9,12 @@
     beneficiosIcone2: "MCS2CAWZ5TIBCOLBWERPYO53TY7A",
     beneficiosIcone3: "MCWRCTE2LHH5HGTCTCKS35KCRG6M",
     beneficiosIcone4: "MCD2RXWJWJJBBPZFXU7H7SFOAV6I",
-    beneficiosBackground: "MC2CXJ5XPFWBGGJOC2YF4QGICDLI",
+    beneficiosBackground: "MCWYKNQ3QJNNFFBIOUM3JPJILYNI",
     formBackground: "MC3AV2PUUGKZG7VLGYS7ZVLDWKKY",
+    heroStatMaiorRede: "MCJVZP7WT55VBTTDDTEJ4ZZ3PIDI",
+    heroStatFranquias: "MCUB6X3YZF5NELJE7KWRP3ELBQ2Q",
+    heroStatEstados: "MC77V6DWHB4VFJ7C3BQ63JDR5WK4",
+    heroStatAnos: "MCM3QTX3NBBJCGVCI7CRIO5B4Z6U",
   };
 
   const MAX_FILE_SIZE_MB = 10;
@@ -281,7 +285,7 @@
   const heroSection = document.getElementById("lp-hero");
   const formSection = document.getElementById("lp-form-anchor");
   if (formSection) {
-    formSection.style.setProperty("--form-bg-url", `url("${mediaUrl(MEDIA.formBackground)}")`);
+    formSection.style.setProperty("--form-bg-image", `url("${mediaUrl(MEDIA.formBackground)}")`);
   }
   const scrollTriggers = document.querySelectorAll("[data-scroll-to]");
   const headerMenuBtn = document.getElementById("lp-header-menu-btn");
@@ -313,6 +317,10 @@
   const imgBeneficioVip2 = document.getElementById("img-beneficio-vip-2");
   const imgBeneficioVip3 = document.getElementById("img-beneficio-vip-3");
   const imgBeneficioVip4 = document.getElementById("img-beneficio-vip-4");
+  const imgHeroStat1 = document.getElementById("lp-hero-stat-icon-1");
+  const imgHeroStat2 = document.getElementById("lp-hero-stat-icon-2");
+  const imgHeroStat3 = document.getElementById("lp-hero-stat-icon-3");
+  const imgHeroStat4 = document.getElementById("lp-hero-stat-icon-4");
   let heroFrame = 0;
   let formParallaxFrame = 0;
   let beneficiosParallaxFrame = 0;
@@ -375,7 +383,7 @@
 
   if (beneficiosSection) {
     beneficiosSection.style.setProperty(
-      "--beneficios-vip-bg",
+      "--beneficios-bg-image",
       `url("${mediaUrl(MEDIA.beneficiosBackground)}")`
     );
   }
@@ -392,8 +400,20 @@
     imgBeneficioVip3.src = mediaUrl(MEDIA.beneficiosIcone3);
   }
 
-  if (imgBeneficioVip4) {
-    imgBeneficioVip4.src = mediaUrl(MEDIA.beneficiosIcone4);
+  if (imgHeroStat1) {
+    imgHeroStat1.src = mediaUrl(MEDIA.heroStatMaiorRede);
+  }
+
+  if (imgHeroStat2) {
+    imgHeroStat2.src = mediaUrl(MEDIA.heroStatFranquias);
+  }
+
+  if (imgHeroStat3) {
+    imgHeroStat3.src = mediaUrl(MEDIA.heroStatEstados);
+  }
+
+  if (imgHeroStat4) {
+    imgHeroStat4.src = mediaUrl(MEDIA.heroStatAnos);
   }
 
   function setStepClass() {

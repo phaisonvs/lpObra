@@ -9,7 +9,7 @@
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default,lightningCommunity__Page">
             <property name="heroBackgroundMediaId" type="String" default="MCVNHFJIPNTJHUVKP2H2X56ZMWUE" label="CMS: fundo da hero" description="ID de entrega (delivery) do arquivo de fundo da hero no CMS." />
-            <property name="beneficiosBackgroundMediaId" type="String" default="MC2CXJ5XPFWBGGJOC2YF4QGICDLI" label="CMS: fundo benefícios" description="ID de entrega do arquivo de fundo da seção Benefícios no CMS. Ajuste aqui se a imagem não aparecer no builder ou na página." />
+            <property name="beneficiosBackgroundMediaId" type="String" default="MCWYKNQ3QJNNFFBIOUM3JPJILYNI" label="CMS: fundo benefícios" description="ID de entrega do arquivo de fundo da seção Benefícios no CMS. Ajuste aqui se a imagem não aparecer no builder ou na página." />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

@@ -60,57 +60,28 @@
         <div class="lp-hero__stats" aria-label="Destaques da marca">
           <article class="lp-hero__stat">
             <div class="lp-hero__stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 14h22v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V14Z" stroke="currentColor" stroke-width="1.35"
-                  stroke-linejoin="round" />
-                <path d="M3 14 16 5l13 9" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M12 22h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.85" />
-              </svg>
+              <img class="lp-hero__stat-icon-img" src={urlHeroStatIconMaiorRede} alt="">
             </div>
             <strong>Maior rede</strong>
             <span>especialista em acabamentos do Brasil</span>
           </article>
           <article class="lp-hero__stat">
             <div class="lp-hero__stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10.5 12a3.5 3.5 0 1 1 7 0c0 2-1.5 3.5-3.5 5-2-1.5-3.5-3-3.5-5Z"
-                  stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" />
-                <path
-                  d="M21 13.5a2.8 2.8 0 0 1 5.6 0c0 2.2-1.8 3.8-2.8 4.8M4.4 13.5a2.8 2.8 0 0 0 5.6 0c0 2.2-1.8 3.8-2.8 4.8"
-                  stroke="currentColor" stroke-width="1.35" stroke-linecap="round" />
-                <path d="M8 24c1.2-2.2 3.6-3.8 8-3.8s6.8 1.6 8 3.8" stroke="currentColor" stroke-width="1.35"
-                  stroke-linecap="round" />
-              </svg>
+              <img class="lp-hero__stat-icon-img" src={urlHeroStatIconFranquias} alt="">
             </div>
             <strong>+400</strong>
             <span>franquias</span>
           </article>
           <article class="lp-hero__stat">
             <div class="lp-hero__stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M9 10c3.5-1.2 7.2-1.8 11.2-1.2 2.8.4 5.4 1.4 7.8 2.8v11.4c-2.6-1.6-5.6-2.6-8.8-3-4.4-.6-8.6.2-12.2 2.2V10Z"
-                  stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" />
-                <path d="M9 14.5c3.2-1 6.8-1.4 10.4-.9 2.4.3 4.7 1 6.8 2.1" stroke="currentColor" stroke-width="1.2"
-                  stroke-linecap="round" opacity="0.75" />
-                <circle cx="13" cy="19" r="1.1" fill="currentColor" opacity="0.55" />
-                <circle cx="19" cy="17.5" r="0.9" fill="currentColor" opacity="0.45" />
-              </svg>
+              <img class="lp-hero__stat-icon-img" src={urlHeroStatIconEstados} alt="">
             </div>
             <strong>11</strong>
             <span>estados do país</span>
           </article>
           <article class="lp-hero__stat">
             <div class="lp-hero__stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M16 3.8 25.5 8.2v7.4c0 5.4-3.6 10.4-9.5 12.6-5.9-2.2-9.5-7.2-9.5-12.6V8.2L16 3.8Z"
-                  stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" />
-                <path d="M16 11.2l1.6 3.2 3.5.5-2.5 2.5.6 3.5L16 19.5l-3.2 1.7.6-3.5-2.5-2.5 3.5-.5 1.6-3.2Z"
-                  stroke="currentColor" stroke-width="1.15" stroke-linejoin="round" />
-              </svg>
+              <img class="lp-hero__stat-icon-img" src={urlHeroStatIconAnos} alt="">
             </div>
             <strong>+68 anos</strong>
             <span>de tradição</span>
@@ -135,8 +106,9 @@
     </button>
   </section>
 
-  <section class="beneficios lp-block lp-beneficios-vip" data-lp-section="beneficios" style={sectionBgStyle}
+  <section class="beneficios lp-block lp-beneficios-vip" data-lp-section="beneficios"
     aria-labelledby="lp-beneficios-vip-titulo">
+    <div class="beneficios-vip-fundo-midia" aria-hidden="true" style={beneficiosMediaStyle}></div>
     <div class="beneficios-vip-conteudo">
       <header class="beneficios-vip-cabecalho">
         <div class="beneficios-vip-divisor" aria-hidden="true"></div>

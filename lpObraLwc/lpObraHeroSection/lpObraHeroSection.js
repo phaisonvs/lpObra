@@ -4,17 +4,38 @@ import basePath from "@salesforce/community/basePath";
 const SCROLL_EVT = "lpobra-scroll";
 const MEDIA_LOGO = "MC2XLLTWVOQZBHLIDCYNNG2MNL5I";
 const MEDIA_HERO_BG_DEFAULT = "MCVNHFJIPNTJHUVKP2H2X56ZMWUE";
-const MEDIA_BENEFICIOS_BG_DEFAULT = "MC2CXJ5XPFWBGGJOC2YF4QGICDLI";
+const MEDIA_BENEFICIOS_BG_DEFAULT = "MCWYKNQ3QJNNFFBIOUM3JPJILYNI";
 const MEDIA_BENEFICIOS = {
   beneficiosIcone1: "MCL2KOEY6F25BHDDAD6OLZXG76WI",
   beneficiosIcone2: "MCS2CAWZ5TIBCOLBWERPYO53TY7A",
   beneficiosIcone3: "MCWRCTE2LHH5HGTCTCKS35KCRG6M",
   beneficiosIcone4: "MCD2RXWJWJJBBPZFXU7H7SFOAV6I",
 };
+const MEDIA_HERO_STATS = {
+  maiorRede: "MCJVZP7WT55VBTTDDTEJ4ZZ3PIDI",
+  franquias: "MCUB6X3YZF5NELJE7KWRP3ELBQ2Q",
+  estados: "MC77V6DWHB4VFJ7C3BQ63JDR5WK4",
+  anos: "MCM3QTX3NBBJCGVCI7CRIO5B4Z6U",
+};
 const MOBILE_HEADER_REVEAL_PX = 200;
+const BENEFICIOS_CARDS_SCROLL_TRIGGER_PX = 150;
 
 function mediaUrl(id) {
   return `${basePath}/sfsites/c/cms/delivery/media/${id}`;
+}
+
+function resolveCmsDeliverySrc(value, fallbackId) {
+  const raw = typeof value === "string" ? value.trim() : "";
+  if (!raw) return mediaUrl(fallbackId);
+  if (/^https?:\/\//i.test(raw)) return raw;
+  if (raw.startsWith("//")) return `https:${raw}`;
+  if (raw.startsWith("/")) {
+    const bp = typeof basePath === "string" ? basePath.replace(/\/$/, "") : "";
+    const origin = typeof window !== "undefined" && window.location ? window.location.origin : "";
+    if (bp && (raw === bp || raw.startsWith(`${bp}/`))) return `${origin}${raw}`;
+    return `${origin}${bp}${raw}`;
+  }
+  return mediaUrl(raw);
 }
 
 export default class LpObraHeroSection extends LightningElement {
@@ -38,6 +59,7 @@ export default class LpObraHeroSection extends LightningElement {
   _onKey = null;
   _onScrollEvt = null;
   _heroContentMotionBound = false;
+  _beneficiosCardsRevealReady = false;
   _lastMobileHeaderRevealed = null;
 
   get drawerHidden() {
@@ -56,14 +78,30 @@ export default class LpObraHeroSection extends LightningElement {
     return mediaUrl(MEDIA_LOGO);
   }
 
+  get urlHeroStatIconMaiorRede() {
+    return mediaUrl(MEDIA_HERO_STATS.maiorRede);
+  }
+
+  get urlHeroStatIconFranquias() {
+    return mediaUrl(MEDIA_HERO_STATS.franquias);
+  }
+
+  get urlHeroStatIconEstados() {
+    return mediaUrl(MEDIA_HERO_STATS.estados);
+  }
+
+  get urlHeroStatIconAnos() {
+    return mediaUrl(MEDIA_HERO_STATS.anos);
+  }
+
   get heroMediaStyle() {
     const id = this._cmsId(this.heroBackgroundMediaId, MEDIA_HERO_BG_DEFAULT);
     return `--hero-bg-image: url("${mediaUrl(id)}");`;
   }
 
-  get sectionBgStyle() {
-    const id = this._cmsId(this.beneficiosBackgroundMediaId, MEDIA_BENEFICIOS_BG_DEFAULT);
-    return `--beneficios-vip-bg: url("${mediaUrl(id)}");`;
+  get beneficiosMediaStyle() {
+    const u = resolveCmsDeliverySrc(this.beneficiosBackgroundMediaId, MEDIA_BENEFICIOS_BG_DEFAULT);
+    return `--beneficios-bg-image: url("${u}");`;
   }
 
   _cmsId(value, fallback) {
@@ -78,11 +116,13 @@ export default class LpObraHeroSection extends LightningElement {
       this.scheduleHeroParallax();
       this.updateMobileHeaderReveal();
       this.scheduleBeneficiosParallax();
+      this.updateBeneficiosCardsScrollReveal();
     };
     this._onResize = () => {
       this.scheduleHeroParallax();
       this.updateMobileHeaderReveal();
       this.scheduleBeneficiosParallax();
+      this.updateBeneficiosCardsScrollReveal();
     };
     this._onMq = () => this.updateMobileHeaderReveal();
     this._onDocClick = (event) => {
@@ -119,9 +159,15 @@ export default class LpObraHeroSection extends LightningElement {
     this.updateMobileHeaderReveal();
     this.updateHeroParallax();
     this.updateBeneficiosParallax();
+    this.updateBeneficiosCardsScrollReveal();
   }
 
   renderedCallback() {
+    this._bindHeroContentAnimationEnd();
+    this._initBeneficiosCardsScrollReveal();
+  }
+
+  _bindHeroContentAnimationEnd() {
     if (this._heroContentMotionBound) return;
     const content = this.template.querySelector(".lp-hero__content");
     if (!content) return;
@@ -136,6 +182,33 @@ export default class LpObraHeroSection extends LightningElement {
       },
       { once: true }
     );
+  }
+
+  _initBeneficiosCardsScrollReveal() {
+    if (this._beneficiosCardsRevealReady) return;
+    const section = this.template.querySelector(".lp-beneficios-vip");
+    if (!section) return;
+    this._beneficiosCardsRevealReady = true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      section.classList.add("beneficios-vip--cards-visible");
+      return;
+    }
+    this.updateBeneficiosCardsScrollReveal();
+  }
+
+  updateBeneficiosCardsScrollReveal() {
+    const section = this.template.querySelector(".lp-beneficios-vip");
+    if (!section) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      section.classList.add("beneficios-vip--cards-visible");
+      return;
+    }
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    const vh = window.innerHeight || 0;
+    const rect = section.getBoundingClientRect();
+    const inView = rect.bottom > 0 && rect.top < vh;
+    const show = y >= BENEFICIOS_CARDS_SCROLL_TRIGGER_PX && inView;
+    section.classList.toggle("beneficios-vip--cards-visible", show);
   }
 
   disconnectedCallback() {

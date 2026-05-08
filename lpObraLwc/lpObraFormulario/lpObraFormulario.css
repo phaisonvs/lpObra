@@ -67,23 +67,37 @@ select:-webkit-autofill {
   --form-bg-parallax-y: 0px;
 }
 
-.section-formulario::before {
+.section-formulario-midia {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #1a1410;
+  transform: translate3d(var(--form-bg-parallax-x), var(--form-bg-parallax-y), 0) scale(1.12);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.section-formulario-midia::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-color: #1a1410;
-  background-image: var(--form-bg-url, none);
+  background-image: var(--form-bg-image, none);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: calc(50% + var(--form-bg-parallax-x)) calc(46% + var(--form-bg-parallax-y));
   pointer-events: none;
-  will-change: background-position;
 }
 
 @media (max-width: 720px) {
-  .section-formulario::before {
-    background-position: calc(50% + var(--form-bg-parallax-x)) calc(40% + var(--form-bg-parallax-y));
+  .section-formulario-midia {
+    transform: none;
+    will-change: auto;
   }
 }
 .lp-form-root {

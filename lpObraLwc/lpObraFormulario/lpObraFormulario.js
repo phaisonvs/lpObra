@@ -210,7 +210,7 @@ export default class LpObraFormulario extends LightningElement {
   checkUrl = mediaUrl(MEDIA_CHECK);
 
   get formBgImageStyle() {
-    return `--form-bg-url: url("${mediaUrl(MEDIA_FORM_BG)}");`;
+    return `--form-bg-image: url("${mediaUrl(MEDIA_FORM_BG)}");`;
   }
 
   @track currentStep = 1;
