@@ -400,6 +400,10 @@
     imgBeneficioVip3.src = mediaUrl(MEDIA.beneficiosIcone3);
   }
 
+  if (imgBeneficioVip4) {
+    imgBeneficioVip4.src = mediaUrl(MEDIA.beneficiosIcone4);
+  }
+
   if (imgHeroStat1) {
     imgHeroStat1.src = mediaUrl(MEDIA.heroStatMaiorRede);
   }

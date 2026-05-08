@@ -665,9 +665,21 @@ a.lp-cta-premium:focus {
   z-index: 0;
   background-image: var(--hero-bg-image);
   background-size: cover;
-  background-position: center 14%;
+  background-position: 58% 14%;
   background-repeat: no-repeat;
   pointer-events: none;
+  animation: lp-hero-bg-pan-desktop 22s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
+  will-change: background-position;
+}
+
+@keyframes lp-hero-bg-pan-desktop {
+  0% {
+    background-position: 52% 14%;
+  }
+
+  100% {
+    background-position: 68% 14%;
+  }
 }
 
 .lp-hero__media::before {
@@ -1420,7 +1432,7 @@ a.lp-cta-premium:focus {
   .lp-hero__media::after {
     background-size: auto 100%;
     background-position: 50% 38%;
-    animation: lp-hero-foto-reveal-mulher-bg 12s cubic-bezier(0.32, 0.06, 0.13, 1) 1 forwards;
+    animation: lp-hero-foto-reveal-mulher-bg 14s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
     will-change: background-position;
   }
 
@@ -1460,44 +1472,64 @@ a.lp-cta-premium:focus {
   .lp-hero__stats {
     margin-top: 18px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: start;
-    gap: 5px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 10px 12px;
     max-width: 100%;
   }
 
   .lp-hero__stat {
-    height: fit-content;
-    padding: 7px 4px 9px;
-    gap: 4px;
-    border-radius: 12px;
+    height: auto;
+    min-height: 0;
     min-width: 0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 10px 12px;
+    gap: 6px;
+    border-radius: 14px;
+    justify-content: center;
+  }
+
+  .lp-hero__stat:nth-child(n) {
+    box-shadow:
+      0 0 0 1px rgba(255, 248, 220, 0.06) inset,
+      0 12px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  .lp-hero__stat:nth-child(2),
+  .lp-hero__stat:nth-child(4) {
+    box-shadow:
+      inset 1px 0 0 rgba(244, 214, 140, 0.22),
+      0 0 0 1px rgba(255, 248, 220, 0.06) inset,
+      0 12px 28px rgba(0, 0, 0, 0.18);
   }
 
   .lp-hero__stat-icon {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
   }
 
   .lp-hero__stat-icon svg,
   .lp-hero__stat-icon img {
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
   }
 
   .lp-hero__stat strong {
-    font-size: clamp(14px, 3.5vw, 17px);
-    line-height: 1.1;
+    font-size: clamp(14px, 3.4vw, 17px);
+    line-height: 1.12;
+    max-width: 100%;
   }
 
   .lp-hero__stat span {
-    font-size: clamp(12px, 2.9vw, 14px);
-    line-height: 1.35;
-    display: -webkit-box;
-    line-clamp: 3;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: clamp(9.5px, 2.35vw, 11.5px);
+    line-height: 1.38;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    color: rgba(255, 255, 255, 0.88);
   }
 
   .lp-hero__actions .lp-cta-premium {

@@ -1075,6 +1075,16 @@ select:-webkit-autofill {
   }
 }
 
+@keyframes lp-hero-foto-reveal-mulher-bg {
+  0% {
+    background-position: 60% 38%;
+  }
+
+  100% {
+    background-position: 76% 38%;
+  }
+}
+
 @media (max-width: 720px) {
   .beneficios-vip::before {
     background:
@@ -1252,7 +1262,7 @@ select:-webkit-autofill {
   .lp-hero__media::after {
     background-size: auto 100%;
     background-position: 50% 38%;
-    animation: lp-hero-foto-reveal-mulher-bg 12s cubic-bezier(0.32, 0.06, 0.13, 1) 1 forwards;
+    animation: lp-hero-foto-reveal-mulher-bg 14s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
     will-change: background-position;
   }
 
