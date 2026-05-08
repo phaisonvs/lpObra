@@ -13,10 +13,6 @@ const MOBILE_HEADER_MQ = "(max-width: 720px)";
 
 export default class LpObraHeroSectionv2 extends LightningElement {
 
-  isMenuActive = false;
-
-  _onDocClick = null;
-
   companyLogoURL = `${basePath}/sfsites/c/cms/delivery/media/MC2XLLTWVOQZBHLIDCYNNG2MNL5I`;
 
   urlHeroStatIconMaiorRede = `${basePath}/sfsites/c/cms/delivery/media/MCJVZP7WT55VBTTDDTEJ4ZZ3PIDI`;
@@ -41,32 +37,11 @@ export default class LpObraHeroSectionv2 extends LightningElement {
 
   _lastMobileHeaderRevealed = null;
 
-  get obraNavbarClass() {
-    return `obra-navbar${this.isMenuActive ? " obra-navbar--active" : ""}`;
-  }
-
-  get menuAriaExpanded() {
-    return String(this.isMenuActive);
-  }
-
-  get menuButtonLabel() {
-    return this.isMenuActive ? "Fechar menu" : "Abrir menu";
-  }
-
   get heroBackgroundSrc() {
     return `${lpObraAssets}/${HERO_BG_PATH_IN_STATIC_RESOURCE}`;
   }
 
   connectedCallback() {
-    this._onDocClick = (event) => {
-      if (!this.isMenuActive) return;
-      const path =
-        typeof event.composedPath === "function" ? event.composedPath() : [];
-      if (path.includes(this.template.host)) return;
-      this.isMenuActive = false;
-    };
-    document.addEventListener("click", this._onDocClick);
-
     this._mqMobileHeader = window.matchMedia(MOBILE_HEADER_MQ);
     this._onWindowScrollHeader = () => this.updateMobileHeaderReveal();
     this._onResizeHeader = () => this.updateMobileHeaderReveal();
@@ -80,8 +55,6 @@ export default class LpObraHeroSectionv2 extends LightningElement {
   }
 
   disconnectedCallback() {
-    document.removeEventListener("click", this._onDocClick);
-    this._onDocClick = null;
     if (this._intersectionObserver) {
       this._intersectionObserver.disconnect();
       this._intersectionObserver = null;
@@ -116,31 +89,13 @@ export default class LpObraHeroSectionv2 extends LightningElement {
     }
   }
 
-  toggleMenu(event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    this.isMenuActive = !this.isMenuActive;
-  }
-
   handleLogoClick(event) {
     event.preventDefault();
     this.scrollPageToSection("hero");
   }
 
-  handleMenuNavClick(event) {
-    event.preventDefault();
-    const t = event.currentTarget.dataset.scrollTarget;
-    this.isMenuActive = false;
-    if (t) {
-      this.scrollPageToSection(t);
-    }
-  }
-
   handleHeaderCtaClick(event) {
     event.preventDefault();
-    this.isMenuActive = false;
     window.dispatchEvent(
       new CustomEvent(SCROLL_EVT, {
         detail: { target: "form" },
@@ -167,16 +122,12 @@ export default class LpObraHeroSectionv2 extends LightningElement {
           : 0) ||
         0;
       const revealed = y >= MOBILE_HEADER_REVEAL_PX;
-      if (this._lastMobileHeaderRevealed === true && !revealed) {
-        this.isMenuActive = false;
-      }
       this._lastMobileHeaderRevealed = revealed;
       host.classList.toggle("cabecalho-mobile--visivel", revealed);
       host.classList.toggle("cabecalho-mobile--oculto", !revealed);
     } else {
       this._lastMobileHeaderRevealed = null;
       host.classList.remove("cabecalho-mobile--visivel", "cabecalho-mobile--oculto");
-      this.isMenuActive = false;
     }
   }
 
