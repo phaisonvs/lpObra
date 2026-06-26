@@ -45,7 +45,7 @@
       iconSrc: `${ASSET_BASE}/icon/bn-idade-abc.png`,
       value: `+${new Date().getFullYear() - 1958}`,
       displayValue: "+",
-      description: "anos presente no varejo",
+      description: "anos de experiencia no varejo",
     },
     {
       id: "6",

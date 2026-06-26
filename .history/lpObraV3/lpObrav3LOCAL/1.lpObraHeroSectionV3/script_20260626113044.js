@@ -38,14 +38,14 @@
       iconSrc: `${ASSET_BASE}/icon/bn-estados.png`,
       value: "+11",
       displayValue: "+",
-      description: "estados do estao com a ABC",
+      description: "estados do Brasil estao com a ABC",
     },
     {
       id: "5",
       iconSrc: `${ASSET_BASE}/icon/bn-idade-abc.png`,
       value: `+${new Date().getFullYear() - 1958}`,
       displayValue: "+",
-      description: "anos presente no varejo",
+      description: "anos de experiencia no varejo",
     },
     {
       id: "6",

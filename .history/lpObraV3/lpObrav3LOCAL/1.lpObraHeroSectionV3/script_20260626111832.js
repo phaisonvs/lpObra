@@ -29,8 +29,8 @@
     {
       id: "3",
       iconSrc: `${ASSET_BASE}/icon/bn-icon-10x-agil.png`,
-      value: "1 milhão",
-      displayValue: "1 milhão",
+      value: "1milhão",
+      displayValue: "1milhão",
       description: "de itens vendidos em 2025",
     },
     {
@@ -38,14 +38,14 @@
       iconSrc: `${ASSET_BASE}/icon/bn-estados.png`,
       value: "+11",
       displayValue: "+",
-      description: "estados do estao com a ABC",
+      description: "estados do Brasil estao com a ABC",
     },
     {
       id: "5",
       iconSrc: `${ASSET_BASE}/icon/bn-idade-abc.png`,
       value: `+${new Date().getFullYear() - 1958}`,
       displayValue: "+",
-      description: "anos presente no varejo",
+      description: "anos de experiencia no varejo",
     },
     {
       id: "6",
@@ -99,24 +99,12 @@
       .map(
         (item) => `
           <li data-item-id="${item.id}">
-            <div class="big-numbers__desktop-layout">
-              <div class="big-numbers__icon-wrap">
-                <img class="big-numbers__icon" src="${item.iconSrc}" alt="" aria-hidden="true" />
-              </div>
-              <div class="big-numbers__info">
-                <span class="number number--desktop" data-original-value="${item.value}">${item.displayValue}</span>
-                <span class="big-numbers__description">${item.description}</span>
-              </div>
+            <div>
+              <img class="big-numbers__icon" src="${item.iconSrc}" alt="" aria-hidden="true" />
             </div>
-
-            <div class="big-numbers__mobile-layout">
-              <div class="big-numbers__mobile-topline">
-                <div class="big-numbers__icon-wrap">
-                  <img class="big-numbers__icon" src="${item.iconSrc}" alt="" aria-hidden="true" />
-                </div>
-                <span class="number number--mobile" data-original-value="${item.value}">${item.displayValue}</span>
-              </div>
-              <span class="big-numbers__description big-numbers__description--mobile">${item.description}</span>
+            <div class="big-numbers__info">
+              <span class="number" data-original-value="${item.value}">${item.displayValue}</span>
+              <span>${item.description}</span>
             </div>
           </li>
         `,

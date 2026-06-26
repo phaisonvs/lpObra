@@ -256,7 +256,7 @@ a {
   color: #ffffff;
   font-size: clamp(1rem, 1.6vw, 1.55rem);
   font-weight: 900;
-  line-height: 120%;
+  line-height: 1.15;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
@@ -321,7 +321,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.4rem;
+  gap: 0.5rem;
   width: 100%;
 }
 
@@ -650,10 +650,6 @@ a {
 }
 
 @media (max-width: 768px) {
-  .hero-background__img {
-    object-position: 80% center;
-  }
-
   .hero-section {
     min-height: 100svh;
     padding-top: calc(82px + env(safe-area-inset-top, 0px));
@@ -701,7 +697,7 @@ a {
 
   .subtitulo {
     font-size: clamp(0.85rem, 1.8vw, 1.05rem);
-    line-height: 120%;
+    line-height: 1.08;
   }
 
   .titulo-principal {
@@ -746,7 +742,7 @@ a {
 
   .big-numbers__mobile-topline {
     justify-content: center;
-    gap: 0.rem;
+    gap: 0.55rem;
     margin-inline: auto;
     width: fit-content;
   }
@@ -805,10 +801,6 @@ a {
 }
 
 @media (max-width: 432px) {
-  .hero-background__img {
-    object-position: 65% center;
-  }
-
   .obra-content-menu {
     padding: 0 1rem;
   }
@@ -846,8 +838,8 @@ a {
   }
 
   .subtitulo {
-    font-size: clamp(1.2rem, 3vw, 0.92rem);
-    line-height: 120%;
+    font-size: clamp(0.78rem, 3vw, 0.92rem);
+    line-height: 1.04;
   }
 
   .titulo-principal {
@@ -890,7 +882,7 @@ a {
     font-size: 0.58rem;
     line-height: 1.08;
     width: 100%;
-    text-align: center !important;
+    text-align: left !important;
   }
 
   .obra-beneficios__titulo {
@@ -945,8 +937,7 @@ a {
   }
 
   .subtitulo {
-    font-size: 1rem;
-
+    font-size: 0.72rem;
   }
 
   .titulo-principal {

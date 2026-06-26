@@ -204,7 +204,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 36px;
-  text-align: left;
+  text-align: center;
 }
 
 .hero-content>* {
@@ -256,7 +256,7 @@ a {
   color: #ffffff;
   font-size: clamp(1rem, 1.6vw, 1.55rem);
   font-weight: 900;
-  line-height: 120%;
+  line-height: 1.15;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
@@ -290,7 +290,10 @@ a {
 }
 
 .big-numbers li {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
   padding: 1rem;
   border-radius: 2rem;
   background: linear-gradient(180deg, #ffffff 0%, #eaf0ef 60%, #c3c3c3 100%);
@@ -305,33 +308,6 @@ a {
   animation: fadeInUp 0.7s ease forwards;
 }
 
-.big-numbers__desktop-layout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-.big-numbers__mobile-layout {
-  display: none;
-}
-
-.big-numbers__mobile-topline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.4rem;
-  width: 100%;
-}
-
-.big-numbers__icon-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-}
-
 .big-numbers__icon {
   width: auto;
   height: 3rem;
@@ -342,10 +318,6 @@ a {
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
-}
-
-.big-numbers__description {
-  display: block;
 }
 
 .number {
@@ -650,17 +622,6 @@ a {
 }
 
 @media (max-width: 768px) {
-  .hero-background__img {
-    object-position: 80% center;
-  }
-
-  .hero-section {
-    min-height: 100svh;
-    padding-top: calc(82px + env(safe-area-inset-top, 0px));
-    padding-bottom: max(18px, calc(14px + env(safe-area-inset-bottom, 0px)));
-    align-items: flex-start;
-  }
-
   .obra-content-menu {
     padding: 0 16px;
   }
@@ -672,121 +633,55 @@ a {
   }
 
   .hero-container {
-    min-height: calc(100svh - 96px);
-    padding: 0 12px;
-    align-items: center;
-    justify-content: center;
+    padding: 0 14px;
+    align-items: flex-start;
   }
 
   .hero-content {
-    align-items: center;
-    justify-content: center;
-    gap: clamp(12px, 1.9vh, 18px);
+    gap: 22px;
     max-width: 100%;
-    text-align: center;
-  }
-
-  .logo-abc {
-    min-width: 3.35rem;
-    min-height: 3.35rem;
-    max-width: 3.75rem;
-    max-height: 3.75rem;
-  }
-
-  .hero-text {
-    align-items: center;
-    gap: 10px;
-    text-align: center;
   }
 
   .subtitulo {
-    font-size: clamp(0.85rem, 1.8vw, 1.05rem);
-    line-height: 120%;
+    font-size: clamp(0.95rem, 2vw, 1.3rem);
   }
 
   .titulo-principal {
-    font-size: clamp(2.2rem, 6.6vw, 2.7rem);
-    line-height: 1.02;
-    max-width: 700px;
-    margin-inline: auto;
-    text-align: center;
+    font-size: clamp(2.8rem, 7vw, 2.5rem);
+    line-height: 1.08;
   }
 
   .big-numbers {
-    display: flex;
-    justify-content: center;
     padding: 0;
   }
 
   .big-numbers ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem;
-    width: min(100%, 520px);
-    margin-inline: auto;
+    gap: 0.75rem;
   }
 
   .big-numbers li {
-    border-radius: 1rem;
-    padding: 0.8rem 0.72rem;
-    font-size: 12px;
-  }
-
-  .big-numbers__desktop-layout {
-    display: none;
-  }
-
-  .big-numbers__mobile-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.18rem;
-    text-align: center;
-    width: 100%;
-  }
-
-  .big-numbers__mobile-topline {
-    justify-content: center;
-    gap: 0.rem;
-    margin-inline: auto;
-    width: fit-content;
+    border-radius: 1.3rem;
+    padding: 1.1rem 0.9rem;
   }
 
   .big-numbers__icon {
-    width: 3rem;
+    width: 4.5rem;
     height: auto;
   }
 
-  .big-numbers__mobile-topline .number {
-    flex: 1 1 auto;
-    text-align: left;
+  .big-numbers__info {
+    gap: 2px;
   }
 
   .number {
-    font-size: 1.55rem;
-  }
-
-  .big-numbers__description--mobile {
-    align-self: stretch;
-    display: block;
-    font-size: 0.68rem;
-    line-height: 1.12;
-    width: 100%;
-    text-align: left !important;
+    font-size: 2.35rem;
   }
 
   .cta-button {
-    width: min(74%, 420px);
-    padding: 11px 18px;
-    font-size: clamp(10px, 1.9vw, 12px);
-  }
-
-  .disclaimer {
-    font-size: 0.6rem;
-    line-height: 1.1;
-  }
-
-  .hero-scroll-hint {
-    display: none;
+    width: min(80%, 550px);
+    padding: 13px 22px;
+    font-size: clamp(11px, 2.2vw, 14px);
   }
 
   .obra-beneficios__grade {
@@ -805,56 +700,33 @@ a {
 }
 
 @media (max-width: 432px) {
-  .hero-background__img {
-    object-position: 65% center;
-  }
-
   .obra-content-menu {
     padding: 0 1rem;
   }
 
   .hero-section {
     min-height: 100svh;
-    padding-top: calc(78px + env(safe-area-inset-top, 0px));
-    padding-bottom: max(12px, calc(10px + env(safe-area-inset-bottom, 0px)));
+    padding-top: calc(84px + env(safe-area-inset-top, 0px));
+    padding-bottom: max(32px, calc(24px + env(safe-area-inset-bottom, 0px)));
     align-items: flex-start;
   }
 
   .hero-container {
     padding: 0 12px;
-    min-height: calc(100svh - 86px);
-    justify-content: center;
+    min-height: calc(100svh - 108px);
   }
 
   .hero-content {
-    align-items: center;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .logo-abc {
-    min-width: 2.9rem;
-    min-height: 2.9rem;
-    max-width: 3.2rem;
-    max-height: 3.2rem;
-  }
-
-  .hero-text {
-    align-items: center;
-    gap: 8px;
-    text-align: center;
+    gap: 18px;
   }
 
   .subtitulo {
-    font-size: clamp(1.2rem, 3vw, 0.92rem);
-    line-height: 120%;
+    font-size: clamp(0.9rem, 3.4vw, 1.1rem);
   }
 
   .titulo-principal {
-    font-size: clamp(2.5rem, 8vw, 2.35rem);
-    line-height: 0.98;
-    margin-inline: auto;
-    text-align: center;
+    font-size: clamp(2.8rem, 7vw, 2.5rem);
+    line-height: 1.08;
   }
 
   .big-numbers {
@@ -864,33 +736,25 @@ a {
   .big-numbers ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
-    width: min(100%, 360px);
-    margin-inline: auto;
   }
 
   .big-numbers li {
-    border-radius: 1rem;
-    padding: 0.72rem 0.55rem;
+    border-radius: 1.3rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.35rem;
+    text-align: center;
+    padding: 1rem 0.8rem;
   }
 
-  .big-numbers__icon {
-    width: 2.45rem;
-  }
-
-  .big-numbers__mobile-layout {
-    gap: 0.1rem;
+  .big-numbers__info {
+    align-items: center;
+    gap: 0;
   }
 
   .number {
-    font-size: 1.25rem;
-  }
-
-  .big-numbers__description--mobile {
-    align-self: stretch;
-    font-size: 0.58rem;
-    line-height: 1.08;
-    width: 100%;
-    text-align: center !important;
+    font-size: 1.55rem;
   }
 
   .obra-beneficios__titulo {
@@ -910,74 +774,11 @@ a {
   .cta-button,
   .obra-beneficios__cta,
   .obra-menu-cta-btn {
-    min-height: 2.45rem;
-    font-size: 0.85rem;
+    min-height: 2.75rem;
+    font-size: 1rem;
   }
 
   .obra-beneficios__acao {
     margin-top: 2rem;
-  }
-}
-
-@media (max-width: 432px) and (max-height: 760px) {
-  .hero-section {
-    padding-top: calc(72px + env(safe-area-inset-top, 0px));
-    padding-bottom: max(8px, env(safe-area-inset-bottom, 0px));
-  }
-
-  .hero-container {
-    min-height: calc(100svh - 78px);
-  }
-
-  .hero-content {
-    gap: 9px;
-  }
-
-  .logo-abc {
-    min-width: 2.55rem;
-    min-height: 2.55rem;
-    max-width: 2.8rem;
-    max-height: 2.8rem;
-  }
-
-  .hero-text {
-    gap: 6px;
-  }
-
-  .subtitulo {
-    font-size: 1rem;
-
-  }
-
-  .titulo-principal {
-    font-size: clamp(1.72rem, 7.4vw, 2.05rem);
-  }
-
-  .big-numbers ul {
-    gap: 0.35rem;
-  }
-
-  .big-numbers li {
-    padding: 0.58rem 0.45rem;
-  }
-
-  .big-numbers__icon {
-    width: 2.15rem;
-  }
-
-  .number {
-    font-size: 1.08rem;
-  }
-
-  .big-numbers__description--mobile {
-    font-size: 0.52rem;
-  }
-
-  .cta-button {
-    padding: 9px 14px;
-  }
-
-  .disclaimer {
-    font-size: 0.52rem;
   }
 }

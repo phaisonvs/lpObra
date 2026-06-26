@@ -204,7 +204,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 36px;
-  text-align: left;
+  text-align: center;
 }
 
 .hero-content>* {
@@ -256,7 +256,7 @@ a {
   color: #ffffff;
   font-size: clamp(1rem, 1.6vw, 1.55rem);
   font-weight: 900;
-  line-height: 120%;
+  line-height: 1.15;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
@@ -308,7 +308,7 @@ a {
 .big-numbers__desktop-layout {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   width: 100%;
 }
@@ -321,7 +321,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.4rem;
+  gap: 0.5rem;
   width: 100%;
 }
 
@@ -650,10 +650,6 @@ a {
 }
 
 @media (max-width: 768px) {
-  .hero-background__img {
-    object-position: 80% center;
-  }
-
   .hero-section {
     min-height: 100svh;
     padding-top: calc(82px + env(safe-area-inset-top, 0px));
@@ -675,15 +671,12 @@ a {
     min-height: calc(100svh - 96px);
     padding: 0 12px;
     align-items: center;
-    justify-content: center;
   }
 
   .hero-content {
-    align-items: center;
     justify-content: center;
     gap: clamp(12px, 1.9vh, 18px);
     max-width: 100%;
-    text-align: center;
   }
 
   .logo-abc {
@@ -694,39 +687,31 @@ a {
   }
 
   .hero-text {
-    align-items: center;
     gap: 10px;
-    text-align: center;
   }
 
   .subtitulo {
     font-size: clamp(0.85rem, 1.8vw, 1.05rem);
-    line-height: 120%;
+    line-height: 1.08;
   }
 
   .titulo-principal {
     font-size: clamp(2.2rem, 6.6vw, 2.7rem);
     line-height: 1.02;
     max-width: 700px;
-    margin-inline: auto;
-    text-align: center;
   }
 
   .big-numbers {
-    display: flex;
-    justify-content: center;
     padding: 0;
   }
 
   .big-numbers ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
-    width: min(100%, 520px);
-    margin-inline: auto;
   }
 
   .big-numbers li {
-    border-radius: 1rem;
+    border-radius: 1.3rem;
     padding: 0.8rem 0.72rem;
     font-size: 12px;
   }
@@ -738,17 +723,12 @@ a {
   .big-numbers__mobile-layout {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.18rem;
-    text-align: center;
     width: 100%;
   }
 
   .big-numbers__mobile-topline {
-    justify-content: center;
-    gap: 0.rem;
-    margin-inline: auto;
-    width: fit-content;
+    gap: 0.55rem;
   }
 
   .big-numbers__icon {
@@ -766,11 +746,9 @@ a {
   }
 
   .big-numbers__description--mobile {
-    align-self: stretch;
     display: block;
     font-size: 0.68rem;
     line-height: 1.12;
-    width: 100%;
     text-align: left !important;
   }
 
@@ -805,10 +783,6 @@ a {
 }
 
 @media (max-width: 432px) {
-  .hero-background__img {
-    object-position: 65% center;
-  }
-
   .obra-content-menu {
     padding: 0 1rem;
   }
@@ -823,13 +797,10 @@ a {
   .hero-container {
     padding: 0 12px;
     min-height: calc(100svh - 86px);
-    justify-content: center;
   }
 
   .hero-content {
-    align-items: center;
     gap: 12px;
-    text-align: center;
   }
 
   .logo-abc {
@@ -840,21 +811,17 @@ a {
   }
 
   .hero-text {
-    align-items: center;
     gap: 8px;
-    text-align: center;
   }
 
   .subtitulo {
-    font-size: clamp(1.2rem, 3vw, 0.92rem);
-    line-height: 120%;
+    font-size: clamp(0.78rem, 3vw, 0.92rem);
+    line-height: 1.04;
   }
 
   .titulo-principal {
-    font-size: clamp(2.5rem, 8vw, 2.35rem);
+    font-size: clamp(1.95rem, 8vw, 2.35rem);
     line-height: 0.98;
-    margin-inline: auto;
-    text-align: center;
   }
 
   .big-numbers {
@@ -864,12 +831,10 @@ a {
   .big-numbers ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
-    width: min(100%, 360px);
-    margin-inline: auto;
   }
 
   .big-numbers li {
-    border-radius: 1rem;
+    border-radius: .75rem;
     padding: 0.72rem 0.55rem;
   }
 
@@ -886,11 +851,9 @@ a {
   }
 
   .big-numbers__description--mobile {
-    align-self: stretch;
     font-size: 0.58rem;
     line-height: 1.08;
-    width: 100%;
-    text-align: center !important;
+    text-align: left;
   }
 
   .obra-beneficios__titulo {
@@ -945,8 +908,7 @@ a {
   }
 
   .subtitulo {
-    font-size: 1rem;
-
+    font-size: 0.72rem;
   }
 
   .titulo-principal {

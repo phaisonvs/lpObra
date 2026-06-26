@@ -651,7 +651,7 @@ a {
 
 @media (max-width: 768px) {
   .hero-background__img {
-    object-position: 80% center;
+    object-position: 10% center;
   }
 
   .hero-section {
@@ -806,7 +806,7 @@ a {
 
 @media (max-width: 432px) {
   .hero-background__img {
-    object-position: 65% center;
+    object-position: 56% center;
   }
 
   .obra-content-menu {
