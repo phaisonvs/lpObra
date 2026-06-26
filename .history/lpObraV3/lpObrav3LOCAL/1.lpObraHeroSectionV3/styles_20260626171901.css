@@ -992,7 +992,7 @@ a {
   }
 
   .titulo-principal {
-    font-size: clamp(3rem, 8vw, 2.35rem);
+    font-size: clamp(2.5rem, 8vw, 2.35rem);
     line-height: 0.98;
     margin-inline: auto;
     text-align: center;

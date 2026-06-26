@@ -411,7 +411,7 @@ a {
 .big-numbers__desktop-layout {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: clamp(0.7rem, 0.9vw, 0.9rem);
   min-height: 100%;
   width: 100%;
@@ -992,7 +992,7 @@ a {
   }
 
   .titulo-principal {
-    font-size: clamp(3rem, 8vw, 2.35rem);
+    font-size: clamp(2.5rem, 8vw, 2.35rem);
     line-height: 0.98;
     margin-inline: auto;
     text-align: center;

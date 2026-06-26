@@ -176,9 +176,11 @@
     );
 
     if (millionMatch) {
-      const baseValue = Number.parseFloat(millionMatch[1].replace(/\./g, ""));
       numericMultiplier = 1000000;
-      displaySuffix = baseValue === 1 ? " milhão" : " milhões";
+      displaySuffix =
+        millionMatch[2].toLowerCase() === "1"
+          ? " milhão"
+          : ` ${millionMatch[2]}`;
       normalizedTarget = millionMatch[1];
     }
 
@@ -196,12 +198,10 @@
       numericValue: parsedNumber * numericMultiplier,
       formatDisplayValue(currentValue) {
         if (displaySuffix) {
-          if (currentValue < numericMultiplier) {
-            const compactThousands = Math.floor(currentValue / 1000);
-            return `${prefix}${compactThousands.toLocaleString("pt-BR")} mil`;
-          }
-
-          const compactValue = Math.floor(currentValue / numericMultiplier);
+          const compactValue = Math.max(
+            1,
+            Math.floor(currentValue / numericMultiplier),
+          );
           return `${prefix}${compactValue.toLocaleString("pt-BR")}${displaySuffix}`;
         }
 

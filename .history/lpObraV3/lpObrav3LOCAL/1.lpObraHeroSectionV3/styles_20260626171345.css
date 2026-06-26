@@ -308,18 +308,6 @@ a {
   height: clamp(2rem, 2.2vw, 2.35rem);
   display: block;
   object-fit: contain;
-  animation: heroHighlightFloat 3.8s ease-in-out infinite;
-  transform-origin: center;
-}
-
-.hero-highlights__item:nth-child(2) .hero-highlights__icon {
-  animation-duration: 4.2s;
-  animation-delay: 0.2s;
-}
-
-.hero-highlights__item:nth-child(3) .hero-highlights__icon {
-  animation-duration: 4.6s;
-  animation-delay: 0.35s;
 }
 
 .hero-highlights__label {
@@ -328,44 +316,6 @@ a {
   font-weight: 700;
   line-height: 1.15;
   text-transform: uppercase;
-}
-
-@media (min-width: 769px) {
-  .big-numbers li {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .big-numbers__desktop-layout {
-    justify-content: center;
-  }
-
-  .big-numbers__info {
-    align-items: center;
-    text-align: center;
-  }
-
-  .big-numbers__description {
-    text-align: center;
-  }
-
-  .hero-highlights {
-    width: fit-content;
-    max-width: 100%;
-    grid-template-columns: repeat(3, minmax(0, 168px));
-    gap: clamp(0.65rem, 0.9vw, 0.9rem);
-    margin-inline: auto;
-    justify-content: center;
-  }
-
-  .hero-highlights__item {
-    justify-content: center;
-  }
-
-  .hero-highlights__media {
-    max-width: 168px;
-    margin-inline: auto;
-  }
 }
 
 .big-numbers {
@@ -411,7 +361,7 @@ a {
 .big-numbers__desktop-layout {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: clamp(0.7rem, 0.9vw, 0.9rem);
   min-height: 100%;
   width: 100%;
@@ -746,18 +696,6 @@ a {
   }
 }
 
-@keyframes heroHighlightFloat {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
 @media (max-width: 1024px) {
   .obra-beneficios__card {
     grid-template-columns: 1fr;
@@ -992,7 +930,7 @@ a {
   }
 
   .titulo-principal {
-    font-size: clamp(3rem, 8vw, 2.35rem);
+    font-size: clamp(2.5rem, 8vw, 2.35rem);
     line-height: 0.98;
     margin-inline: auto;
     text-align: center;

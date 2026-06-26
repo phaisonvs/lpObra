@@ -152,64 +152,6 @@
     return 1 - Math.pow(1 - x, 3);
   }
 
-  function parseCounterTarget(targetText) {
-    let normalizedTarget = targetText.trim();
-    let prefix = "";
-    let trailingSuffix = "";
-    let displaySuffix = "";
-    let numericMultiplier = 1;
-
-    if (normalizedTarget.startsWith("+")) {
-      prefix = "+";
-      normalizedTarget = normalizedTarget.substring(1).trim();
-    }
-
-    if (normalizedTarget.endsWith("x")) {
-      trailingSuffix = "x";
-      normalizedTarget = normalizedTarget
-        .substring(0, normalizedTarget.length - 1)
-        .trim();
-    }
-
-    const millionMatch = normalizedTarget.match(
-      /^([\d.]+)\s*(milhao|milhaoes|milhão|milhões)$/i,
-    );
-
-    if (millionMatch) {
-      const baseValue = Number.parseFloat(millionMatch[1].replace(/\./g, ""));
-      numericMultiplier = 1000000;
-      displaySuffix = baseValue === 1 ? " milhão" : " milhões";
-      normalizedTarget = millionMatch[1];
-    }
-
-    const numericPortion = normalizedTarget.replace(/\./g, "");
-    const parsedNumber = Number.parseFloat(numericPortion);
-
-    if (Number.isNaN(parsedNumber)) {
-      return null;
-    }
-
-    return {
-      prefix,
-      trailingSuffix,
-      displaySuffix,
-      numericValue: parsedNumber * numericMultiplier,
-      formatDisplayValue(currentValue) {
-        if (displaySuffix) {
-          if (currentValue < numericMultiplier) {
-            const compactThousands = Math.floor(currentValue / 1000);
-            return `${prefix}${compactThousands.toLocaleString("pt-BR")} mil`;
-          }
-
-          const compactValue = Math.floor(currentValue / numericMultiplier);
-          return `${prefix}${compactValue.toLocaleString("pt-BR")}${displaySuffix}`;
-        }
-
-        return `${prefix}${Math.floor(currentValue).toLocaleString("pt-BR")}${trailingSuffix}`;
-      },
-    };
-  }
-
   function animateCounters(elements) {
     elements.forEach((counterElement) => {
       const targetText = counterElement.dataset.originalValue;
@@ -218,14 +160,29 @@
         return;
       }
 
-      const parsedCounterTarget = parseCounterTarget(targetText);
+      let finalValueText = targetText;
+      let prefix = "";
+      let suffix = "";
 
-      if (!parsedCounterTarget) {
+      if (finalValueText.startsWith("+")) {
+        prefix = "+";
+        finalValueText = finalValueText.substring(1);
+      }
+
+      if (finalValueText.endsWith("x")) {
+        suffix = "x";
+        finalValueText = finalValueText.substring(0, finalValueText.length - 1);
+      }
+
+      const cleanedValueText = finalValueText.replace(/\./g, "");
+      const numericValue = Number.parseFloat(cleanedValueText);
+
+      if (Number.isNaN(numericValue)) {
         counterElement.textContent = targetText;
         return;
       }
 
-      const finalIntegerValue = Math.round(parsedCounterTarget.numericValue);
+      const finalIntegerValue = Math.round(numericValue);
       const duration = 1800;
       const frameDuration = 1000 / 60;
       const totalFrames = Math.round(duration / frameDuration);
@@ -244,8 +201,7 @@
         );
         const displayValue = Math.floor(currentValue);
 
-        counterElement.textContent =
-          parsedCounterTarget.formatDisplayValue(displayValue);
+        counterElement.textContent = `${prefix}${displayValue.toLocaleString("pt-BR")}${suffix}`;
 
         if (frame < totalFrames) {
           window.requestAnimationFrame(animate);

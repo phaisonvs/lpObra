@@ -196,11 +196,6 @@
       numericValue: parsedNumber * numericMultiplier,
       formatDisplayValue(currentValue) {
         if (displaySuffix) {
-          if (currentValue < numericMultiplier) {
-            const compactThousands = Math.floor(currentValue / 1000);
-            return `${prefix}${compactThousands.toLocaleString("pt-BR")} mil`;
-          }
-
           const compactValue = Math.floor(currentValue / numericMultiplier);
           return `${prefix}${compactValue.toLocaleString("pt-BR")}${displaySuffix}`;
         }
