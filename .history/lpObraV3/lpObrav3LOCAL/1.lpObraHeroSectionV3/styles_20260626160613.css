@@ -296,7 +296,7 @@ a {
   padding: clamp(0.65rem, 0.9vw, 0.9rem);
   border: 1px solid rgba(240, 166, 58, 0.8);
   border-radius: clamp(0.9rem, 1vw, 1.1rem);
-  background: linear-gradient(180deg, rgba(6, 6, 8, 0.28) 0%, rgba(6, 6, 8, 0.56) 100%);
+  background: linear-gradient(180deg, rgba(6, 6, 8, 0.68) 0%, rgba(6, 6, 8, 0.56) 100%);
   color: #ffffff;
   text-align: center;
   backdrop-filter: blur(8px);

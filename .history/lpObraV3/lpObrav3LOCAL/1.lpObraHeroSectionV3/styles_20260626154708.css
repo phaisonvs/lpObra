@@ -296,7 +296,7 @@ a {
   padding: clamp(0.65rem, 0.9vw, 0.9rem);
   border: 1px solid rgba(240, 166, 58, 0.8);
   border-radius: clamp(0.9rem, 1vw, 1.1rem);
-  background: linear-gradient(180deg, rgba(6, 6, 8, 0.28) 0%, rgba(6, 6, 8, 0.56) 100%);
+  background: linear-gradient(180deg, rgba(6, 6, 8, 0.68) 0%, rgba(6, 6, 8, 0.56) 100%);
   color: #ffffff;
   text-align: center;
   backdrop-filter: blur(8px);
@@ -306,8 +306,16 @@ a {
 .hero-highlights__icon {
   width: clamp(2rem, 2.2vw, 2.35rem);
   height: clamp(2rem, 2.2vw, 2.35rem);
-  display: block;
-  object-fit: contain;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 166, 58, 0.85);
+  background: rgba(240, 166, 58, 0.12);
+  color: var(--gold-color);
+  font-size: clamp(0.62rem, 0.72vw, 0.72rem);
+  font-weight: 900;
+  line-height: 1;
 }
 
 .hero-highlights__label {
@@ -319,7 +327,6 @@ a {
 }
 
 .big-numbers {
-  --bn-card-padding: clamp(0.75rem, 0.95vw, 0.9rem);
   width: 100%;
   padding: 0 1rem;
 }
@@ -338,8 +345,8 @@ a {
 .big-numbers li {
   display: flex;
   align-items: center;
-  padding: var(--bn-card-padding);
-  min-height: clamp(64px, 8vw, 80px);
+  padding: clamp(0.75rem, 0.95vw, 0.9rem);
+  min-height: clamp(88px, 8vw, 102px);
   border-radius: clamp(1rem, 1.5vw, 1.35rem);
   background: linear-gradient(180deg, #ffffff 0%, #eaf0ef 60%, #c3c3c3 100%);
   color: #232323;
@@ -788,7 +795,6 @@ a {
   }
 
   .big-numbers {
-    --bn-card-padding: 0.8rem 0.72rem;
     display: flex;
     justify-content: center;
     padding: 0;
@@ -803,6 +809,7 @@ a {
 
   .big-numbers li {
     border-radius: 1rem;
+    padding: 0.8rem 0.72rem;
     font-size: 12px;
   }
 
@@ -956,7 +963,6 @@ a {
   }
 
   .big-numbers {
-    --bn-card-padding: 0.72rem 0.55rem;
     padding: 0;
   }
 
@@ -969,6 +975,7 @@ a {
 
   .big-numbers li {
     border-radius: 1rem;
+    padding: 0.72rem 0.55rem;
   }
 
   .big-numbers__icon {

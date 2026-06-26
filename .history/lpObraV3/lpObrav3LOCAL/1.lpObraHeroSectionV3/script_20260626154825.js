@@ -9,9 +9,6 @@
     beneficiosBackground: `${ASSET_BASE}/beneficios/bg-beneficios2.jpg`,
     cardLoja: `${ASSET_BASE}/beneficios/card-loja.png`,
     cardObra: `${ASSET_BASE}/beneficios/card-obra.png`,
-    highlightEconomia: `${ASSET_BASE}/hero/icon-economia-na-obra.png`,
-    highlightAgilidade: `${ASSET_BASE}/hero/icon-agilidade-na-compra.png`,
-    highlightSuporte: `${ASSET_BASE}/hero/icon-suporte-especializado.png`,
   };
 
   const bigNumbersData = [
@@ -55,7 +52,7 @@
       iconSrc: `${ASSET_BASE}/icon/bn-icon-centros-distribuicao.png`,
       value: "23",
       displayValue: "0",
-      description: "CDs no Brasil",
+      description: "centros de distribuicao no Brasil",
     },
   ];
 
@@ -64,15 +61,6 @@
   const heroBackground = document.getElementById("hero-background");
   const benefitCardStore = document.getElementById("benefit-card-store");
   const benefitCardWork = document.getElementById("benefit-card-work");
-  const highlightIconEconomia = document.getElementById(
-    "highlight-icon-economia",
-  );
-  const highlightIconAgilidade = document.getElementById(
-    "highlight-icon-agilidade",
-  );
-  const highlightIconSuporte = document.getElementById(
-    "highlight-icon-suporte",
-  );
   const bigNumbersList = document.getElementById("big-numbers-list");
 
   function setAssets() {
@@ -94,18 +82,6 @@
 
     if (benefitCardWork) {
       benefitCardWork.src = assets.cardObra;
-    }
-
-    if (highlightIconEconomia) {
-      highlightIconEconomia.src = assets.highlightEconomia;
-    }
-
-    if (highlightIconAgilidade) {
-      highlightIconAgilidade.src = assets.highlightAgilidade;
-    }
-
-    if (highlightIconSuporte) {
-      highlightIconSuporte.src = assets.highlightSuporte;
     }
 
     document.documentElement.style.setProperty(
