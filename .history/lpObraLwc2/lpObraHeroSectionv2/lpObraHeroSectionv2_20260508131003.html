@@ -1,0 +1,132 @@
+<template>
+  <div class="obra-top-header">
+    <div class="obra-full-container-menu">
+      <div class="obra-content-menu">
+        <button
+          type="button"
+          class="obra-menu-icon"
+          onclick={toggleMenu}
+          aria-expanded={menuAriaExpanded}
+          aria-label={menuButtonLabel}
+        >
+          <span aria-hidden="true">☰</span>
+        </button>
+
+        <div class="obra-menu-logo-wrap">
+          <a
+            href="#"
+            class="obra-menu-logo-link"
+            onclick={handleLogoClick}
+            aria-label="ABC da Construção — início"
+          >
+            <img
+              src={companyLogoURL}
+              alt="ABC da Construção"
+              class="obra-menu-logo-img"
+              loading="eager"
+            />
+          </a>
+        </div>
+
+        <nav class={obraNavbarClass} aria-label="Menu da página">
+          <a
+            class="obra-menu-item"
+            href="#"
+            data-scroll-target="beneficios"
+            onclick={handleMenuNavClick}
+          >
+            BENEFÍCIOS
+          </a>
+          <a
+            class="obra-menu-item"
+            href="#"
+            data-scroll-target="hero"
+            onclick={handleMenuNavClick}
+          >
+            COMO FUNCIONA
+          </a>
+          <a
+            class="obra-menu-item"
+            href="#"
+            data-scroll-target="faq"
+            onclick={handleMenuNavClick}
+          >
+            DÚVIDAS
+          </a>
+        </nav>
+
+        <div class="obra-menu-cta-slot">
+          <a class="obra-menu-cta-btn" href="#" onclick={handleHeaderCtaClick}>
+            QUERO CADASTRAR MINHA OBRA
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero-section" data-lp-section="hero" data-id="hero-section">
+    <div class="hero-background" style={heroBgStyle}></div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="logo-container">
+          <img
+            src={companyLogoURL}
+            alt="Logo ABC da Construção"
+            class="logo-abc"
+            loading="eager"
+          />
+        </div>
+
+        <div class="hero-text">
+          <p class="subtitulo">
+            SUA OBRA COMEÇA MUITO MELHOR COM
+          </p>
+          <h1 class="titulo-principal">
+            A MAIOR REDE ESPECIALISTA EM ACABAMENTOS DO BRASIL!
+          </h1>
+        </div>
+
+        <div class="lp-hero__stats" aria-label="Destaques da marca">
+          <article class="lp-hero__stat">
+            <div class="lp-hero__stat-icon" aria-hidden="true">
+              <img class="lp-hero__stat-icon-img" src={urlHeroStatIconMaiorRede} alt="">
+            </div>
+            <strong>Maior rede</strong>
+            <span>especialista em acabamentos do Brasil</span>
+          </article>
+          <article class="lp-hero__stat">
+            <div class="lp-hero__stat-icon" aria-hidden="true">
+              <img class="lp-hero__stat-icon-img" src={urlHeroStatIconFranquias} alt="">
+            </div>
+            <strong>+400</strong>
+            <span>franquias</span>
+          </article>
+          <article class="lp-hero__stat">
+            <div class="lp-hero__stat-icon" aria-hidden="true">
+              <img class="lp-hero__stat-icon-img" src={urlHeroStatIconEstados} alt="">
+            </div>
+            <strong>11</strong>
+            <span>estados do país</span>
+          </article>
+          <article class="lp-hero__stat">
+            <div class="lp-hero__stat-icon" aria-hidden="true">
+              <img class="lp-hero__stat-icon-img" src={urlHeroStatIconAnos} alt="">
+            </div>
+            <strong>+68 anos</strong>
+            <span>de tradição</span>
+          </article>
+        </div>
+
+        <div class="cta-container">
+          <button class="cta-button" onclick={handleCtaClick}>
+            <span class="cta-text">
+              CADASTRAR MINHA OBRA AGORA
+            </span>
+          </button>
+          <p class="disclaimer">*Consulte condições</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

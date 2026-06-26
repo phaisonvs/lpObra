@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lpObra V3 Local</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./lpObraHeroSectionLOCAL.css" />
+</head>
+
+<body>
+  <div class="obra-top-header">
+    <div class="obra-full-container-menu">
+      <div class="obra-content-menu">
+        <div class="obra-menu-logo-wrap">
+          <a href="#hero" class="obra-menu-logo-link" data-scroll-target="hero" aria-label="ABC da Construção - inicio">
+            <img id="header-logo" alt="ABC da Construção" class="obra-menu-logo-img" loading="eager" />
+          </a>
+        </div>
+
+        <div class="obra-menu-cta-slot">
+          <a class="obra-menu-cta-btn" href="#form" data-scroll-target="form">
+            Cadastrar obra
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section" data-lp-section="hero" data-id="hero-section" id="hero">
+      <div class="hero-background">
+        <img id="hero-background-image" class="hero-background__img" alt="" aria-hidden="true" loading="eager"
+          decoding="async" />
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="logo-container" data-animate>
+            <img id="hero-logo" alt="Logo ABC da Construção" class="logo-abc" loading="eager" />
+          </div>
+
+          <div class="hero-text">
+            <p class="subtitulo" data-animate>
+              Voce esta construindo<br />ou reformando?
+            </p>
+            <h1 class="titulo-principal" data-animate>
+              Cadastre sua obra<br />
+              e ative seu Status <span class="hero-accent">VIP</span>
+            </h1>
+          </div>
+
+          <div class="big-numbers" id="big-numbers" data-animate>
+            <ul id="big-numbers-list"></ul>
+          </div>
+
+          <div class="cta-container" data-animate>
+            <button class="cta-button" type="button" data-scroll-target="form">
+              <span class="cta-text">Cadastrar obra</span>
+            </button>
+            <p class="disclaimer">*Consulte condicoes</p>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="hero-scroll-hint" data-scroll-target="beneficios" aria-label="Ir para beneficios">
+        <svg class="hero-scroll-hint__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.85" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </section>
+
+    <section class="obra-beneficios" data-lp-section="beneficios" aria-labelledby="obra-beneficios-titulo"
+      id="beneficios">
+      <div class="obra-beneficios__inner">
+        <header class="obra-beneficios__cabecalho">
+          <div class="obra-beneficios__divisor" aria-hidden="true"></div>
+          <span class="obra-beneficios__coroa" aria-hidden="true">
+            <svg class="obra-beneficios__coroa-icon" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                d="m13.5 4 -3 3L7 2 3.5 7l-3 -3v6.5c0 0.3978 0.158035 0.7794 0.43934 1.0607C1.22064 11.842 1.60218 12 2 12h10c0.3978 0 0.7794 -0.158 1.0607 -0.4393S13.5 10.8978 13.5 10.5V4Z"
+                stroke-width="2"></path>
+            </svg>
+          </span>
+          <div class="obra-beneficios__divisor" aria-hidden="true"></div>
+        </header>
+
+        <h2 id="obra-beneficios-titulo" class="obra-beneficios__titulo">
+          Quais beneficios exclusivos <br />voce conquista com seu Status VIP?
+        </h2>
+
+        <div class="obra-beneficios__grade" id="benefits-grid"></div>
+
+        <div class="obra-beneficios__acao">
+          <a class="obra-beneficios__cta" href="#form" data-scroll-target="form">
+            Cadastrar obra
+          </a>
+        </div>
+        <div class="obra-beneficios__disclaimer">
+          <p class="disclaimer">*Consulte condicoes</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="obra-form-placeholder" data-lp-section="form" data-id="contato" id="form">
+      <div class="obra-form-placeholder__inner">
+        <p class="obra-form-placeholder__eyebrow">Proxima secao local</p>
+        <h2 class="obra-form-placeholder__title">Placeholder do formulario</h2>
+        <p class="obra-form-placeholder__text">
+          Esta area existe para que os botoes da hero e de beneficios tenham um destino
+          funcional no Live Server. Quando o formulario real chegar, basta substituir este bloco.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="./lpObraHeroSectionLOCAL.js"></script>
+</body>
+
+</html>

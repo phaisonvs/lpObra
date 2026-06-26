@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lpObra Hero Section V3 - Local</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="obra-top-header">
+    <div class="obra-full-container-menu">
+      <div class="obra-content-menu">
+        <div class="obra-menu-logo-wrap">
+          <a href="#hero" class="obra-menu-logo-link" aria-label="ABC da Construção - início">
+            <img id="header-logo" alt="ABC da Construção" class="obra-menu-logo-img" loading="eager" />
+          </a>
+        </div>
+
+        <div class="obra-menu-cta-slot">
+          <a class="obra-menu-cta-btn" href="#beneficios" data-scroll-target="beneficios">
+            Cadastrar obra
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section" id="hero" data-lp-section="hero" data-id="hero-section">
+      <div class="hero-background" aria-hidden="true">
+        <img id="hero-background" class="hero-background__img" alt="" loading="eager" decoding="async" />
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="logo-container">
+            <img id="hero-logo" alt="Logo ABC da Construção" class="logo-abc" loading="eager" />
+          </div>
+
+          <div class="hero-text">
+            <p class="subtitulo">
+              Você está construindo<br />ou reformando?
+            </p>
+            <h1 class="titulo-principal">
+              Cadastre sua obra<br />
+              e aproveite condições exclusivas
+            </h1>
+          </div>
+
+          <div class="big-numbers" aria-label="Números da ABC da Construção">
+            <ul id="big-numbers-list"></ul>
+          </div>
+
+          <div class="cta-container">
+            <a class="cta-button" href="#beneficios" data-scroll-target="beneficios">
+              <span class="cta-text">Cadastrar obra</span>
+            </a>
+            <p class="disclaimer">*Consulte condições</p>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="hero-scroll-hint" data-scroll-target="beneficios" aria-label="Ir para benefícios">
+        <svg class="hero-scroll-hint__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.85" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </section>
+
+    <section class="obra-beneficios" id="beneficios" data-lp-section="beneficios"
+      aria-labelledby="obra-beneficios-titulo">
+      <div class="obra-beneficios__inner">
+        <header class="obra-beneficios__cabecalho" aria-hidden="true">
+          <div class="obra-beneficios__divisor"></div>
+          <div class="obra-beneficios__divisor"></div>
+        </header>
+
+        <h2 id="obra-beneficios-titulo" class="obra-beneficios__titulo">
+          Quais vantagens você encontra ao cadastrar sua obra?
+        </h2>
+
+        <div class="obra-beneficios__grade">
+          <article class="obra-beneficios__card">
+            <div class="obra-beneficios__icone" aria-hidden="true">
+              <img id="benefit-card-store" alt="" loading="lazy" />
+            </div>
+            <div class="obra-beneficios__corpo">
+              <p class="obra-beneficios__texto">
+                Poder de compra da <strong class="obra-beneficios__destaque">Maior Rede</strong> de acabamentos do país
+              </p>
+            </div>
+          </article>
+
+          <article class="obra-beneficios__card">
+            <div class="obra-beneficios__icone" aria-hidden="true">
+              <img id="benefit-card-work" alt="" loading="lazy" />
+            </div>
+            <div class="obra-beneficios__corpo">
+              <p class="obra-beneficios__texto">
+                Preços <strong class="obra-beneficios__destaque">imbatíveis</strong> em produtos de início de obra
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="obra-beneficios__acao">
+          <a class="obra-beneficios__cta" href="#beneficios" data-scroll-target="beneficios">
+            Cadastrar obra
+          </a>
+        </div>
+
+        <div class="obra-beneficios__disclaimer">
+          <p class="disclaimer">*Consulte condições</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
